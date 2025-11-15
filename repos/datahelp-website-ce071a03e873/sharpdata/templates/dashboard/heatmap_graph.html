@@ -1,0 +1,243 @@
+{% extends 'dashboard/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<style>
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    .loading {
+        font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+        text-transform: uppercase;
+
+        width: 150px;
+        text-align: center;
+        line-height: 50px;
+
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 50%;
+        margin: auto;
+        transform: translateY(-50%);
+    }
+
+    .loading span {
+        position: relative;
+        z-index: 999;
+        color: #fff;
+    }
+
+    .loading:before {
+        content: '';
+        background: #61bdb6;
+        width: 128px;
+        height: 36px;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+
+        animation: 2s loadingBefore infinite ease-in-out;
+    }
+
+    @keyframes loadingBefore {
+        0% {
+            transform: translateX(-14px);
+        }
+
+        50% {
+            transform: translateX(14px);
+        }
+
+        100% {
+            transform: translateX(-14px);
+        }
+    }
+
+
+    .loading:after {
+        content: '';
+        background: #ff3600;
+        width: 14px;
+        height: 60px;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        opacity: .5;
+
+        animation: 2s loadingAfter infinite ease-in-out;
+    }
+
+    @keyframes loadingAfter {
+        0% {
+            transform: translateX(-50px);
+        }
+
+        50% {
+            transform: translateX(50px);
+        }
+
+        100% {
+            transform: translateX(-50px);
+        }
+    }
+</style>
+<script>
+    function iframChanged(loc) {
+        window.location.replace(loc);
+    }
+
+    var c1 = 0;
+
+    // sleep time expects milliseconds
+    function sleep(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+    }
+
+</script>
+
+<body>
+<div class="content">
+    <!-- Animated -->
+    <div class="animated fadeIn">
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="box-title">Smartlists Heatmap <a class="float-right" download="YourFileName.jpeg"
+                                                                    href=""
+                                                                    id='image_download' style="display: none;">
+                            <button><i class="fa fa-download"></i></button>
+                        </a></h4>
+
+                    </div>
+                    <div class="card-body">
+                        <div class="loading" id="loading">
+                            <span>Loading</span>
+                        </div>
+                        <!-- <iframe src="https://datahelp.wufoo.com/forms/z1cradf41t3gjoh/" style="height:1000px;width:100%;"></iframe> -->
+                        <div class="image center" id="image" style="display: None">
+                            <img alt="heatmap" id="image_data" src="d"/>
+                        </div>
+
+                    </div>
+                </div>
+            </div><!-- /# column -->
+        </div>
+        <!--  /Traffic -->
+        <div class="clearfix"></div>
+
+
+        <!-- /#add-category -->
+    </div>
+    <!-- .animated -->
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+
+{% if is_success == '1' %}
+<script>
+
+
+    swal({
+        title: 'Update Successful',
+        text: 'Credentials Updated successfully',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+    });
+
+</script>
+{% endif %}
+
+<script>
+    function sleep(time) {
+        return new Promise((resolve) => setTimeout(resolve, time));
+    }
+
+    function doPoll(url) {
+        c1 += 1;
+        $.ajax({
+            url: url,
+            success: function (data) {
+                console.log(data);  // process results here
+                console.log(c1);
+                sleep(100).then(() => {
+                    // Do something after the sleep!
+                    if (data == "0") {
+                        setTimeout(doPoll(url), 5000);
+
+                    }
+                    if (data != "0" && data != "-1") {
+                        document.getElementById('image').style.display = "block";
+                        document.getElementById('image_data').src = "data:image/png;base64, " + data;
+                        document.getElementById('image_download').src = "data:image/png;base64, " + data;
+                        document.getElementById('image_download').style.display = "block";
+                        document.getElementById('loading').style.display = "None";
+                    }
+                });
+
+            },
+            error: function (data) {
+                sleep(2000).then(() => {
+                    $.ajax({
+                        url: url,
+                        success: function (data) {
+                            console.log(data);  // process results here
+                            console.log(c1);
+                            sleep(100).then(() => {
+                                // Do something after the sleep!
+                                if (data == "0") {
+                                    setTimeout(doPoll(url), 5000);
+
+                                }
+                                if (data != "0" && data != "-1") {
+                                    document.getElementById('image').style.display = "block";
+                                    document.getElementById('image_data').src = "data:image/png;base64, " + data;
+                                    document.getElementById('image_download').src = "data:image/png;base64, " + data;
+                                    document.getElementById('image_download').style.display = "block";
+                                    document.getElementById('loading').style.display = "None";
+                                }
+                            });
+                        }
+                    })
+                })
+            },
+        });
+    }
+
+    var url = "/user/check_if_file_available?team_id={{team}}&entry_id={{entry_id}}";
+    try {
+        sleep(5000).then(() => {
+            doPoll(url);
+        });
+
+    } catch (error) {
+        sleep(5000).then(() => {
+            doPoll(url);
+        });
+    }
+
+
+</script>
+{% endblock %}

@@ -1,0 +1,415 @@
+@import url('http://fonts.cdnfonts.com/css/poppins');
+            
+:root {
+    --font: 'Poppins', sans-serif;                                       
+    --color: #333333;
+    --heading-color: #181059;
+    --primary: #065697; 
+    --yellow: #F3B007;
+}
+
+.bd {
+    border: solid 1px red !important;
+}
+
+body {
+    font-family: var(--font) !important;
+    font-weight: normal;
+    font-style: normal;
+    font-size: 14px !important;
+    color: var(--color);
+    overflow-x: hidden;
+    line-height: 28px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none !important;
+    color:inherit !important;
+}
+
+.pricing-top-section {
+    background: #F3FAFF;
+}
+.price-heading{
+    font-weight: 600;
+    font-size: 38px;
+    color: var(--heading-color);
+}
+.price-heading-2{
+    font-weight: 500;
+    font-size: 1.1rem;
+    line-height:28px !important;
+    color: var(--heading-color);
+}
+.price-heading-2 b{
+    text-decoration: underline;
+    /* font-weight: 300; */
+    cursor: pointer;
+    color: #065697;
+}
+
+.card-price{
+    border: 1px solid #D8D8D8;
+    border-radius: 10px;
+    max-width: 500px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    cursor: pointer;
+}
+.card-price:hover{
+    box-shadow: rgba(0,0,0,0.18) 0px 4px 22px;
+    background: #fff;
+    border: #065697 1px solid;
+}
+
+@media (max-width: 540px) {
+    .card-price{
+        border: 1px solid #D8D8D8;
+        border-radius: 10px;
+        max-width:none;
+      
+    }
+}
+.cta-price{
+  background-image: url("hairline.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+  box-shadow: rgba(0,0,0,0.18) 0px 4px 22px;
+}
+
+
+
+
+.btn-primary {
+    background-color: var(--primary) !important;
+    font-size: 15px;
+    border-color: var(--primary) !important;
+    color: #fff;
+    outline: none !important;
+    font-weight: 600!important;
+    padding: 12px 30px;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background-color: transparent;
+    border-color: var(--primary-hover);
+    color: #065697;
+    outline: 0px !important;
+}
+
+.btn-primary-outline {
+    background-color: transparent;
+    border-color: var(--primary);
+    color: var(--primary);
+    outline: 0px !important;
+    font-weight: 600!important;
+    padding: 12px 30px;
+}
+
+.btn-primary-outline:hover,
+.btn-primary-outline:focus,
+.btn-primary-outline:active {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #ffffff;
+    outline: 0px !important;
+}
+
+.text-primary {
+    color: var(--primary) !important;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.input-bn {
+    font-size: 14px;
+    box-sizing: border-box;
+    border-radius: 5px !important;
+    border: 1.5px solid #8692A6 !important;
+    height: 55px !important;
+}
+
+.input-bn:focus {
+    border: 2px solid #065697 !important;
+    box-shadow: none;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+textarea {
+    font-size: 14px;
+    box-sizing: border-box;
+    border-radius: 5px !important;
+    border: 1.5px solid #8692A6 !important;
+    min-height: 150px !important;
+}
+
+textarea:focus {
+    border: 2px solid #065697 !important;
+    box-shadow: none !important;
+    background: #FFFFFF;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+
+
+
+
+
+
+
+
+.table-cont, .pricing table{
+    border: 2px solid #065697 !important;
+}
+
+.card-header {
+    border: 2px solid #065697;
+}
+.pricing tbody{
+    margin: 0px !important;
+    border: 0px !important;
+}
+
+.collapse-head{
+    font-weight: 700;
+}
+.collapse-head div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#headingOne h5{
+    font-size: 14px !important;
+    line-height: 28px;
+}
+
+.pricing thead {
+    /* border-bottom: 2px solid #065697; */
+}
+.pricing td{
+    font-size: 12px;
+}
+.pricing .table th {
+    text-align: center;
+    border-radius: 35px 15px 0px 0px;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.pricing .table thead th {
+    border: 0px;
+}
+
+.pricing .table .tableprow td {
+    text-align: center;
+    border-radius: 0px 0px 25px 25px;
+}
+
+.pricing .table .bg-primary {
+    background-color: #065697 !important;
+    color: #fff;
+}
+
+.pricing .ptable-price {
+    color: #fff;
+}
+
+.pricing .table .highlight.bg-primary {
+    background-color: #032241 !important;
+}
+
+.card-header {
+    background-color: #fff !important;
+}
+
+.accordion>.card .card-header {
+    margin-bottom: 0px;
+}
+
+.accordion .card {
+    border: 0px;
+}
+
+.pricing tfoot td {
+    border: 0px !important;
+}
+.pricing td{
+    text-align: center;
+}
+.pricing table td:nth-child(3) {
+    background-color: #F0F0FF !important;
+}
+
+.pricing table td:nth-child(1) {
+    text-align: left !important;
+}
+.bi-check-circle-fill {
+    color: #065697;
+}
+
+/* for md */
+
+.custom-switch.custom-switch-md .custom-control-label {
+    padding-left: 1rem;
+    padding-bottom: 1.5rem;
+    vertical-align: inherit;
+}
+
+
+.custom-switch.custom-switch-md .custom-control-label::before {
+    height: 1.5rem;
+    width: calc(2rem + 0.75rem);
+    border-radius: 3rem;
+}
+
+.custom-switch.custom-switch-md .custom-control-label::after {
+    width: calc(1.5rem - 4px);
+    height: calc(1.5rem - 4px);
+    border-radius: calc(2rem - (1.5rem / 2));
+}
+.custom-switch .custom-control-label::after{
+    background: var(--yellow);
+}
+.custom-switch .custom-control-input:checked~.custom-control-label::after{
+    background: var(--yellow);
+}
+.custom-control-label::before,
+.custom-control-input:checked~.custom-control-label::before{
+    background: #181059;
+    border: none;
+}
+.custom-switch.custom-switch-md .custom-control-input:checked~.custom-control-label::after {
+    transform: translateX(calc(1.5rem - 0.25rem));
+}
+
+.pricing tfoot a {
+    color: #aeb8c2 !important;
+}
+
+.pricing tfoot p {
+    color: #29FFFF !important;
+}
+.thead-pill{
+    position: absolute;
+    margin-top: -30px;
+    margin-left: 100px;
+}
+.ptable-price{
+    font-size: 16px;
+}
+.collapse-rows td{
+    background: #f7f7f7;
+}
+.price-input{
+    height: 26px !important;
+    padding: 2px 5px;
+    width:40px;
+    font-size:12px;
+    font-weight: 700;
+    text-align: center;
+}
+.tfoot-btn{
+    border: 1px solid #29FFFF !important;
+}
+.tfoot-btn:hover{
+    background: #032241;
+    border:none;
+}
+
+
+
+
+@media screen and (max-width: 991px){
+    .collapse-rows td{
+        background: #ffff;
+    }
+    .collapse-head-cont td:nth-child(2),
+    .collapse-head-cont td:nth-child(3),
+    .collapse-head-cont td:nth-child(4){
+        display: none;
+    }
+    .w-25{
+        width: 100% !important;
+    }
+    .pricing thead{
+        display: none;
+    }
+    .pricing table td:nth-child(1) {
+        border-bottom: 1px solid #d8d8d8 !important;
+        border-top: 1px solid #d8d8d8 !important;
+        font-weight: 600;
+    }
+    .collapse-head{
+        background: #f7f7f7;
+    }
+    .pricing table td:last-child {
+        /* border-bottom: 1px solid #d8d8d8 !important; */
+    }
+    .pricing table tr{
+        display: block;
+        border: none;
+        /* margin-top: 1rem; */
+    }
+    .pricing table tr td {
+        word-wrap: break-word;
+        display:block;
+        border: none !important;
+    }
+    .pricing table td:not(:first-child) {
+        padding-left: 150px;
+        position: relative;
+        text-align: center;
+    }
+
+
+    .pricing table td:not(:first-child)::before{
+        align-items: center;
+        bottom: 0;
+        content: attr(data-label);
+        display: flex;
+        left: 0.75rem;
+        border-right: 1px solid #dee2e6;
+        line-height: 1.2;
+        position: absolute;
+        text-align: left;
+        top: 0;
+        width: 130px;
+    }
+    .table .tableprow td {
+        text-align: center;
+        border-radius:0px;
+    }
+   
+}
+
+
+.fub-out tr td:nth-child(2) , .fub-out tr th:nth-child(2){
+    display: none !important;
+}
+.form-check input{
+    display:none;
+}
+tr .form-check{
+    padding:0px;
+}

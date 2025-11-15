@@ -1,0 +1,41 @@
+{
+	"name": "graphql-api",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"compile": "tsc",
+		"start": "npm run compile && node -r dotenv/config ./dist/index.js dotenv_config_path=.dev_env dotenv_config_debug=true",
+		"prod": "npm run compile && node -r dotenv/config ./dist/index.js dotenv_config_path=.prod_env dotenv_config_debug=true",
+		"test": "npm run compile && node -r dotenv/config ./dist/index.js dotenv_config_path=.test_env dotenv_config_debug=true"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "module",
+	"devDependencies": {
+		"@types/node": "^20.2.5",
+		"nodemon": "^3.0.1",
+		"tsx": "^4.6.1",
+		"typescript": "^5.1.3"
+	},
+	"dependencies": {
+		"@apollo/server": "^4.8.1",
+		"@aws-sdk/client-dynamodb": "^3.377.0",
+		"@aws-sdk/client-secrets-manager": "^3.377.0",
+		"@aws-sdk/types": "^3.370.0",
+		"@aws-sdk/util-dynamodb": "^3.387.0",
+		"@graphql-tools/merge": "^9.0.0",
+		"@graphql-tools/schema": "^10.0.0",
+		"body-parser": "^1.20.2",
+		"cookie-parser": "^1.4.6",
+		"cors": "^2.8.5",
+		"dataloader": "^2.2.2",
+		"dotenv": "^16.3.1",
+		"graphql": "^16.7.1",
+		"graphql-type-json": "^0.3.2",
+		"node-fetch": "3.0",
+		"pg": "^8.11.3",
+		"url": "^0.11.1"
+	}
+}

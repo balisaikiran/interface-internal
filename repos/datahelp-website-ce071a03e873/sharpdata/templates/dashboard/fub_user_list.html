@@ -1,0 +1,259 @@
+{% extends 'dashboard/base.html' %}
+
+{% load static %}
+{% block styles %}
+
+
+{% endblock %}
+
+{% block content %}
+
+<body>
+<style>
+    @media screen and (max-width: 991px){
+        table td:not(:first-child)::before {
+        border-right:none !important;
+        }
+        table td:nth-child(1){
+            text-align: center !important;
+        }
+        table th {
+            text-align: center !important;
+        }
+        .dataTables_wrapper .dataTables_length, .dataTables_filter{
+            margin-bottom: 20px !important;
+        }
+    }
+    
+</style>
+<div class="content pb-5">
+    <!-- Animated -->
+    <div class="col-lg-12 pb-5">
+
+        <div class="p-4 d-flex bg-white mb-3 rounded-3 border flex-wrap justify-content-md-between align-items-center">
+            <h4 class="box-title m-0 p-0">Embedded App Users</h4>
+            <a class="open-addUser" href="/user/add-fub-user">
+                <button
+                        class="float-right btn btn-primary">Get FUB Users
+                </button>
+            </a>
+        </div>
+
+        <div class="card">
+            
+            <div class="card-body p-lg-4">
+                <table class="display border" id="text_table" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>UID</th>
+                        <th class="text-center">User Name</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">OSA</th>
+                        <th class="text-center">ISA</th>
+                        <th class="text-center">Updated On</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in user_list %}
+                    <tr>
+                        <td>{{user.userId}}</td>
+                        <td>{{user.name}}</td>
+                        <td>{{user.email}}</td>
+                        <td>{{user.is_osa}}</td>
+                        <td>{{user.is_isa}}</td>
+                        <td>{{user.updated_on}}</td>
+                        <td>
+                            <a class="open-AddBookDialog btn btn-primary" data-acc="{{user.is_isa}}" data-id="{{user.userId}}"
+                               data-osa="{{user.is_osa}}" data-bs-toggle="modal"
+                               href="#addBookDialog"><i class="fs-6 bx bxs-pencil"></i></a>
+                            <a class="p-3" href="/user/delete_fub_user?user_id={{user.userId}}&is_updated=1"><i
+                                    class="fs-6 bx bx-trash text-secondary"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <!-- .animated -->
+</div>
+<div class="modal" id="addBookDialog">
+    <div class="modal-dialog">
+        <div class="modal-content p-2">
+            <div class="modal-header">
+                
+                <h4 class="modal-title">Update User</h4>
+                <!-- <button class="close" data-bs-dismiss="modal" type="button">
+                    <span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button> -->       
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+                <form action="{% url 'update_fub_user' %}" method="POST">
+                    {% csrf_token%}
+                    <input hidden id="user_id" name="userId" value="{{user_id}}">
+                    <input hidden name="team_id" type="text" value="{{team_id}}"/>
+                    <div class="row form-group">
+
+                        <div class="col col-md-8">
+                            <label class=" form-control-label" for="text-input">
+                                OSA 
+                            </label>
+                            <small class="form-text text-muted">
+                                Outside Sales Agent: Agent attends appointments with clients?
+                            </small>
+                        </div>
+                        <div class="col-12 col-md-3 ms-4">
+                            <input checked data-toggle="toggle" id="is_osa"
+                                   name="is_osa" type="checkbox">
+
+                        </div>
+                        <div class="col col-md-8 mt-3">
+                            <label class=" form-control-label" for="text-input"> ISA </label>
+                            <small
+                                class="form-text text-muted">
+                                Inside Sales Agent: Schedules appointments for other agents to attend
+                            </small>
+                        </div>
+                        <div class="col-12 col-md-3 ms-4 mt-3">
+                            <!-- <select id="isa_or_admin" name='isa_or_admin'>
+                                <option value="NONE">None</option>
+                                <option value="ADMIN">ADMIN</option>
+                                <option value="ISA">ISA</option>
+                            </select> -->
+
+                            <input checked data-toggle="toggle" id="is_isa"
+                                name="is_isa" type="checkbox">
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="form-actions form-group">
+                        <button class="btn btn-primary btn-lg float-right" type="submit" value="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <!-- <div class="modal-footer">
+                <button class="btn btn-default" data-bs-dismiss="modal" type="button">Close</button>
+            </div> -->
+        </div>
+    </div>
+</div>
+
+
+<div class="modal hide" id="addUser">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span><span
+                        class="sr-only">Close</span></button>
+                <h4 class="modal-title">Add User</h4>
+            </div>
+            <div class="modal-body">
+
+
+                <form action="/user/add-fub-user" method="POST">
+                    {% csrf_token%}
+                    <input hidden name="team_id" value="{{team_id}}">
+                    <input hidden name="fub_id" type="text" value=""/>
+                    <div class="row form-group">
+                        <div class="col col-md-6"><label class=" form-control-label" for="text-input">Name </label>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input class="form-control" name="name" placeholder="User Name">
+
+                        </div>
+
+
+                        <div class="col col-md-6"><label class=" form-control-label" for="text-input">Email </label>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <input class="form-control" name="email" placeholder="Email">
+
+                        </div>
+
+                        <div class="col col-md-8"><label class=" form-control-label" for="text-input">Is OSA? </label>
+                        </div>
+                        <div class="col-12 col-md-3">
+                            <input checked  class="form-control" data-toggle="toggle" name="is_osa"
+                                   type="checkbox">
+
+                        </div>
+                        <div class="col col-md-6"><label class=" form-control-label" for="text-input"> Access
+                            Type </label></div>
+                        <div class="col-12 col-md-6">
+                            <select name='isa_or_admin'>
+                                <option value="NONE">None</option>
+                                <option value="ADMIN">ADMIN</option>
+                                <option value="ISA">ISA</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-actions form-group">
+                        <button class="btn btn-primary btn-lg float-right" type="submit" value="submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+
+<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+
+<script charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"
+        type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
+        $('#text_table').DataTable();
+    });
+
+    var table = $('#text_table').DataTable();
+
+    $(document).on("click", ".open-AddBookDialog", function () {
+        console.log("THIS", $(this));
+        var myBookId = $(this).data('id');
+        var access = $(this).data('acc');
+        console.log("access", access);
+        var is_osa = $(this).data('osa');
+
+        console.log($(this).data())
+        $(".modal-body #user_id").val(myBookId);
+        // $(".modal-body #is_isa").val(access);
+
+        if (is_osa == "False") {
+            $(".modal-body #is_osa").prop('checked', false);
+        }
+        else {
+            $(".modal-body #is_osa").prop('checked', true);
+        }
+
+        // $(".modal-body #is_isa").val(access);
+        if (access != "True") {
+            $(".modal-body #is_isa").prop('checked', false);
+        }
+        else {
+            $(".modal-body #is_isa").prop('checked', true);
+        }
+
+
+        console.log("booking id" + myBookId);
+        // As pointed out in comments,
+        // it is unnecessary to have to manually call the modal.
+        // $('#addBookDialog').modal('show');
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'dashboard/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+<script>
+    function iframChanged(loc) {
+        window.location.replace(loc);
+    }
+</script>
+<body>
+<div class="content">
+    <!-- Animated -->
+    <div class="animated fadeIn">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="box-title">Smartlists Heatmap request</h4>
+                    </div>
+                    <div class="card-body">
+                        <!-- <iframe src="https://datahelp.wufoo.com/forms/z1cradf41t3gjoh/" style="height:1000px;width:100%;"></iframe> -->
+                        {% if heatmap_form_url != '' %}
+                        <iframe onLoad="iframChanged(this.contentWindow.location);" src="{{heatmap_form_url}}"
+                                style="height:1000px;width:100%;"></iframe>
+                        {% else %}
+                        <p>
+                            Sorry, We could not find your form url. Please contact the administrator to resolve this
+                            issue.
+                        </p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div><!-- /# column -->
+        </div>
+        <!--  /Traffic -->
+        <div class="clearfix"></div>
+
+
+        <!-- /#add-category -->
+    </div>
+    <!-- .animated -->
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+
+{% if is_success == '1' %}
+<script>
+
+
+    swal({
+        title: 'Update Successful',
+        text: 'Credentials Updated successfully',
+        icon: 'success',
+        confirmButtonText: 'Ok'
+    });
+</script>
+{% endif %}
+{% endblock %}

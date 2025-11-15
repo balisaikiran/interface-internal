@@ -1,0 +1,293 @@
+{% extends 'main/main-base.html'%}
+
+{% load static %}
+{% block content %}
+<style>
+    /**** Font ****/
+    @import url("https://fonts.googleapis.com/css?family=Quicksand");
+
+
+    /**** Grid Style ****/
+    .grid {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .grid-item {
+        list-style: none;
+        flex-basis: 200px;
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-bottom: 30px;
+    }
+
+    .pricing-card-title {
+        color: black;
+    }
+
+    img {
+        max-width: 100%;
+        margin: auto;
+        Transition: 0.3s;
+    }
+
+    .member-name {
+        text-align: center;
+    }
+
+    .member-title {
+        display: block;
+        text-align: center;
+    }
+
+
+    /**** Specific Classes for image shapes ****/
+
+    .circle {
+        border-radius: 50%;
+    }
+
+    .border-square {
+        border-radius: 10px;
+    }
+
+    .main-col {
+        display: table-cell;
+        padding: 16px;
+    }
+
+    body {
+        background-color: #fafafa;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Roboto', sans-serif;
+        margin-bottom: 60px;
+    }
+
+    h1 {
+        letter-spacing: 1px;
+    }
+
+    .pricing-container {
+        display: flex;
+    }
+
+    .pricing {
+        background-color: #fff;
+        border: 1px solid #eee;
+        margin: 10px;
+        text-align: center;
+    }
+
+    .pricing.highlight {
+        border-top: 2px solid #50BC01;
+        box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .pricing h1 {
+        color: #5CAEFE;
+        margin: 30px 0 0;
+    }
+
+    .pricing-card-title h1 {
+        color: #5CAEFE;
+    }
+
+    .pricing h4 {
+        margin: 20px 0 0;
+    }
+
+    .pricing small.green {
+        color: #50BC01;
+        margin: 0;
+    }
+
+    .pricing small.green + h1 {
+        margin-top: 10px;
+    }
+
+    .pricing small {
+        color: #777;
+    }
+
+    .pricing ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 40px 0;
+    }
+
+    .pricing ul li {
+        margin: 20px 30px;
+        max-width: 250px;
+    }
+
+    .pricing button {
+        background-color: #5CAEFE;
+        border: 0;
+        border-radius: 2px;
+        color: #fff;
+        padding: 12px 20px;
+        margin-bottom: 30px;
+    }
+</style>
+
+<section class="content-section bd-bottom" style="width: -webkit-fill-available; padding-bottom: 5%">
+    <div class=" d-flex align-content-center flex-wrap">
+        <div class="container" style="width: 100%; max-width: 100%;">
+            <div class="row">
+                <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                    <h3 class="display-4">Fub Sisu Plans</h3>
+                    <p class="lead">Select one of the fub-sisu plans</p>
+                </div>
+
+                <div class="container">
+                    <div class="card-deck mb-3 text-center">
+                        <div class="row justify-content-center" style="width: -webkit-fill-available">
+                            {% for p in sisu_plans_top %}
+
+
+                            <div class="col-md-3 ">
+
+                                <div class="card mb-4 box-shadow" style="height:100%; ;  margin-top: 15%; width:100%;">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal">{{p.name}}</h4>
+                                    </div>
+                                    <div class="card-body d-flex flex-column">
+                                        {% if p.price%}
+                                        <h1 class="card-title pricing-card-title" style="color: #000000">${{p.price}}
+                                            <small class="text-muted">/
+                                                mo</small></h1>
+                                        {% endif %}
+                                        {% if p.setup_cost %}
+                                        <h4 class="card-title pricing-card-title"> Setup Fee ${{p.setup_cost}} <small
+                                                class="text-muted"></small>
+                                        </h4>
+                                        {% endif %}
+                                        <div class='card-title pricing-card-title'>{{p.description | safe}}</div>
+
+
+                                        {% if p.show_subscribe is True %}
+                                        {% if p.is_active is False %}
+                                        <a href="https://sandbox.datalabz.re/payments/billing?plan_id={{p.id}}">
+                                            <button class="mt-auto btn btn-lg btn-block btn-primary"
+                                                    onclick=""
+                                                    style=" bottom:1%; left: 2%; "
+                                                    type="button">Try Free
+                                            </button>
+                                        </a>
+                                        {% else %}
+                                        <h6> Renews on : {{p.billing_date}}</h6>
+                                        <button class="mt-auto btn btn-lg btn-block btn-success" onclick=""
+                                                style=" bottom:1%; left: 2%; " type="button">Active
+                                        </button>
+                                        {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="row justify-content-center" style="margin-top: 5%; width: -webkit-fill-available">
+                            {% for p in sisu_plans_middle %}
+
+                            <div class="col-md-3">
+
+                                <div class="card mb-4 box-shadow" style="height:100%; ;  margin-top: 15%; width:100%;">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal">{{p.name}}</h4>
+                                    </div>
+                                    <div class="card-body d-flex flex-column">
+                                        {% if p.price%}
+                                        <h1 class="card-title pricing-card-title">${{p.price}} <small
+                                                class="text-muted">/
+                                            mo</small></h1>
+                                        {% endif %}
+                                        {% if p.setup_cost %}
+                                        <h4 class="card-title pricing-card-title"> Setup Fee ${{p.setup_cost}} <small
+                                                class="text-muted"></small>
+                                        </h4>
+                                        {% endif %}
+                                        <div class='card-title pricing-card-title'>{{p.description | safe}}</div>
+
+
+                                        {% if p.show_subscribe is True %}
+                                        <a href="https://sandbox.datalabz.re/payments/billing?plan_id={{p.id}}">
+                                            <button class="mt-auto btn btn-lg btn-block btn-primary"
+                                                    onclick=""
+                                                    style=" bottom:1%; left: 2%; "
+                                                    type="button">Subscribe
+                                            </button>
+                                        </a>
+
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+
+                        <div class="row justify-content-center" style="margin-top: 5%;  width: -webkit-fill-available">
+                            {% for p in sisu_plans_end %}
+
+                            {% if p.id != "fub-sisu-activity-integration" %}
+                            <div class="col-md-3">
+
+                                <div class="card mb-4 box-shadow" style="height:100%; ;  margin-top: 15%; width:100%;">
+                                    <div class="card-header">
+                                        <h4 class="my-0 font-weight-normal">{{p.name}}</h4>
+                                    </div>
+                                    <div class="card-body d-flex flex-column">
+                                        {% if p.price%}
+                                        <h1 class="card-title pricing-card-title">${{p.price}} <small
+                                                class="text-muted">/
+                                            mo</small></h1>
+                                        {% endif %}
+                                        {% if p.setup_cost %}
+                                        <h4 class="card-title pricing-card-title"> Setup Fee ${{p.setup_cost}} <small
+                                                class="text-muted"></small>
+                                        </h4>
+                                        {% endif %}
+                                        <div class='card-title pricing-card-title'>{{p.description | safe}}</div>
+
+
+                                        {% if p.show_subscribe is True %}
+                                        {% if p.is_active is False %}
+                                        <a href="https://sandbox.datalabz.re/payments/billing?plan_id={{p.id}}">
+                                            <button class="mt-auto btn btn-lg btn-block btn-primary"
+                                                    onclick=""
+                                                    style=" bottom:1%; left: 2%; "
+                                                    type="button">Subscribe
+                                            </button>
+                                        </a>
+                                        {% else %}
+                                        <h6> Renews on : {{p.billing_date}}</h6>
+                                        <button class="mt-auto btn btn-lg btn-block btn-success" onclick=""
+                                                style=" bottom:1%; left: 2%; " type="button">Active
+                                        </button>
+                                        {% endif %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+		

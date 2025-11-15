@@ -1,0 +1,107 @@
+{% extends 'main/main-base.html'%}
+
+{% load static %}
+{% block content %}
+<style>
+    /**** Font ****/
+    @import url("https://fonts.googleapis.com/css?family=Quicksand");
+
+
+    /**** Grid Style ****/
+    .grid {
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        padding-left: 0;
+    }
+
+    .grid-item {
+        list-style: none;
+        flex-basis: 200px;
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-bottom: 30px;
+
+    img {
+        max-width: 100%;
+        margin: auto;
+        Transition: 0.3s;
+    }
+
+    .member-name {
+        text-align: center;
+    }
+
+    .member-title {
+        display: block;
+        text-align: center;
+    }
+
+    }
+
+    /**** Specific Classes for image shapes ****/
+
+    .circle {
+        border-radius: 50%;
+    }
+
+    .border-square {
+        border-radius: 10px;
+    }
+</style>
+
+<section class="content-section bd-bottom padding">
+    <div class="container">
+        <div class="row content-wrap">
+            <div class="col-lg-12 sm-padding">
+                <div class="content-info wow fadeInRight" data-wow-delay="300ms">
+                    <h2>Disclosure - The Full Monty</h2>
+                    <p>Beginning December 1, 2009, the FTC requires bloggers to disclose whenever there could be hidden
+                        interests or unspoken biases related to recommendations. So here goes…</p>
+                    <p>Per the FTC rules, if I interview someone and they grab the bill for lunch, I would need to
+                        disclose this. Ditto if I use an Amazon link that gets me 8 cents instead of an Amazon link that
+                        gets me 0 cents. If someone gives me a comfy t-shirt with a logo and I wear it in a photo, same
+                        deal. Disclaimers all over the place. This would be tedious for me and even more tedious for
+                        readers. But rules is rules. To cover my ass and preserve your reading experience, please assume
+                        that, for every link and product I use, the following all hold true:
+
+                    </p>
+                    <ul class="grid">
+                        <li class="grid-item">
+                            <img alt="" class="square" src="{% static 'img/ftc_schwag_2503.jpg' %}"/>
+                        </li>
+                        <li class="grid-item">
+                            <img alt="" class="square" src="{% static 'img/ftc_food_2503.jpg' %}"/>
+                        </li>
+                        <li class="grid-item">
+                            <img alt="" class="square" src="{% static 'img/ftc_gadgets_2503.jpg' %}"/>
+                        </li>
+                        <li class="grid-item">
+                            <img alt="" class="square" src="{% static 'img/ftc_gotbusy_2503.jpg' %}"/>
+                        </li>
+                        <li class="grid-item">
+                            <img alt="" class="square" src="{% static 'img/ftc_stocks_2503.jpg' %}"/>
+                        </li>
+                        <li class="grid-item">
+                            <img alt="" class="square" src="{% static 'img/ftc_money_2503.jpg' %}"/>
+                        </li>
+
+
+                    </ul>
+                    <div class="et_pb_text_inner"><p>Content for this page provided by&nbsp;<a
+                            href="http://fourhourworkweek.com/blog/">http://fourhourworkweek.com/blog/</a></p>
+                        <p><small>(Illustrations courtesy of <a href="http://blog.louisgray.com/" target="_blank">Louis
+                            Gray</a> and <a href="http://twitter.com/neenerbot" target="_blank">Jeannine
+                            Schafer</a>)</small></p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+		

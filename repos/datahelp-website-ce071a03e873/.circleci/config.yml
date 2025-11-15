@@ -1,0 +1,58 @@
+version: '2.1'
+orbs:
+  aws-code-deploy: circleci/aws-code-deploy@2.0.0
+workflows:
+  deploy_dev_application:
+    jobs:
+      - aws-code-deploy/deploy:
+          context: dev-aws-credentials-context
+          application-name: front-end-dev
+          bundle-bucket: codedeploy-us-west-2-305570095043
+          bundle-key: website-sandbox/
+          deployment-group: front-end-dev
+          service-role-arn: arn:aws:iam::917092476223:role/RoleForCodeDeploy
+          filters:
+              branches:
+                only:
+                  - develop
+  deploy_prod_application:
+    jobs:
+      - aws-code-deploy/deploy:
+          context: prod-aws-credentials-context
+          application-name: frontend-website-prod
+          bundle-bucket: codedeploy-us-west-2-305570095044
+          bundle-key: website-sandbox/
+          deployment-group: frontend-website-prod
+          service-role-arn: arn:aws:iam::836879621204:role/serviceRoleForCodeDeploy
+          filters:
+              branches:
+                only:
+                  - master
+  deploy_test_application:
+    jobs:
+      - aws-code-deploy/deploy:
+          context: prod-aws-credentials-context
+          application-name: frontend-website-test
+          bundle-bucket: codedeploy-us-west-2-305570095044
+          bundle-key: website-sandbox/
+          deployment-group: frontend-website-test
+          service-role-arn: arn:aws:iam::836879621204:role/serviceRoleForCodeDeploy
+          filters:
+            branches:
+              only:
+                - staging
+
+  deploy_dev_test_application:
+    jobs:
+      - aws-code-deploy/deploy:
+          context: dev-aws-credentials-context
+          application-name: front-end-dev
+          bundle-bucket: codedeploy-us-west-2-305570095043
+          bundle-key: website-sandbox/
+          deployment-group: front-end-dev
+          service-role-arn: arn:aws:iam::917092476223:role/RoleForCodeDeploy
+          filters:
+              branches:
+                only:
+                - dev_test
+  

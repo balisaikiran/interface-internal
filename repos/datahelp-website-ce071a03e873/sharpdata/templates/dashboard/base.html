@@ -1,0 +1,409 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="Interface Portal" name="description">
+
+    <title>Interface - Dashboard</title>
+    
+    <link href="https://i.imgur.com/QRAUqs9.png" rel="apple-touch-icon">
+    <link href="https://i.imgur.com/QRAUqs9.png" rel="shortcut icon">
+
+
+    <!-- Fonts CDN -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+
+    <!-- assets css CDN -->
+    <link href="{% static 'css/styles.css'%}" rel="stylesheet">
+
+    <link href="{% static 'assets/css/normalize.min.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css" rel="stylesheet">
+    <link href="{% static 'assets/css/pe-icon-7-stroke.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/flag-icon.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/cs-skin-elastic.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/chartist.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/jqvmap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/weather-icons.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/fullcalendar.min.css' %}" rel="stylesheet"/>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78898293-3"></script>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '827276528274056');
+        fbq('track', 'PageView');
+    </script>
+
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=827276528274056&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-78898293-3');
+    </script>
+    
+    {% if not conversion %}
+    <!-- tapfiliate Code -->
+    <script src="https://script.tapfiliate.com/tapfiliate.js" type="text/javascript" async></script>
+    <script type="text/javascript">
+    (function(t,a,p){t.TapfiliateObject=a;t[a]=t[a]||function(){ (t[a].q=t[a].q||[]).push(arguments)}})(window,'tap');
+
+    tap('create', '37727-1b0329', { integration: "javascript" });
+    tap('detect');
+    </script>
+    <!-- tapfiliate Code  Ends-->
+    {% endif %}
+    
+
+    {% if conversion %}
+    <!-- tapfiliate Conversion Code -->
+    <script src="https://script.tapfiliate.com/tapfiliate.js" type="text/javascript" async></script>
+    <script type="text/javascript">
+    (function(t,a,p){t.TapfiliateObject=a;t[a]=t[a]||function(){ (t[a].q=t[a].q||[]).push(arguments)}})(window,'tap');
+
+    tap('create', '37727-1b0329', { integration: "javascript" });
+    tap('conversion', "{{ team_id }}");
+    // tap('conversion', "{{ team_id }}", 99,  {customer_id: "{{ organization_name }}" });
+    </script>
+    <!-- tapfiliate Conversion Code  Ends-->
+    {% endif %}
+</head>
+
+
+<body>
+    <div id="loader" style="display: none;">
+        {% include "common_form/loader.html" %}    
+    </div>
+    <div id="main">
+    <header class="header border-bottom" id="header">
+        
+       
+        <div class="">
+            <div class=" d-flex align-items-center">
+                <div class="header_toggle p-1 me-lg-3l me-2 nav_icon shadow-lg-sm"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+                <a class="navbar-brand mb-1 m-0 p-0" href="#"><img class="img-fluid" src="{% static 'images/logo.png'%}" width="120" alt=""></a>
+            </div>
+        </div>
+          
+    
+        <div class="d-flex align-items-center">
+
+            <div class="d-none d-md-block">
+                <span class="d-flex align-items-center me-3">
+                    <i class="me-1 iconify fs-5" data-icon="fluent:building-24-filled"></i> 
+                    <span class="org-name p-0 m-0">{{organization_name}}</span>
+                </span>
+            </div>
+            
+
+            <div class="header_img btn-primary d-flex align-items-center text-center"> 
+                <b class="text-white">{{organization_name | slice:"1"}}</b>
+            </div>
+        </div>
+        
+        
+    </header>
+
+    <div class="l-navbar show border-end" id="nav-bar">
+      
+        
+        <div class="w-100"> 
+
+            <div class="nav_list "> 
+
+                <!-- <a href="/user/dashboard" class="nav_link active"> 
+                    <i class='bx bx-grid-alt nav_icon'></i>
+                    <span class="nav_name">Dashboard</span> 
+                </a>  -->
+
+            {# if planFubTwillio or planFubSisu or planFubOtc or planFubWufoo or chatgpt_integration #}
+                <a href="/user/credential_form" class="secrets nav_link" id="secrets"> 
+                    <i class='bx bx-key nav_icon'></i>
+                    <span class="nav_name" >Secrets</span> 
+                </a> 
+            {# endif #}
+            
+                <a href="/user/profile" class="profile nav_link" id="profile"> 
+                    <i class='bx bx-user nav_icon'></i>
+                    <span class="nav_name" >Profile</span> 
+                </a> 
+                
+                <!-- {% if smartlist_heatmap_report %}
+                <a href="/user/heatmap" class="profile nav_link"> 
+                    <i class='bx bx-sitemap nav_icon'></i>
+                    <span class="nav_name">FUB Heatmap Reports</span> 
+                </a> 
+                {% endif %} -->
+
+                <!-- {% if planFubTwillio %}
+                <a href="/user/text-templates" class="profile nav_link"> 
+                    <i class='bx bx-text nav_icon'></i>
+                    <span class="nav_name">Text Templates</span> 
+                </a> 
+                {% endif %} -->
+ 
+
+                <a href="/payments/billing" class="billing nav_link" id="billings"> 
+                    <i class='bx bx-wallet nav_icon'></i>
+                    <span class="nav_name" >Billing</span> 
+                </a>  
+                
+                {% if planFubEmbeddedApp %}
+                <a href="/user/fub_user_list" class="billing nav_link fub_user_list" id="fub_user_list"> 
+                    <i class='bx bx-list-ol nav_icon'></i>
+                    <span class="nav_name" >FUB User List</span> 
+                </a>  
+                {% endif %} 
+
+                {% if AutomationBuilder %}
+                <div class="nav_link pointer" id="automation">
+                    <i class='bx bxs-widget nav_icon'></i>
+                    <span class="nav_name" >
+                        <span>Automation</span>
+                    </span> 
+                </div> 
+                {% endif %} 
+
+                {% if FormBuilder %}
+                <a href="https://app.datalabz.re/forms/" class="nav_link" id="form_builder"> 
+                    <i class='bx bx-file-blank nav_icon'></i>
+                    <span class="nav_name" >
+                        <span>Form Builder</span> 
+                    </span> 
+                </a>
+                {% endif %} 
+
+                <a href="#" class="nav_link" id="analytics"> 
+                    <i class='bx bx-line-chart nav_icon text-black-50'></i>
+                    <span class="nav_name" >
+                        <span class="text-black-50">Analytics </span>
+                        <span class=" rounded-pill fw-light text-dark badge bg-warning">Soon</span>  
+                    </span> 
+                </a>
+
+            </div>
+            
+           
+        </div> 
+
+        <div class="w-100"> 
+
+            <div class="nav_list"> 
+
+                <a href="/user/settings" class="settings nav_link" id="settings"> 
+                    <i class='bx bx-cog nav_icon'></i>
+                    <span class="nav_name" >Settings</span> 
+                </a> 
+
+                <a href="https://kb.interface.re/en/?utm_source=interface.re" class="nav_link" id="help_center"> 
+                    <i class='bx bx-help-circle nav_icon'></i>
+                    <span class="nav_name" >Help Center</span> 
+                </a> 
+
+                <a href="../../secure/logout" class="logout nav_link" id="log_out"> 
+                    <i class='bx bx-exit text-danger nav_icon'></i>
+                    <span class="nav_name" >Log out</span> 
+                </a> 
+                
+            </div>
+            
+           
+        </div> 
+
+        
+    </div>
+
+    <!--Container Main start-->
+    <div class="main body-pd" id="body-pd">
+
+        <div class="d-lg-none alert alert-warning banner-top p-3 py-2 mb-3 rounded-0 m-0" role="alert">
+            <div class="d-flex flex-wrap align-items-center">
+    
+                <div class="d-flex align-items-center my-2">
+                    <i class="bx bx-mobile fs-5"></i>
+                    <i class="bx bx-arrow-to-right me-2 fs-5"></i>
+                    <i class="bx bx-desktop me-2 fs-5"></i>
+                </div>
+                
+                <span class="my-2">Please switch to desktop and optimize this view. Smaller screens are not efficient. To learn more click here</span>
+                
+                
+            </div>
+        </div>
+       
+        {% block content %}{% endblock %}
+
+        <div class="clearfix"></div>
+        <div class="clearfix"></div>
+        <div class="clearfix"></div>
+        <div class="clearfix"></div>
+        <div class="clearfix"></div>
+        <div class="clearfix"></div>
+        <div class="clearfix"></div>
+
+    </div>
+    <!--Container Main end-->
+    </div>
+</body>
+
+
+    
+<!-- Jquery and vendors -->
+<script crossorigin="anonymous"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+<!-- Iconify and FA icons -->
+<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+
+<!-- other vendors -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+<script src="{% static 'assets/js/main.js'%}"></script>
+
+
+<!--  Chart js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.bundle.min.js"></script>
+
+<!--Chartist Chart-->
+<script src="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartist-plugin-legend@0.6.2/chartist-plugin-legend.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery.flot@0.8.3/jquery.flot.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flot-pie@1.0.0/src/jquery.flot.pie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flot-spline@0.0.1/js/jquery.flot.spline.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/simpleweather@3.1.0/jquery.simpleWeather.min.js"></script>
+<script src="{% static 'assets/js/init/weather-init.js'%}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
+<script src="{% static 'assets/js/init/fullcalendar-init.js' %}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{% static 'js/intercom.js' %}"></script>
+
+<!--<script>helpwiseSettings={'widget_id': '60d28479320a2', 'align': 'right'}</script><script src='https://cdn.helpwise.io/assets/js/livechat.js'</script>-->
+<!--Local Stuff-->
+{% if intercom_hmac_hash %}
+<script>
+    window.intercomSettings = {
+      api_base: "https://api-iam.intercom.io",
+      app_id: "y5t1jigg",
+      email: '{{user_email}}', // Email address
+      user_hash: '{{intercom_hmac_hash}}' // HMAC using SHA-256
+    };
+  </script>
+  
+  <script>
+  // We pre-filled your app ID in the widget URL: 'https://widget.intercom.io/widget/y5t1jigg'
+  (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/y5t1jigg';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+  </script>
+{% endif %}
+{% block script %}{% endblock %}
+
+<script>
+
+    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+    document.addEventListener("DOMContentLoaded", function (event) {
+    const showNavbar = (toggleId, navId, bodyId) => {
+        const 
+        toggle = document.getElementById(toggleId),
+        nav = document.getElementById(navId),
+        bodypd = document.getElementById(bodyId)
+
+        // Validate that all variables exist
+        if (toggle && nav && bodypd) {
+            toggle.addEventListener("click", () => {
+            // show navbar
+            nav.classList.toggle("show");
+            // change icon
+            toggle.classList.toggle("bxs-chevron-left");
+            // add padding to body
+            bodypd.classList.toggle("body-pd");
+            });
+        }
+    };
+
+    showNavbar("header-toggle", "nav-bar", "body-pd");
+ 
+    });
+
+</script>
+
+<script>
+    $("#automation").click(function (e) {
+        e.preventDefault(); 
+        $("#loader").show(); 
+        $("#main").hide(); 
+        var team_id = "{{team_id}}";
+        $.ajax({
+            method: "get",
+            url: "/user/get_fub_domain?team_id=" + team_id,
+            dataType: "json"
+        }).done(function (response) {
+            if (response === "FUB DOMAIN ADDED") {
+                window.location.href = "https://app.datalabz.re/automation-builder";
+            } 
+             else if (response === "FUB DOMAIN ADDED, Secondary USER KEY") {
+                createSwal("Please Add Primary FUB User's API Key", "", "error");
+            } else {
+                createSwal("Please Add Valid FUB API Key", "", "error");
+            }
+
+            function createSwal(title, text, icon) {
+                swal({
+                    title: title,
+                    text: text,
+                    icon: icon,
+                    button: 'Ok'
+                });
+            }
+            
+        }).fail(function () {
+            $("#loader").hide();
+            $("#main").show(); 
+            createSwal("Error occurred while processing your request", "", "error");
+        });
+    });
+</script>
+
+
+
+</html>

@@ -1,0 +1,75 @@
+{% extends 'dashboard/base.html' %}
+
+{% load static %}
+{% block styles %}
+
+
+{% endblock %}
+
+{% block content %}
+
+<body>
+<div class="content">
+    <!-- Animated -->
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="box-title">Text Templates</h4>
+                <a href="/user/edit_text_template">
+                    <button class="float-right">Create Template</button>
+                </a>
+            </div>
+            <div class="card-body">
+                <table class="display" id="text_table" style="width:100%">
+                    <thead>
+                    <tr>
+                        <th>Tag Name</th>
+                        <th>Text Template</th>
+                        <th>Custom field name</th>
+                        <th>Create on</th>
+                        <th>Updated on</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for msg in message_list %}
+                    <tr>
+                        <td>{{msg.tag_name}}</td>
+                        <td>{{msg.text_message}}</td>
+                        <td>{{msg.custom_field_name}}</td>
+                        <td>{{msg.created_on}}</td>
+                        <td>{{msg.updated_on}}</td>
+                        <td><a href="/user/edit_text_template?id={{msg.did}}&is_updated=1"><i
+                                class="menu-icon ti-pencil"></i></a>
+                            <a href="/user/delete_text_template?id={{msg.did}}&is_updated=1"><i
+                                    class="menu-icon ti-trash"></i></a></td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <!-- .animated -->
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+
+<link href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+
+<script charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js" type="text/javascript"></script>
+<script>
+    $(document).ready(function () {
+        $('#text_table').DataTable();
+    });
+
+    var table = $('#text_table').DataTable();
+
+
+</script>
+{% endblock %}

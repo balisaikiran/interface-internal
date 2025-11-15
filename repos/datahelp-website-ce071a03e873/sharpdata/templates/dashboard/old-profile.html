@@ -1,0 +1,125 @@
+{% extends 'dashboard/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+<div class="content">
+    <!-- Animated -->
+    <div class="animated fadeIn">
+
+        <div class="row">
+            <div class="col-lg-12">
+
+
+
+                <div class="">
+                    <div class="card-header">
+                        <h4 class="box-title">Profile</h4>
+                    </div>
+                    <div class="card-body">
+                        
+                        <form action="/user/update_profile" method="POST">
+                            {% csrf_token%}
+
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label class=" form-control-label"
+                                                                 for="text-input">Team Id</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input class="form-control" disabled name="team_id"
+                                           type="text" value="{{team_id}}">
+                                    <small class="form-text text-muted">This is your team id.</small>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label class=" form-control-label"
+                                                                 for="text-input">Email</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input class="form-control" disabled name="user_email"
+                                           type="text" value="{{user_email}}">
+                                    <small class="form-text text-muted">This is your email</small>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label class=" form-control-label"
+                                                                 for="text-input">First Name</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input class="form-control" name="first_name" required
+                                           type="text" value="{{first_name}}">
+                                    <small class="form-text text-muted">This is your user name</small>
+                                </div>
+                            </div>
+                            
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label class=" form-control-label"
+                                                                 for="text-input">Last Name</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input class="form-control" name="last_name" required
+                                           type="text" value="{{last_name}}">
+                                    <small class="form-text text-muted">This is your user name</small>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label class=" form-control-label"
+                                                                 for="text-input">Organization Name</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input class="form-control" name="organization_name" required
+                                           type="text" value="{{organization_name}}">
+                                    <small class="form-text text-muted">This is your user name</small>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label class=" form-control-label"
+                                                                 for="text-input">Phone</label></div>
+                                <div class="col-12 col-md-9">
+                                    <input class="form-control" name="phone" required
+                                           type="text" value="{{phone}}">
+                                    <small class="form-text text-muted">This is your phone numbers registered with
+                                        us</small>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label class=" form-control-label"
+                                                                 for="text-input">Time Zone</label></div>
+                                <div class="col-12 col-md-9">
+                                    <select class="form-control" id="Timezone" name="timezone" required
+                                            type="text" value="{{timezone}}">
+                                        <option id="America/Los_Angeles" value="America/Los_Angeles">PST</option>
+                                        <option id="America/Denver" value="America/Denver">MTN</option>
+                                        <option id="America/Chicago" value="America/Chicago">CST</option>
+                                        <option id="America/New_York" value="America/New_York">EST</option>
+                                    </select>
+
+                                    <script>
+                                        document.getElementById("{{timezone}}").selected = true;
+                                    </script>
+                                    <small class="form-text text-muted">Select Timezone</small>
+                                </div>
+                            </div>
+                            
+                            <div class="form-actions form-group">
+                                <button class="btn btn-primary btn-lg float-right" type="submit"
+                                        value="submit">Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- /# column -->
+        </div>
+        <!--  /Traffic -->
+        <div class="clearfix"></div>
+
+
+        <!-- /#add-category -->
+    </div>
+    <!-- .animated -->
+</div>
+
+{% endblock %}

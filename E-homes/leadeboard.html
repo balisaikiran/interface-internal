@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=768, initial-scale=1" />
+
+    <title>Interface</title>
+    <!-- Fonts CDN -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+
+    <link href='assets/css/style.css' rel='stylesheet'>
+    <link href='assets/css/leaderboard-export.css' rel='stylesheet'>
+
+
+
+</head>
+
+
+
+<body>
+
+    <div class="ld-header container">
+        <h3>Leadway Real estate NY</h3>
+        <div class="ld-nav-right">
+            <i class="iconify" data-icon="fa6-solid:download"></i>
+            <div class="vr border" style="height: 28px;"></div>
+            <i id="theme-toggle" class="iconify" data-icon="fa6-solid:moon"></i>
+        </div>
+    </div>
+
+    <section class="container py-5">
+        <div class="d-flex align-items-center gap-2">
+            <i class="iconify" data-icon="fa6-solid:ranking-star"></i>
+            <p class="m-0 p-0">Leaderboards generated for 12th March 2023 to 18th March 2024</p>
+        </div>
+
+        <section class="ld-stand-cont flex-wrap flex-lg-nowrap w-100 mt-5">
+
+            <div class="ld-stand">
+                <img src="medal1.png" width="60px">
+                <h5 class="m-0 p-0">$345,000</h5>
+                <p class="m-0 p-0">Daniel Omolola</p>
+            </div>
+            <div class="ld-stand">
+                <img src="medal2.png" width="60px">
+                <h5 class="m-0 p-0">$289,000</h5>
+                <p class="m-0 p-0">Daniel Omolola</p>
+            </div>
+            <div class="ld-stand">
+                <img src="medal3.png" width="60px">
+                <h5 class="m-0 p-0">$105,700</h5>
+                <p class="m-0 p-0">Daniel Omolola</p>
+            </div>
+
+        </section>
+
+
+        <section class="mt-5 w-100 ">
+
+            <div class="d-flex flex-column align-items-start rounded-3">
+
+                <div class="ld-th-title">
+                    <span class="m-0 p-0">Closed Volume</span>
+                    <span class="m-0 p-0">Total: $928,000,870</span>
+                </div>
+
+                <div class="ld-tr d-flex w-100 align-items-start align-self-stretch ">
+                    <div class="ld-td-1 ld-th col-1">
+                        <span>Rank</span>
+                    </div>
+                    <div class="ld-td-2 ld-th">
+                        <span>Agent</span>
+                    </div>
+                    <div class="ld-td-3 ld-th col-4">
+                        <span>Volume</span>
+                    </div>
+                </div>
+
+                <div class="ld-tr d-flex w-100 align-items-start align-self-stretch ">
+                    <div class="ld-td-1 col-1">
+                        <span>1</span>
+                    </div>
+                    <div class="ld-td-2">
+                        <span>Daniel Omolola</span>
+                    </div>
+                    <div class="ld-td-3 col-4">
+                        <span>$345,000</span>
+                    </div>
+                </div>
+
+                <div class="ld-tr d-flex w-100 align-items-start align-self-stretch ">
+                    <div class="ld-td-1 col-1">
+                        <span>2</span>
+                    </div>
+                    <div class="ld-td-2">
+                        <span>Jessica Varad</span>
+                    </div>
+                    <div class="ld-td-3 col-4">
+                        <span>$245,000</span>
+                    </div>
+
+                </div>
+                
+            </div>
+
+
+
+            <!-- <table class="table table-striped ld-table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Agent</th>
+                    <th scope="col">Volume</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Mark</td>
+                    <td>Otto</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                  </tr>
+                </tbody>
+            </table> -->
+        </section>
+
+    </section>
+
+
+</body>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<!-- Iconify icons -->
+<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+<!-- Bootstrap JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+
+
+
+<script>
+
+    const toggleButton = document.getElementById('theme-toggle');
+    toggleButton.addEventListener('click', function() {
+        let theme = document.body.getAttribute('data-theme');
+        
+        if (theme === 'dark') {
+            document.body.setAttribute('data-theme', 'light');
+            // localStorage.setItem('theme', 'light');
+        } else {
+            document.body.setAttribute('data-theme', 'dark');
+            // localStorage.setItem('theme', 'dark');
+        }
+    });
+</script>
+</html>

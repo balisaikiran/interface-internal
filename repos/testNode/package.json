@@ -1,0 +1,10 @@
+{
+    "name": "your-lambda-function",
+    "version": "1.0.0",
+    "main": "index.mjs",
+    "type": "module",
+    "dependencies": {
+        "aws-sdk": "^2.1642.0",
+        "pg": "^8.0.0"
+    }
+}

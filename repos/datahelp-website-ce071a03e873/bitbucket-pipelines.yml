@@ -1,0 +1,29 @@
+#  Template python-build
+
+#  This template allows you to validate your python code.
+#  The workflow allows running tests and code linting on the default branch.
+
+image: python:3.8
+
+pipelines:
+  default:
+    - parallel:
+      - step:
+          name: 'Lint'
+          script:
+            - echo "Checking lint error"
+            - pip install flake8
+            - flake8 . --show-source --statistics
+
+    # The following deployment steps will be executed for each pipeline run. To configure your steps and conditionally deploy see https://support.atlassian.com/bitbucket-cloud/docs/configure-bitbucket-pipelinesyml/
+    # - step:
+    #     name: 'Deployment to Staging'
+    #     deployment: staging
+    #     script:
+    #       - echo "Your deployment to staging script goes here..."
+    # - step:
+    #     name: 'Deployment to Production'
+    #     deployment: production
+    #     trigger: 'manual'
+    #     script:
+    #       - echo "Your deployment to production script goes here..."

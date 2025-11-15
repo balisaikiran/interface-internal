@@ -1,0 +1,749 @@
+{% extends 'dashboard/base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+
+<style>
+  label {
+    color: #4c4c4c !important;
+    text-transform: capitalize !important;
+    font-size: 15px !important;
+    /* transform: translate(15px,7px); */
+    margin-bottom: 2px;
+    /* padding: 1px 3px; */
+  }
+ 
+ 
+/* 
+  @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap'); */
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .col-container {
+    display: table;
+    width: 100%;
+  }
+
+  .main-col {
+    display: table-cell;
+    padding: 16px;
+  }
+
+  body {
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* font-family: 'Roboto', sans-serif; */
+    margin-bottom: 60px;
+  }
+
+  h1 {
+    letter-spacing: 1px;
+  }
+
+  .pricing-container {
+    display: flex;
+  }
+
+  .pricing {
+    background-color: #fff;
+    /* border: 1px solid #eee; */
+    margin: 10px;
+    text-align: center;
+  }
+
+  .pricing.highlight {
+    border-top: 2px solid #50BC01;
+    box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .pricing h1 {
+    color: #5CAEFE;
+    margin: 30px 0 0;
+  }
+
+  .pricing h4 {
+    margin: 20px 0 0;
+  }
+
+  .pricing small.green {
+    color: #50BC01;
+    margin: 0;
+  }
+
+  .pricing small.green+h1 {
+    margin-top: 10px;
+  }
+
+  .pricing small {
+    color: #777;
+  }
+
+  .pricing ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 40px 0;
+  }
+
+  .pricing ul li {
+    margin: 20px 30px;
+    max-width: 250px;
+  }
+  
+
+  /* .pricing button {
+    background-color: #5CAEFE;
+    border: 0;
+    border-radius: 2px;
+    color: #fff;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+  } */
+
+  @media screen and (max-width: 480px) {
+
+    .social-panel-container.visible {
+      transform: translateX(0px);
+    }
+
+    .floating-btn {
+      right: 10px;
+    }
+  }
+
+  .right-panel {
+    width: inherit;
+  }
+</style>
+
+<link rel="stylesheet" href="{% static 'payments/pricing-style.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class=" d-flex align-content-center flex-wrap m-0 p-0">
+  <div class="container" style="width: 100%; max-width: -webkit-fill-available;">
+    <div class="container  p-0">
+      <div class="pricing mb-5">
+          <section class="  w-100 content-section bd-bottom p-0" style="width: -webkit-fill-available; padding-bottom: 5%;">
+            <div class=" d-flex align-content-center flex-wrap">
+              <div class="container" style="width: 100%; max-width: 100%;">
+                <section class="py-5">
+
+                  <div class="container d-flex justify-content-center">
+                    <div class="col-lg-10 d-flex flex-column text-center justify-content-center align-items-center">
+                      
+                      <h2 class="price-heading mt-4">Avail Exclusive FUBCON Price!</h2>
+                      <!-- <div class="btn btn-primary">Schedule a Demo</div> -->
+                      <h4 class="price-heading-2 mt-0 mb-0">👋 Hey there! Lets get you started. Select a Package.</h4>
+                      
+                    </div>
+                  </div>
+
+                  <div class="container-fluid p-0">
+                    <div class="d-flex flex-wrap justify-content-center align-items-start pt-5 px-lg-3">
+                      
+                      <div class="col-xl-4 col-lg-6 col-md-6 col-12 p-3">
+                        <a data-toggle="collapse" class="accordion-buttonF" href="#collapseOne" name="fub_only">
+                          <div class="bg-white border rounded-pill text-center mx-auto p-4">
+
+                            <div>
+                             
+                              <h5 class="m-0 p-0">Automation Builder</h5>
+                             
+                            </div>
+
+                          </div>
+                        </a>
+                      </div>
+
+                      <div class="col-xl-4 col-lg-6 col-md-6 col-12 p-3">
+                        <a data-toggle="collapse" class="accordion-buttonF collapsed" href="#collapseTwo" name="fub_sisu">
+                          <div class="bg-white border rounded-pill text-center mx-auto p-4">
+
+                            <div>
+
+                              <h5 class="m-0 p-0">WebForm</h5>
+                              
+                            </div>
+                           
+                          </div>
+                        </a>
+                      </div>
+
+                    </div>
+                  </div>
+                </section>
+                <!--Accordian Main-->
+
+                <div id="accordionF">
+
+                <!-- Automation Plan-->
+                <section id="collapseOne" data-label="automationBuilder" class="collapse show" data-parent="#accordionF">
+                  <form action="/payments/generate_hp" method="post">
+                    {% csrf_token %}
+                    <input name="collapsable" hidden value="AUTOMATION_BUILDER">
+                
+                    
+                
+                  <!-- ------------switcher and plan title----------- -->
+                  <div class="container mt-2 mb-5 text-center">
+                
+                    <div class=" mb-4 text-center d-mdx-none">
+                      <!-- <img src="{% static 'payments/images/fub.png' %}" height="60" alt="FUB-sisu"> -->
+                      <h5 class="my-3" style="font-size:18px; font-weight:600;">Automation Builder Plans</h5>
+                    </div>
+                
+                    
+                
+                    <div class="row">
+                      <div class="col-md">
+                        <!-- <span><i class="bi bi-check-circle-fill"></i>
+                          Free 10 days trial for new user
+                        </span> -->
+                        <!-- <span><i class="bi bi-check-circle-fill"></i>
+                          Fully Customizable&nbsp;&nbsp;
+                        </span>
+                        <span><i class="bi bi-check-circle-fill"></i>
+                          Cancel anytime
+                        </span> -->
+                        <!-- <span><i class="bi bi-check-circle-fill"></i>
+                          Monthly Plans
+                        </span> -->
+                      </div>
+                    </div>
+                
+                  </div>
+                
+                
+                
+                  <!-- ----------table---------- -->
+                
+                  <div  class="fub-out container mt-5 mb-5">
+
+                    <div class="pricing">
+
+                      <div class="pricing-table p-0 table-responsive">
+                          <!-- Heading -->
+                          <table class="table border-0 m-0 table">
+                            <thead>
+                              <tr>
+                                <th class="w-25 pr-lg-5 text-left">
+                                  <h5 class="my-2" style="font-size:16px; font-weight:600;">
+                                    <i class="iconify mr-2 mb-1" data-icon="mdi:widgets-outline"></i>Package Features
+                                  </h5>
+            
+                                </th>
+                                <th class="bg-primary align-middle w-25">
+                                  FUB Embeded App
+                                </th>
+                                <th class="highlight bg-primary align-middle w-25">
+                                 
+                                  Automation Plus
+                                </th>
+                                <th class="bg-primary align-middle w-25">
+                                  Automation Max
+                                </th>
+                              </tr>
+                            </thead>
+                          </table>
+                          <!-- Heading -->
+            
+                          <table class="table m-0 table-bordered">
+            
+            
+                            <tbody class="text-center">
+            
+            
+                              <tr>
+                                <td>
+                                  Automation Actions
+                                </td>
+                                <td>N/A</td>
+                                <td>1,000,000</td>                                
+                                <td>2,500,000</td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  Triggers
+                                </td>
+                                <td>N/A</td>
+                                <td>10</td>
+                                <td>Unlimited</td>
+                              </tr>
+                              <tr>
+                                <td>Slack Integration <p class="badge bg-success badge-success">soon</p></td>
+                                <td><p class="badge bg-success badge-success">soon</p></td>
+                                <td><p class="badge bg-success badge-success">soon</p></td>
+                                <td><p class="badge bg-success badge-success">soon</p></td>
+                              </tr>
+
+                              <tr>
+                                <td>Chat GPT Integration <p class="badge bg-success badge-success">soon</p></td>
+                                <td><p class="badge bg-success badge-success">soon</p></td>
+                                <td><p class="badge bg-success badge-success">soon</p></td>
+                                <td><p class="badge bg-success badge-success">soon</p></td>
+                              </tr>
+              
+            
+                              <!-- -----optt----- -->
+                                <div class="collapse-table">
+            
+                                  <tr class="collapse-head-cont">
+                                    <td class="collapse-head w-25" data-toggle="collapse" href="#optt">
+                                      <div>
+                                        Twilio Integration
+                                        <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                                      </div>
+                                    </td>
+                                    <td class="w-25">N/A</td>
+                                    <td class="w-25"><span>
+                                      <!-- <i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span> -->
+                                      <!-- 10 Optional Automations -->
+                                    </td>
+                                    <td class="w-25"><span>
+                                      <!-- 20 Optional Automations -->
+                                      <!-- <i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span> -->
+                                    </td>
+                                  </tr>
+                                  <tbody class="collapse-rows collapse" id="optt">
+                                    <tr>
+                                  <td class="w-25">
+                                    <div class="form-check">
+                                      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                      <label class="form-check-label" for="defaultCheck1">
+                                        Integration for client messages
+                                      </label>
+                                    </div>
+                                  </td>
+                                  <td class="w-25">N/A</td>
+                                  <td class="w-25">Included</td>
+                                  <td class="w-25">Included</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="w-25">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            Disposition text and team notifications
+                                        </label>
+                                      </div>
+                                    </td>
+                                    <td class="w-25">N/A</td>
+                                    <td class="w-25">Add on separately</td>
+                                    <td class="w-25">Included</td>
+                                  </tr>
+            
+                                
+                                  </tbody>
+            
+                                </div>
+                                <tr>
+                                    <td> Webform Integration </td>
+                                    <td class="w-25">Add on separately</td>
+                                    <td class="w-25">Add on separately</td>
+                                    <td class="w-25">Add on separately</td>
+                                  </tr>
+            
+                                <tr>
+                                    <td class="w-25">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                            Analytics
+                                        </label>
+                                      </div>
+                                    </td>
+                                    <td class="w-25">N/A</td>
+                                    <td class="w-25">Add on $199 a month or $1,999 a year</td>
+                                    <td class="w-25">Add on $199 a month or $1,999 a year</td>
+                                    
+                                  </tr>
+            
+                          </table>
+                        
+                      </div>
+            
+                      <!-- ----------Extra add ons ------------------ -->
+
+
+                              <!-- Price Buttons -->
+                              <table class="table border-0 m-0 table">
+                                <tfoot>
+                                  <tr class="tableprow">
+                                    <td class="w-25">
+                                      <div></div>
+                                    </td>
+                                    
+                                    <td data-label="FUB Embeded App" class="bg-primary w-25"> 
+                                      $<span class="ptable-price">$189</span> /month
+                                      <!-- <p>$589 0ne time setup</p> -->
+                                      <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="BASIC">Subscribe</button>
+                                    </td>
+
+                                    <td data-label="Webform Plus" id="wpp" class="highlight bg-primary w-25"> 
+                                      $<span class="ptable-price">1,999</span> /yearly
+                                      <p>$189/month</p>
+                                      <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="PLUS">Subscribe</button>
+                                    </td>
+                                    <td data-label="Webform Max" id="wpm" class="bg-primary w-25"> 
+                                      $<span class="ptable-price">2,999</span> /month
+                                      <p>$299/month</p>
+                                      <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="MAX">Subscribe</button>
+                                    </td>
+                                  </tr>
+                                </tfoot>
+                              </table>
+                              
+            
+                            </div>
+            
+            
+            
+                    </div>
+            
+
+                
+                  </form>
+                </section>
+                <!--Automation Plan END-->
+
+
+                <!--Webform Plan-->
+                <section id="collapseTwo" data-label="webForm" class="collapse" data-parent="#accordionF">
+                    <form action="/payments/generate_hp" method="post">
+                      {% csrf_token %}
+                      <input name="collapsable" hidden value="WEBFORM">
+                  
+                      
+                  
+                    <!-- ------------switcher and plan title----------- -->
+                    <div class="container mt-2 mb-5 text-center">
+                  
+                      <div class=" mb-4 text-center d-mdx-none">
+                        <!-- <img src="{% static 'payments/images/fub.png' %}" height="60" alt="FUB-sisu"> -->
+                        <h5 class="my-3" style="font-size:18px; font-weight:600;">WebForm Plans</h5>
+                      </div>
+                  
+                    </div>
+                  
+                  
+                  
+                    <!-- ----------table---------- -->
+                  
+                    <div  class="fub-out container mt-5 mb-5">
+  
+                      <div class="pricing">
+  
+                        <div class="pricing-table p-0 table-responsive">
+                            <!-- Heading -->
+                            <table class="table border-0 m-0 table">
+                              <thead>
+                                <tr>
+                                  <th class="w-25 pr-lg-5 text-left">
+                                    <h5 class="my-2" style="font-size:16px; font-weight:600;">
+                                      <i class="iconify mr-2 mb-1" data-icon="mdi:widgets-outline"></i>Package Features
+                                    </h5>
+              
+                                  </th>
+                                  <th class="bg-primary align-middle w-25">
+                                    FUB Embeded App
+                                  </th>
+                                  <th class="highlight bg-primary align-middle w-25">
+                                   
+                                    WebForm Plus
+                                  </th>
+                                  <th class="bg-primary align-middle w-25">
+                                    WebForm Max
+                                  </th>
+                                </tr>
+                              </thead>
+                            </table>
+                            <!-- Heading -->
+              
+                            <table class="table m-0 table-bordered">
+              
+              
+                              <tbody class="text-center">
+              
+              
+                                <tr>
+                                  <td>
+                                    Lead Forms
+                                  </td>
+                                  <td>N/A</td>
+                                  <td>3</td>                                
+                                  <td>5</td>
+                                </tr>
+                                <tr>
+                                  <td>
+                                    Opportunity Forms
+                                  </td>
+                                  <td>N/A</td>
+                                  <td>Unlimited</td>
+                                  <td>Unlimited</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                    Admin/Internal Forms
+                                    </td>
+                                    <td>N/A</td>
+                                    <td>2</td>
+                                    <td>Unlimited</td>
+                                </tr>
+                                <tr>
+                                  <td>Slack Integration <p class="badge bg-success badge-success">soon</p></td>
+                                  <td><p class="badge bg-success badge-success">soon</p></td>
+                                  <td><p class="badge bg-success badge-success">soon</p></td>
+                                  <td><p class="badge bg-success badge-success">soon</p></td>
+                                </tr>
+  
+                                <!-- <tr>
+                                  <td>Chat GPT Integration <p class="badge bg-success badge-success">soon</p></td>
+                                  <td><p class="badge bg-success badge-success">soon</p></td>
+                                  <td><p class="badge bg-success badge-success">soon</p></td>
+                                  <td><p class="badge bg-success badge-success">soon</p></td>
+                                </tr> -->
+                
+              
+                                <!-- -----optt----- -->
+                                  <div class="collapse-table">
+              
+                                    <tr class="collapse-head-cont">
+                                      <td class="collapse-head w-25" data-toggle="collapse" href="#optt">
+                                        <div>
+                                          Twilio Integration
+                                          <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                                        </div>
+                                      </td>
+                                      <td class="w-25">N/A</td>
+                                      <td class="w-25"><span>
+                                        <!-- <i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span> -->
+                                        <!-- 10 Optional Automations -->
+                                      </td>
+                                      <td class="w-25"><span>
+                                        <!-- 20 Optional Automations -->
+                                        <!-- <i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span> -->
+                                      </td>
+                                    </tr>
+                                    <tbody class="collapse-rows collapse" id="optt">
+                                      <tr>
+                                    <td class="w-25">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                        <label class="form-check-label" for="defaultCheck1">
+                                          Integration for client messages
+                                        </label>
+                                      </div>
+                                    </td>
+                                    <td class="w-25">N/A</td>
+                                    <td class="w-25">Included</td>
+                                    <td class="w-25">Included</td>
+                                  </tr>
+  
+                                  <tr>
+                                      <td class="w-25">
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                          <label class="form-check-label" for="defaultCheck1">
+                                              Disposition text and team notifications
+                                          </label>
+                                        </div>
+                                      </td>
+                                      <td class="w-25">N/A</td>
+                                      <td class="w-25">Add on @ $29 Monthly</td>
+                                      <td class="w-25">Included</td>
+                                    </tr>
+              
+                                  
+                                    </tbody>
+              
+                                  </div>
+                                  <tr>
+                                      <td> Open to Close Integration </td>
+                                      <td class="w-25">Add on separately</td>
+                                      <td class="w-25">Add on separately</td>
+                                      <td class="w-25">Included</td>
+                                    </tr>
+              
+                                  <tr>
+                                      <td class="w-25">
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                          <label class="form-check-label" for="defaultCheck1">
+                                              Analytics
+                                          </label>
+                                        </div>
+                                      </td>
+                                      <td class="w-25">N/A</td>
+                                      <td class="w-25">Add on $199 a month or $1,999 a year</td>
+                                      <td class="w-25">Add on $199 a month or $1,999 a year</td>
+                                      
+                                    </tr>
+              
+                            </table>
+                          
+                        </div>
+              
+                        <!-- ----------Extra add ons ------------------ -->
+  
+  
+                                <!-- Price Buttons -->
+                                <table class="table border-0 m-0 table">
+                                  <tfoot>
+                                    <tr class="tableprow">
+                                      <td class="w-25">
+                                        <div></div>
+                                      </td>
+                                      
+                                      <td data-label="FUB Embeded App" class="bg-primary w-25"> 
+                                        $<span class="ptable-price">$189</span> /month
+                                        <!-- <p>$589 0ne time setup</p> -->
+                                        <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="BASIC">Subscribe</button>
+                                      </td>
+  
+                                      <td data-label="Webform Plus" id="wpp" class="highlight bg-primary w-25"> 
+                                        $<span class="ptable-price">1,499</span> /yearly
+                                        <p>$149/month</p>
+                                        <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="PLUS">Subscribe</button>
+                                      </td>
+                                      <td data-label="Webform Max" id="wpm" class="bg-primary w-25"> 
+                                        $<span class="ptable-price">2,499</span> /month
+                                        <p>$249/month</p>
+                                        <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="MAX">Subscribe</button>
+                                      </td>
+                                    </tr>
+                                  </tfoot>
+                                </table>
+                                
+              
+                              </div>
+              
+              
+              
+                      </div>
+              
+  
+                  
+                    </form>
+                  </section>
+                  <!--Webform Plan END-->
+
+
+                
+
+  </div>
+  <!--Accordian Main end-->
+
+
+</div>
+</div>
+          </section>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script crossorigin="anonymous" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script data-cb-site="{{website_name}}" src="https://js.chargebee.com/v2/chargebee.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+<script src="{% static 'assets/js/main.js'%}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/iconify/2.0.0/iconify.min.js"></script>
+
+
+  {% if is_error == '1' %}
+  swal({
+    title: '{{message_title}}',
+    text: '{{message}}',
+    icon: 'error',
+    confirmButtonText: 'Ok'
+  })
+  {% endif %}
+</script>
+
+
+<script>
+  $(document).ready(function () {
+    /* Initialize a Chargebee instance after mounting the root component. */
+
+    {% if has_payment %}
+    var chargebeeInstance = Chargebee.init({
+      site: "{{chargebee_website}}"
+    });
+    // You can access the above created instance anywhere using the following code
+    var chargebeeInstance = Chargebee.getInstance();
+
+    chargebeeInstance.openCheckout({
+            hostedPage: function () {
+                // We will discuss on how to implement this end point in the next step.
+                return $.ajax({
+                    url: '/payments/get_hosted_page',
+                    method: 'GET',
+                    data: {}
+                });
+            },
+            success: function (hostedPageId) {
+                // success callback
+                console.log("page is;", hostedPageId)
+            }
+        });
+    {% endif %}
+
+  {% if payment_state == 'succeeded' and plan_id == "fub-sisu-activity-integration" %}
+  swal("Subscription Successfull!!", "Our onboarding team will reach out to you shortly. You may receive instructions via email.", "success")
+  {% elif payment_state == 'succeeded' and plan_id == "fub-sisu-embedded-app" %}
+  swal("Subscription Successfull!!", "Our onboarding team will reach out to you shortly. You may receive instructions via email.", "success")
+  {% elif payment_state == 'succeeded' %}
+  swal("Subscription Successful!!", "Our onboarding team will reach out to you shortly. You may receive instructions via email.", "success")
+  {% elif payment_state == 'failed' %}
+  swal("Subscription Failed", "Sorry we could not process your subscription request, Please contact support for further details", "error")
+  {% endif %}
+  
+  });
+
+</script>
+
+<script>
+  // targets the table data and assign data-label according to package
+  // displays only for mobile view
+  // can be use for javascript targeting
+
+
+  var td2 = document.querySelectorAll('tr td:nth-child(2)');
+  for (var i = 0; i < td2.length; i++) {
+    td2[i].setAttribute('data-label', 'FUB Emeded Plan');
+  }
+
+  var td3 = document.querySelectorAll('tr td:nth-child(3)');
+  for (var i = 0; i < td3.length; i++) {
+    td3[i].setAttribute('data-label', 'Webform Plus');
+  }
+
+  var td4 = document.querySelectorAll('tr td:nth-child(4)');
+  for (var i = 0; i < td4.length; i++) {
+    td4[i].setAttribute('data-label', 'Webform Max');
+  }
+
+
+
+</script>
+
+
+{% endblock %}

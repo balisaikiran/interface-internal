@@ -1,0 +1,887 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content=" sharpdata login page" name="description">
+
+    <title>DataLabz - Sign Up</title>
+    
+    <link href="https://i.imgur.com/QRAUqs9.png" rel="apple-touch-icon">
+    <link href="https://i.imgur.com/QRAUqs9.png" rel="shortcut icon">
+
+
+    <!-- Fonts CDN -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+
+    <!-- assets css CDN -->
+    <!-- <link href='assets/css/style.css' rel='stylesheet'> -->
+    <link href="{% static 'css/styles.css'%}" rel="stylesheet">
+
+    <!-- -------google analytics--------- -->
+    <script async defer src="https://apis.google.com/js/platform.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78898293-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-78898293-3');
+    </script>
+    <script>
+        var linkedinLink = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=813nyuszjrr3o8&redirect_uri=http://localhost:8080/secure/verify_linkedin&state=fooobar&scope=r_liteprofile%20r_emailaddress%20w_member_social"
+    </script>
+
+
+    <!-- tapfiliate Code -->
+    <script src="https://script.tapfiliate.com/tapfiliate.js" type="text/javascript" async></script>
+    <script type="text/javascript">
+    (function(t,a,p){t.TapfiliateObject=a;t[a]=t[a]||function(){ (t[a].q=t[a].q||[]).push(arguments)}})(window,'tap');
+
+    tap('create', '37727-1b0329', { integration: "javascript" });
+    tap('detect');
+    </script>
+    <!-- tapfiliate Code  Ends-->
+</head>
+
+<body class="bg-dark">
+
+    <section class="container-md p-0 d-flex justify-content-center mt-md-3 mb-md-5 pb-md-5">
+
+        <div class="mt-md-5 col-xl-11 auth-container shadow-lg d-flex flex-wrap">
+
+
+            <div class="col-lg-6 col-12 pt-5 pb-5 px-4 px-md-5  text-center" style="background:#032241;">
+                <div> 
+                    <img class="img-fluid" src="{% static 'images/logoh.png'%}" width="200" alt="">
+                </div>
+               
+                <p class=" d-none d-lg-block mt-3 mt-lg-5 text-white-50">Let's get you started; data superpowers to optimise your work process.</p>
+                
+                <div> 
+                    <img class="img-fluid d-none d-lg-block" src="https://i0.wp.com/interface.re/wp-content/uploads/2022/09/Group-16970.png?w=955&ssl=1" alt="">
+                </div>
+            </div>
+    
+
+            <div class="col-lg-6 py-lg-5 pb-5 pt-5 px-4 px-md-5 col-12 auth-form" style="background:#fff;">
+
+                <form id="regForm" class="mx-xl-5 my-xl-3" action="{% url 'create_user' %}" method="POST">
+                    {% csrf_token %}
+
+                    <h5>Create your account</h5>
+
+                    <!-- Circles which indicates the steps of the form: -->
+                    <div class="d-flex justify-content-start flex-wrap my-3">
+                        <span class="step ms-0"></span>
+                        <span class="step"></span>
+                        
+                    </div>
+        
+                    <!-- One "tab" for each step in the form: -->
+
+                    <div class="tab">
+                        <!-- --------Team ID------------ -->
+                        <div class="mt-4">
+        
+                            <div class="mb-4">
+                                <div class="form-floating w-100 form-group">
+                                    <input onkeyup="validateExuser()" class="form-control input-bn" id="team_id" name="team_id" placeholder="Team_ID" required="" type="text"/>
+                                  
+                                    <label>
+                                        <span class="d-flex align-items-center">
+                                            <i class="iconify me-1 mr-1 fs-5" data-icon="fluent:people-team-24-regular" ></i>
+                                            <span>Team ID</span>
+                                        </span>
+                                    </label>
+                                </div>
+    
+                                <span class="d-flex flex-column mt-1 mb-2">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <span class="hide pull-right block-help small mb-2" id="popover-team-yes" style="display: none;"><i
+                                            aria-hidden="true" class="fa fa-info-circle text-success"></i> Available</span>
+                                        <span class="hide pull-right block-help small mb-2" id="popover-team-no" style="display: none;"><i
+                                            aria-hidden="true" class="fa fa-info-circle text-danger"></i> Not Available</span>
+                                        <span class="hide block-help small text-warning mb-2" id="popover-team-length" style="display: none;"><i
+                                                aria-hidden="true" class="fa fa-info-circle text-warning"></i></span>
+                                    </div>
+                                    
+                                    <small>This will be your team id (only alphanumeric and underscore are allowed with minimum 3 character and maximum 15 character) and it cannot be changed in
+                                    future</small>
+    
+                                </span>
+                               
+                            </div>
+                
+                    
+                        </div>
+
+                        <!-- --------Email------------ -->
+                        <div class="mt-4">
+        
+                            <div class="mb-4">
+                                <div class="form-floating w-100 form-group">
+                                    <input type="email" class="form-control input-bn" id="user_email" name="user_email" placeholder="Email"
+                                        required="" onkeyup="validateExuser()"
+                                    />
+                                    <label>
+                                        <span class="d-flex align-items-center">
+                                            <i class="iconify me-1 mr-1 fs-5" data-icon="carbon:email" ></i>
+                                            <span>Email</span>
+                                        </span>
+                                    </label>
+                                </div>
+    
+                                <span class="d-flex flex-column mt-1">
+                                    <span class="hide pull-right block-help small" id="popover-a-email" style="display: none;"><i
+                                        aria-hidden="true" class="fa fa-info-circle text-success"></i> Available</span>
+                                    <span class="hide pull-right block-help small" id="popover-n-email" style="display: none;"><i
+                                        aria-hidden="true" class="fa fa-info-circle text-danger"></i> Not Available</span>
+                                    <span class="hide pull-right block-help small" id="popover-n-email-rgx" style="display: none;"><i
+                                            aria-hidden="true" class="fa fa-info-circle text-danger"></i> Invalid Email</span>
+                                   
+                                </span>
+                               
+                            </div>
+                
+                        </div>
+
+                        <!-- --------New-password------------ -->
+                        <div class="mb-4">
+                            <div class="form-floating w-100 form-group">
+                                
+                                <input class="form-control input-bn" id="user_password" name="user_password" placeholder="Password"
+                                  required=""
+                                  type="password"/>
+                                <label>
+                                    <span class="d-flex align-items-center">
+                                        <i class="iconify me-1 mr-1 fs-5" data-icon="bi:shield-lock" ></i>
+                                        <span>New Password</span>
+                                    </span>
+                                </label>
+                            </div>
+                            <div id="popover-password">
+                                <p class="small my-2">Password : <span id="result" class="text-danger"></span></p>
+                                <div class="progress mb-2 col-5" style="height:5px;">
+                                    <div aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" class="progress-bar progress-bar-animated progress-bar-striped bg-success" id="password-strength" role="progressbar" style="width: 0%;">
+                                    </div>
+                                </div>
+                                <ul class="list-unstyled small">
+                                    <li class=""><span class="low-upper-case"><i aria-hidden="true" class="fa-regular fa-circle"></i></span>&nbsp; 1
+                                        lowercase &amp; 1 uppercase
+                                    </li>
+                                    <li class=""><span class="one-number"><i aria-hidden="true" class="fa-regular fa-circle"></i></span> &nbsp;1
+                                        number (0-9)
+                                    </li>
+                                    <li class=""><span class="one-special-char"><i aria-hidden="true" class="fa-regular fa-circle"></i></span>
+                                        &nbsp;1 Special Character (!@#$%^&amp;*).
+                                    </li>
+                                    <li class=""><span class="eight-character"><i aria-hidden="true" class="fa-regular fa-circle"></i></span>&nbsp; Atleast 8
+                                        Character
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- --------confirm-password------------ -->
+                        <div class="mb-4">
+                            <div class="form-floating w-100 form-group">
+                                <input class="form-control input-bn" placeholder="Confirm password" id="user_confirm_password" name="user_confirm_password"
+                                  required="" onkeypress="validateExuser()" type="password"/>
+                                <label>
+                                    <span class="d-flex align-items-center">
+                                        <i class="iconify me-1 mr-1 fs-5" data-icon="bi:shield-lock" ></i>
+                                        <span>Confirm Password</span>
+                                    </span>
+                                </label>
+                            </div>
+                            <span class="d-flex mt-1 mb-2">
+                                <span class="hide pull-right block-help small" id="popover-cpassword" style="display: none;"><i
+                                    aria-hidden="true"
+                                    class="fa fa-info-circle text-danger"></i> Passwords don't match</span>
+                                <span class="hide pull-right block-help small" id="popover-cpassword-2" style="display: none;"><i
+                                    aria-hidden="true" class="fa fa-info-circle text-danger"></i> Password is Invalid</span>
+                            </span>
+    
+                            
+                        </div>
+
+                    </div>
+
+                    <div class="tab">
+                        <!-- --------ORG Name------------ -->
+                        <div class="mt-4">
+        
+                            <div class="mb-4">
+                                <div class="form-floating w-100 form-group">
+                                    
+                                    <input 
+                                        class="form-control input-bn" id="organization_name" name="organization_name" placeholder="Organization Name"
+                                        required=""
+                                        type="text"/>
+                                    <label>
+                                        <span class="d-flex align-items-center">
+                                            <i class="iconify me-1 mr-1 fs-5" data-icon="fluent-mdl2:work" ></i>
+                                            <span>Organization name</span>
+                                        </span>
+                                    </label>
+                                </div>
+                               
+                            </div>
+                
+                    
+                        </div>
+
+                        <!-- --------First name------------ -->
+                        <div class="mt-4">
+        
+                            <div class="mb-4">
+                                <div class="form-floating w-100 form-group">
+                                    <input class="form-control input-bn" 
+                                        id="user_firstName" 
+                                        name="user_firstName" placeholder="First Name"
+                                        required=""
+                                        type="text"
+                                    />
+                                    <label>
+                                        <span class="d-flex align-items-center">
+                                            <i class="iconify me-1 mr-1 fs-5" data-icon="carbon:user" ></i>
+                                            <span>First name</span>
+                                        </span>
+                                    </label>
+                                </div>
+    
+                            </div>
+                
+                    
+                        </div>
+
+                        <!-- --------Last name------------ -->
+                        <div class="mt-4">
+
+                            <div class="mb-4">
+                                <div class="form-floating w-100 form-group">
+                                    <input class="form-control input-bn" id="user_lastName" name="user_lastName" placeholder=" Last Name"
+                                        required=""
+                                        type="text"
+                                    />
+                                    
+                                    <label>
+                                        <span class="d-flex align-items-center">
+                                            <i class="iconify me-1 mr-1 fs-5" data-icon="carbon:user" ></i>
+                                            <span>Last name</span>
+                                        </span>
+                                    </label>
+                                </div>
+    
+                            </div>
+                
+                        </div>
+
+                        <!-- --------contact------------ -->
+                        <div class="mt-4">
+                            <div class="mb-4">
+    
+                                <div class="d-flex input-group">
+    
+                                    <select class="form-select input-bn" style="border-radius:5px 0px 0px 5px !important;" name="country_code">
+                                        <option data-countryCode="US" selected value="1">USA (+1)</option>
+                                        <option data-countryCode="CA" value="1">Canada (+1)</option>
+                                    </select>
+        
+                                    <div class="form-floating col-9 form-group">
+                                        
+                                        <input class="form-control input-bn h-bn " id="user_phone" maxlength="10" name="user_phone"
+                                            style="border-radius:0px 5px 5px 0px !important;"
+                                            placeholder="Phone Number"
+                                            required="" type="number" onkeydown="javascript: return event.keyCode === 8 ||
+                                            event.keyCode === 46 || event.keyCode === 9 ? true : !isNaN(Number(event.key))">
+        
+                                        <label>
+                                            <span class="d-flex align-items-center">
+                                                <i class="iconify me-1 mr-1 fs-5" data-icon="carbon:phone" ></i>
+                                                <span>Phone number</span>
+                                            </span>
+                                        </label>
+        
+                                    </div>
+    
+                                </div>
+                                
+                                <span class="d-flex flex-column mt-1">
+                                    <span class="hide pull-right block-help small" id="popover-cnumber" style="display: none;"><i
+                                        aria-hidden="true" class="fa fa-info-circle text-danger"></i> Invalid Phone Number</span>
+                                </span>
+                               
+                            </div>
+                
+                        </div>
+
+                        <!-- --------Select if FUB user------------ -->
+                        <div class="mt-4">
+                            <div class="mb-4">
+                                <label>
+                                    <span class=" mb-2 d-flex align-items-center">
+                                        <span>Are you currently using Follow Up Boss as your CRM?</span>
+                                    </span>
+                                </label>
+                                <select class="form-select input-bn" id="fub_user" name="fub_user" required>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                    
+                        </div>
+
+                    </div>                    
+                    
+
+                    
+                    
+                    
+                    <!-- --------Sign UP------------ -->
+                    <div style="overflow:auto;">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <button type="button" class="btn btn-primary me-2" id="prevBtn" onclick="nextPrev(-1)">
+                                <i class="iconify" data-icon="eva:arrow-back-outline"></i>
+                            </button>
+
+                            <button type="button" class="ms-auto w-100 btn btn-primary" id="nextBtn" onclick="nextPrev(1)">Continue</button>
+
+                            <button class="submit d-none btn w-100 btn-primary mb-3 ms-2" disabled id="sign-up" type="submit">Sign Up</button>
+                        </div>
+                    </div>
+            
+                    <!-- --------Already a user------------ -->
+                    <div class="text-center mt-4">
+                        <a href="/secure/login_user" class="text-decoration-underline text-center w-100">Already a User? Login</a>
+                    </div>
+            
+                </form>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+<!-- Jquery and vendors -->
+<script crossorigin="anonymous"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+<!-- Iconify and FA icons -->
+<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+
+<!-- other vendors -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+<script src="{% static 'assets/js/main.js'%}"></script>
+
+
+
+
+<script>
+    {% if is_error == '1' %}
+    swal({
+        title: '{{message_title}}',
+        text: '{{message}}',
+        icon: 'error',
+        confirmButtonText: 'Ok'
+    })
+    {% endif %}
+</script>
+
+<script>
+    // Disable space in team id
+    $("input#team_id").on({
+        keydown: function (e) {
+            if (e.which === 32)
+                return false;
+            if (e.which === 38)
+                return false;
+        },
+        change: function () {
+            this.value = this.value.replace(/\s/g, "");
+        }
+    });
+    var validEmail = false;
+    var validTeamId = false;
+    var validPass = false;
+    var validPhone = false;
+    function validateExuser(){
+            if(validEmail != false && validTeamId != false && validPass != false && validPhone != false){
+                $('#sign-up').attr("disabled", false);
+            }
+            else{
+                $('#sign-up').attr("disabled", true);
+            }
+        }
+
+    $(document).ready(function () {
+        // check valid team_id
+        $("#team_id").on({
+            input: function () {
+                $.ajax({
+                    method: "get",
+                    url: "/secure/check_team?team=" + $("#team_id").val(),
+                    dataType: "json"
+                }).done(function (data) {
+                    // Using .map method to retrieve data from array
+                    $.map(data, function (user, i) {
+                        // Using .append to insert data in the DOM
+                        validTeamId = user;
+                        if (user == false) {
+                            validTeamId = false
+                            $('#popover-team-no').css('display', "block");
+                            $('#popover-team-yes').css('display', "none");
+                            validateExuser()
+                        } else {
+                            validTeamId = true
+                            $('#popover-team-no').css('display', "none");
+                            $('#popover-team-yes').css('display', "block");
+                            validateExuser()
+                        }
+                    });
+                });
+            }
+        });
+        function emailRegex(email){
+            var expr = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+            return expr.test(email)?true:false
+        }
+
+        $("#user_email").on({
+            input: function () {
+                // Encoding email to prevent misinterpretation of reserved characters by browsers
+                var email = `${encodeURIComponent($("#user_email").val())}`
+                if(emailRegex($(this).val())){
+                    $('#popover-n-email-rgx').css('display', "none");
+                    $.ajax({
+                    method: "get",
+                    url: "/secure/check_email?email=" + email,
+                    dataType: "json"
+                }).done(function (data) {
+                    // Using .map method to retrieve data from array
+                    $.map(data, function (user, i) {
+                        // Using .append to insert data in the DOM
+                        validEmail = user
+                        if (user == false) {
+                            validEmail = false
+                            $('#popover-n-email').css('display', "block");
+                            $('#popover-a-email').css('display', "none");
+
+                            validateExuser();
+                        } else {
+                            validEmail = true
+                            $('#popover-n-email').css('display', "none");
+                            $('#popover-a-email').css('display', "block");
+
+                            validateExuser();
+                        }
+                    });
+                });
+                }
+                else{
+                    validEmail = false;
+                    $('#popover-n-email-rgx').css('display', "block");
+                    $('#popover-a-email').css('display', "none");
+                    $('#popover-a-email').css('display', "none");
+                    validateExuser();
+                }
+                
+            }
+        });
+
+
+        // $('#user_email').blur(function () {
+        //     var email = $('#user_email').val();
+        //     if (IsEmail(email) == false) {
+        //         $('#popover-email').css('display', "block");
+        //     } else {
+        //         $('#popover-email').css('display', "none");
+        //     }
+        // });
+
+
+
+        $('#user_password').on({input:(function () {
+            var password = $('#user_password').val();
+            if (checkStrength(password) == false) {
+                var a = 1;
+            }
+        })
+        });
+        $('#user_confirm_password').on({input:(function () {
+            $('#sign-up').attr("disabled", true);
+            if ($('#user_password').val() != $('#user_confirm_password').val()) {
+                $('#popover-cpassword').css("display", "block");
+                validPass = false
+            } else {
+                validPass = true
+                $('#popover-cpassword').css("display", "none");
+                if (checkStrength($('#user_password').val()) == false) {
+                    $('#popover-cpassword-2').css("display", "block");
+                    validPass = false
+                } else {
+                    validPass = true
+                    $('#popover-cpassword-2').css("display", "none");
+                    validateExuser()
+                }
+
+            }
+        })
+        });
+
+        $('#user_phone').on({input: (function () {
+            if ($('#user_phone').val().length != 10) {
+                validPhone = false
+                $('#popover-cnumber').css("display", "block");
+                validateExuser()
+            } else {
+                validPhone = true
+                $('#popover-cnumber').css("display", "none");
+                validateExuser()
+            }
+        })
+    });
+
+        $('#sign-up').click(function () {
+            if ($('#sign-up').prop('disabled')) {
+                $('#sign-up').popover({
+                    html: true,
+                    trigger: 'hover',
+                    placement: 'below',
+                    offset: 20,
+                    content: function () {
+                        return $('#sign-up-popover').html();
+                    }
+                });
+            }
+            // if ($("#planFubTwillio").is(":checked") != true && $("#planFubSisu").is(":checked") != true) {
+            //   swal({
+            //     title: 'Plan not selected',
+            //     text: 'Please select atleast one plan to signup',
+            //     icon: 'warning',
+            //     confirmButtonText: 'Ok'
+            //   });
+            //   return false;
+            // }
+            // else if ($("#planFubTwillio").is(":checked") == true && $("#planFubSisu").is(":checked") != true) {
+            //   swal({
+            //     title: 'Terms and Conditions',
+            //     text: 'Please go througth',
+            //     icon: 'warning',
+            //     confirmButtonText: 'Ok'
+            //   });
+            // }
+            // else if ($("#planFubReport").is(":checked") == true && $("#planFubSisu").is(":checked") != true) {
+            //   swal({
+            //     title: 'Terms and Conditions',
+            //     text: 'Please go througth',
+            //     icon: 'warning',
+            //     confirmButtonText: 'Ok'
+            //   });
+            // }
+        });
+
+        function IsEmail(email) {
+            var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if (!regex.test(email)) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+        function checkStrength(password) {
+            var strength = 0;
+
+
+            //If password contains both lower and uppercase characters, increase strength value.
+            if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) {
+                strength += 1;
+                $('.low-upper-case').addClass('text-success');
+                $('.low-upper-case i').removeClass('fa-file-text').addClass('fa-check');
+                $('#popover-password-top').addClass('hide');
+
+
+            } else {
+                $('.low-upper-case').removeClass('text-success');
+                $('.low-upper-case i').addClass('fa-file-text').removeClass('fa-check');
+                $('#popover-password-top').removeClass('hide');
+            }
+
+            //If it has numbers and characters, increase strength value.
+            if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) {
+                strength += 1;
+                $('.one-number').addClass('text-success');
+                $('.one-number i').removeClass('fa-file-text').addClass('fa-check');
+                $('#popover-password-top').addClass('hide');
+
+            } else {
+                $('.one-number').removeClass('text-success');
+                $('.one-number i').addClass('fa-file-text').removeClass('fa-check');
+                $('#popover-password-top').removeClass('hide');
+            }
+
+            //If it has one special character, increase strength value.
+            if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) {
+                strength += 1;
+                $('.one-special-char').addClass('text-success');
+                $('.one-special-char i').removeClass('fa-file-text').addClass('fa-check');
+                $('#popover-password-top').addClass('hide');
+
+            } else {
+                $('.one-special-char').removeClass('text-success');
+                $('.one-special-char i').addClass('fa-file-text').removeClass('fa-check');
+                $('#popover-password-top').removeClass('hide');
+            }
+
+            if (password.length > 7) {
+                strength += 1;
+                $('.eight-character').addClass('text-success');
+                $('.eight-character i').removeClass('fa-file-text').addClass('fa-check');
+                $('#popover-password-top').addClass('hide');
+
+            } else {
+                $('.eight-character').removeClass('text-success');
+                $('.eight-character i').addClass('fa-file-text').removeClass('fa-check');
+                $('#popover-password-top').removeClass('hide');
+            }
+
+
+            // If value is less than 2
+
+            if (strength == 0) {
+                $('#result').removeClass();
+                $('#result').addClass('text-danger').text('Invalid')
+                $('#password-strength').css('width', '0%');
+                return false;
+            } else if (strength == 1) {
+                $('#result').removeClass()
+                $('#password-strength').addClass('progress-bar-danger');
+
+                $('#result').addClass('text-danger').text('Invalid');
+                $('#password-strength').css('width', '25%');
+                return false;
+            } else if (strength == 2) {
+                $('#result').addClass('good');
+                $('#password-strength').removeClass('progress-bar-danger');
+                $('#password-strength').addClass('progress-bar-warning');
+                $('#result').addClass('text-danger').text('Invalid')
+                $('#password-strength').css('width', '50%');
+                return false;
+            } else if (strength == 3) {
+                $('#result').removeClass();
+                $('#password-strength').removeClass('progress-bar-danger');
+                $('#password-strength').addClass('progress-bar-warning');
+                $('#result').addClass('text-warning').text('Invalid')
+                $('#password-strength').css('width', '75%');
+                return false;
+            } else if (strength == 4) {
+                $('#result').removeClass()
+                $('#result').addClass('strong');
+                $('#password-strength').removeClass('progress-bar-warning');
+                $('#password-strength').addClass('progress-bar-success');
+                $('#result').addClass('text-success').text('Valid');
+                $('#password-strength').css('width', '100%');
+
+                return true;
+            }
+
+        }
+
+    });
+
+    function checkSubmission() {
+        alert('checkSubmission');
+        var email = document.getElementById("user_email").value;
+        var password = document.getElementById("user_password").value;
+        var password_verify = document.getElementById("user_confirm_password").value;
+        checkMail_response = checkMail(email);
+        verifyPassword_response = verifyPassword(password, password_verify);
+        if (checkMail_response == true & verifyPassword_response == true) {
+            return true;
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops..!',
+                text: 'Some Error!',
+                footer: '<a href>Why do I have this issue?</a>'
+            })
+            return false;
+        }
+    }
+
+    var password = document.getElementById("user_password")
+        , confirm_password = document.getElementById("user_confirm_password");
+
+    function validatePassword() {
+        if (password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onchange = validatePassword;
+</script>
+
+<script>
+    $('#team_id, #user_firstName').keypress(function(event)
+    {
+        var kcode = event.keyCode;
+        return (kcode == 8 ||
+            kcode == 9 ||
+            kcode == 95 ||
+            (kcode > 47 && kcode < 58) ||
+            (kcode > 64 && kcode < 91) ||
+            (kcode > 96 && kcode < 123))
+        ? true: false;     
+    });
+    $( document ).ready(function() {
+        $( "#team_id" ).bind( 'paste',function(){
+            setTimeout(function()
+            { 
+                //get the value of the input text
+                var data = $( '#team_id' ).val() ;
+                //replace the special characters to '' 
+                var dataFull = data.replace(/[^\w\s]/gi, '');
+                //set the new value of the input text without special characters
+                $( '#team_id' ).val(dataFull);
+            });
+
+        });
+    });
+    var minLength = 3;
+    var maxLength = 15;
+    $("#team_id").on("keydown keyup change", function(){
+    var value = $(this).val();
+    if (value.length < minLength){
+        $("#popover-team-length").text("Team ID is short");
+        $("#popover-team-length").attr("style", "display:block");
+        validTeamId = false;
+        validateExuser()
+    }
+    else if (value.length > maxLength){        
+        $("#popover-team-length").text("Team ID is long");
+        validTeamId = false;
+        validateExuser()
+    }
+    else{        
+        $("#popover-team-length").text("Team ID is valid");
+        validTeamId = true;
+        validateExuser()
+    }
+});
+</script>
+
+<script>
+
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+    
+    function showTab(n) {
+      // This function will display the specified tab of the form ...
+      var x = document.getElementsByClassName("tab");
+      var nxtBtn =  document.getElementById("nextBtn");
+      var submitBtn =  document.getElementById("sign-up");
+
+      x[n].style.display = "block";
+      // ... and fix the Previous/Next buttons:
+      if (n == 0) {
+        document.getElementById("prevBtn").style.display = "none";
+      } else {
+        document.getElementById("prevBtn").style.display = "inline";
+      }
+      if (n == (x.length - 1)) {
+        submitBtn.classList.remove("d-none");
+        nxtBtn.classList.add("d-none");
+  
+      } else {
+        submitBtn.classList.add("d-none");
+        nxtBtn.classList.remove("d-none");
+      }
+      // ... and run a function that displays the correct step indicator:
+      fixStepIndicator(n)
+    }
+    
+    function nextPrev(n) {
+      // This function will figure out which tab to display
+      var x = document.getElementsByClassName("tab");
+      // Exit the function if any field in the current tab is invalid:
+      if (n == 1 && !validateForm()) return false;
+      // Hide the current tab:
+      x[currentTab].style.display = "none";
+      // Increase or decrease the current tab by 1:
+      currentTab = currentTab + n;
+      // if you have reached the end of the form... :
+      if (currentTab >= x.length) {
+        //...the form gets submitted:
+        document.getElementById("regForm").submit();
+        return false;
+      }
+      // Otherwise, display the correct tab:
+      showTab(currentTab);
+    }
+    
+    function validateForm() {
+      // This function deals with validation of the form fields
+      var x, y, i, valid = true;
+      x = document.getElementsByClassName("tab");
+      y = x[currentTab].getElementsByTagName("input");
+      // A loop that checks every input field in the current tab:
+      for (i = 0; i < y.length; i++) {
+        y[i].classList.add("invalid");
+        // If a field is empty...
+        if (y[i].value == "") {
+          valid = false;
+        }
+      }
+      // If the valid status is true, mark the step as finished and valid:
+      if (valid) {
+        document.getElementsByClassName("step")[currentTab].className += " finish";
+      }
+      return valid; // return the valid status
+    }
+    
+    function fixStepIndicator(n) {
+      // This function removes the "active" class of all steps...
+      var i, x = document.getElementsByClassName("step");
+      for (i = 0; i < x.length; i++) {
+        x[i].className = x[i].className.replace(" active", "");
+      }
+      //... and adds the "active" class to the current step:
+      x[n].className += " active";
+    }
+    
+</script>
+
+</body>
+
+</html>

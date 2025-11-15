@@ -1,0 +1,766 @@
+{% extends override_base|default:'main/main-base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link href='https://fonts.googleapis.com/css?family=Dancing Script' rel='stylesheet'>
+  <link rel="stylesheet" href="{% static 'payments/pricing-style.css' %}" >
+{% endblock %}
+
+
+{% block content %}
+ 
+
+  <!--Fub- Olny Plan-->
+  <section>
+
+    <div class="container mt-4">
+      <a href="{% url route %}" style="font-size:16px; color: #032241; text-decoration: underline !important;">
+        <i class="iconify" data-icon="akar-icons:arrow-back-thick-fill"></i>
+        Change Package
+      </a>
+     
+    </div>
+
+      <!-- ------------switcher and plan title----------- -->
+      <div class="container mt-2 mb-5 text-center">
+
+        <div class=" mb-4 text-center d-mdx-none">
+          <img src="{% static 'payments/images/fub.png' %}" height="60" alt="FUB-sisu">
+          <h5 class="my-3" style="font-size:18px; font-weight:600;">FUB Only INTEGRATION</h5>
+        </div>
+
+        <div class="row mb-5">
+          <!-- <div class="col-md">
+            <span>
+              Monthly &nbsp;
+            </span>
+            <div class="custom-control custom-switch custom-switch-md d-inline">
+              <input type="checkbox" class="custom-control-input" id="customSwitch1">
+              <label class="custom-control-label" for="customSwitch1"></label>
+            </div>
+            <span>
+              Annually
+            </span>
+            <span style="font-family: 'Dancing Script';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 18px;
+        line-height: 22px;
+        
+        text-align: center;
+        
+        color: #F3B007;">save %</span>
+          </div> -->
+        </div>
+
+        <div class="row">
+          <div class="col-md">
+            <span><i class="bi bi-check-circle-fill"></i>
+              Fully Customizable&nbsp;&nbsp;
+            </span>
+            <span><i class="bi bi-check-circle-fill"></i>
+              Cancel anytime
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <!-- ----------table---------- -->
+
+      <div  class="fub-out container mt-5 mb-5">
+
+        <div class="pricing">
+
+          <div class="pricing-table p-0 table-responsive">
+              <!-- Heading -->
+              <table class="table border-0 m-0 table-bordered">
+                <thead>
+                  <tr>
+                    <th class="w-25 pr-lg-5 text-left">
+                      <h5 class="my-2" style="font-size:16px; font-weight:600;">
+                        <i class="iconify mr-2 mb-1" data-icon="mdi:widgets-outline"></i>Package Features
+                      </h5>
+
+                    </th>
+                    <th class="bg-primary align-middle w-25">
+                      FUB Embeded App
+                    </th>
+                    <th class="highlight bg-primary align-middle w-25">
+                     
+                      Webform Pipeline Plus
+                    </th>
+                    <th class="bg-primary align-middle w-25">
+                      Webform Pipeline Max
+                    </th>
+                  </tr>
+                </thead>
+              </table>
+              <!-- Heading -->
+
+              <table class="table m-0 table-bordered">
+
+
+                <tbody class="text-center">
+
+                  <tr>
+                    <td class="w-25">
+                      <span class="ptable-title">Embeded App</span>
+                    </td>
+
+                    <td class="w-25">
+                      <!-- Icon -->
+                      <span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span>
+                    </td>
+                    <td class="w-25">
+                      <!-- Icon -->
+                      <span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span>
+                    </td>
+                    <td class="w-25">
+                      <!-- Icon -->
+                      <span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span>
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td>Form Builder <p class="badge badge-success">soon</p>
+                    </td>
+                    <td>
+                      <p class="badge badge-success">soon</p>
+                    </td>
+                    <td>
+                      <p class="badge badge-success">soon</p>
+                    </td>
+                    <td>
+                      <p class="badge badge-success">soon</p>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      Optional Field Count
+                    </td>
+                    <td>N/A</td>
+                    <td>40 optional fields</td>
+                    <td>200+ optional fields*</td>
+                  </tr>
+
+                  
+
+                  <tr>
+                    <td>
+                      Assign Agents to FUB Leads
+                    </td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      Create/Update FUB Deals
+                    </td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      Create FUB Notes with form entry data
+                    </td>
+  
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                        <label class="form-check-label" for="defaultCheck1">
+                          Disposition Form Text
+                        </label>
+                      </div>
+                    </td>
+                    <td>N/A</td>
+                    <td>$29 per month</td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    
+                  </tr>
+                  <!-- -----forms----- -->
+                  <div class="collapse-table">
+
+                    <tr class="collapse-head-cont">
+                      <td class="collapse-head" data-toggle="collapse" href="#formsx">
+                        <div>
+                          Customizable Forms
+                          <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                        </div>
+                      </td>
+                      <td>N/A</td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+                    <tbody class="collapse-rows collapse" id="formsx">
+
+                      <tr>
+                        <td>
+                          Appointment Form
+                        </td>
+                        <td>N/A</td>
+                        <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                        <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      </tr>
+    
+                      <tr>
+                        <td>
+                          Disposition Form
+                        </td>
+                        <td>N/A</td>
+                        <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                        <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      </tr>
+    
+                      <tr>
+                        <td>
+                          Transaction Form <br> (Signed, Pending, Closed Stages)
+                        </td>
+                        <td>N/A</td>
+                        <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                        <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      </tr>
+    
+                      <tr>
+                        <td>
+                          Signed Form
+                        </td>
+                        <td>N/A</td>
+                        <td>N/A<!-- <i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on --></td>
+                        <td>Contact Us<!-- <i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on --></td>
+                      </tr>
+    
+                      <tr>
+                        <td>
+                          Pending Form
+                        </td>
+                        <td>N/A</td>
+                        <td>N/A<!-- <i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on --></td>
+                        <td>Contact Us<!-- <i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on --></td>
+                      </tr>
+    
+                      <tr>
+                        <td>
+                          Closed Form
+                        </td>
+                        <td>N/A</td>
+                        <td>N/A<!-- <i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on --></td>
+                        <td>Contact Us<!-- <i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on --></td>
+                      </tr>
+    
+                      <tr>
+                        <td>
+                          Assignment Form
+                        </td>
+                        <td>N/A</td>
+                        <td>Add on $29 a month<!-- <i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on --></span></td>
+                        <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span><!-- <i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on --></td>
+                      </tr>
+    
+                      <tr>
+                        <td>
+                          Document Upload Form
+                        </td>
+                        <td>N/A</td>
+                        <td>Add on $29 a month<!-- <i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on --></td>
+                        <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span><!-- <i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on --></td>
+                      </tr>
+    
+    
+                      
+    
+                    </tbody>
+                
+
+                  </div>
+                  
+
+                  <!-- -----optt----- -->
+                    <div class="collapse-table">
+
+                      <tr class="collapse-head-cont">
+                        <td class="collapse-head w-25" data-toggle="collapse" href="#optt">
+                          <div>
+                            Optional Automation
+                            <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                          </div>
+                        </td>
+                        <td class="w-25">N/A</td>
+                        <td class="w-25"><span>
+                          <!-- <i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span> -->
+                          10 Optional Automations
+                        </td>
+                        <td class="w-25"><span>
+                          20 Optional Automations
+                          <!-- <i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span> -->
+                        </td>
+                      </tr>
+                      <tbody class="collapse-rows collapse" id="optt">
+                        <tr>
+                      <td class="w-25">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                          <label class="form-check-label" for="defaultCheck1">
+                            Update Contact Stage
+                          </label>
+                        </div>
+                      </td>
+                      <td class="w-25">N/A</td>
+                      <td class="w-25"><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td class="w-25"><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                          <label class="form-check-label" for="defaultCheck1">
+                            Add Tags
+                          </label>
+                        </div>
+                      </td>
+                      <td>N/A</td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                          <label class="form-check-label" for="defaultCheck1">
+                            FUB Appointment Description Templates
+                          </label>
+                        </div>
+                      </td>
+                      <td>N/A</td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                          <label class="form-check-label" for="defaultCheck1">
+                            FUB Appointment
+                          </label>
+                        </div>
+                      </td>
+                      <td>N/A</td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                          <label class="form-check-label" for="defaultCheck1">
+                            FUB Relationship Invite
+                          </label>
+                        </div>
+                      </td>
+                      <td>N/A</td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                          <label class="form-check-label" for="defaultCheck1">
+                            FUB Populate Background
+                          </label>
+                        </div>
+                      </td>
+                      <td>N/A</td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                          <label class="form-check-label" for="defaultCheck1">
+                            FUB Pause All Action Plans
+                          </label>
+                        </div>
+                      </td>
+                      <td>N/A</td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                          <label class="form-check-label" for="defaultCheck1">
+                            FUB Trigger Action Plan
+                          </label>
+                        </div>
+                      </td>
+                      <td>N/A</td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                          <label class="form-check-label" for="defaultCheck1">
+                            Email Notification
+                            <i class="iconify text-success ml-1" style="font-size:16px;" data-icon="ic:round-mark-email-read"></i>
+                          </label>
+                        </div>
+                      </td>
+                      <td>N/A</td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                          <label class="form-check-label" for="defaultCheck1">
+                            
+                            Slack Notification
+                            <i class="iconify ml-1" style="font-size:16px;" data-icon="logos:slack-icon"></i>
+                          
+                          </label>
+                        </div>
+                      </td>
+                      <td>N/A</td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                      </tbody>
+
+                    </div>
+
+                  <!-- -------- support ------  -->
+                  <div class="collapse-table">
+
+                    <tr class="collapse-head-cont">
+                      <td class="collapse-head" data-toggle="collapse" href="#support">
+                        <div>
+                          Support
+                          <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                        </div>
+                      </td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+                    <tbody class="collapse-rows collapse" id="support">
+                      <tr>
+                        <td>
+                          Email
+                        </td>
+                        <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                        <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                        <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Phone / ZOOM
+                        </td>
+                        <td><span>N/A</td>
+                        <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                        <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Dedicated CS Account Manager
+                        </td>
+                        <td><span>N/A</td>
+                        <td><span>N/A</td>
+                        <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Access to Mastermind Group
+                        </td>
+
+                        <td>N/A</td>
+                        <td><span>N/A</td>
+                        <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      </tr>
+                      
+                    </tbody>
+                  </div>
+
+
+                </tbody>
+
+              </table>
+            
+          </div>
+
+          <!-- ----------Extra add ons ------------------ -->
+          <div class="accordion mt-3" id="accordionAddOn">
+            <div class="card">
+
+              <div class="card-header d-flex flex-wrap align-items-center justify-content-between" id="headingOne"
+                data-toggle="collapse" data-target="#addOn" aria-expanded="true">
+                <h5 class="mb-0">
+                  Extra Add-on: Interface offers you flexible add-ons and integration to suit your need
+                </h5>
+                <span class="iconify ml-auto text-primary" data-icon="akar-icons:circle-chevron-down-fill"></span>
+              </div>
+
+              <div id="addOn" class="fub-out collapse show" aria-labelledby="headingOne" data-parent="#accordionAddOn">
+
+                <div class="pricing-table table-responsive">
+                  <table class="table border-top-0 m-0 table-bordered">
+                  
+                    <tbody class="text-center">
+
+                      <tr>
+                        <td class="w-25">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                              Custom Branded Theme
+                            </label>
+                          </div>
+                        </td>
+                        <td class="w-25">N/A</td>
+                        <td class="w-25">Add on $29 a month <!-- <i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on --></td>
+                        <td class="w-25"><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                        
+                      </tr>
+
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                              Custom Thank You message
+                            </label>
+                          </div>
+                        </td>
+                        <td>N/A</td>
+                        <td>Contact Us<!-- <i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on --></td>
+                        <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                              Additional Optional Fields
+                              <input class="price-input input-bn" type="text" value="5">
+                            </label>
+                          </div>
+                        </td>
+                        <td>N/A</td>
+                        <td>Contact Us<!-- <i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on --></td>
+                        <td>N/A<!-- <i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on --></td>
+                      </tr>
+
+                      <tr>
+                        <td>
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                            <label class="form-check-label" for="defaultCheck1">
+                              Additional Optional Automation
+                            </label>
+                          </div>
+                        </td>
+                        <td>N/A</td>
+                        <td>Contact Us<!-- <i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on --></td>
+                        <td>Contact Us<!-- <i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on --></td>
+                      </tr>
+
+                    </tbody>
+
+                  </table>
+
+                  <!-- Price Buttons -->
+                  <table class="table border-0 m-0 table-bordered">
+                    <tfoot>
+                      <tr class="tableprow">
+                        <td class="w-25">
+                          <div class="row mb-3">
+                            <!-- <div class="col-md">
+                              <span>
+                                Monthly &nbsp;
+                              </span>
+                              <div class="custom-control custom-switch custom-switch-md d-inline">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                                <label class="custom-control-label" for="customSwitch2"></label>
+                              </div>
+                              <span>
+                                Annually
+                              </span>
+                              <span style="font-family: 'Dancing Script';
+                            font-style: normal;
+                            font-weight: 700;
+                            font-size: 16px;
+                            line-height: 22px;
+                            text-align: center;
+                            color: #F3B007;">save%</span>
+                            </div> -->
+
+                          </div>
+                        </td>
+                        <td data-label="FUB Embeded App" class="bg-primary w-25"><a class="btn" href="#">
+                            <span class="ptable-price">$59</span>/month</a>
+                          <p>
+                            $598 0ne time setup
+                          </p>
+                          {% if route == 'pricing_internal' %}
+                          <a href="https://datalabz.re/secure/login_user/" target="_blank">
+                          {% else %}
+                          <a href="https://www.chargebee.com/">
+                          {% endif %}
+                          <div class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1">
+                            Get started
+                          </div></a>
+                        </td>
+                        <td data-label="Webform Plus" class="highlight bg-primary w-25"><a class="btn" href="#"><span
+                              class="ptable-price">$149</span>/month</a>
+                          <p>
+                            $449 0ne time setup
+                          </p>
+                          {% if route == 'pricing_internal' %}
+                          <a href="https://datalabz.re/secure/login_user/" target="_blank">
+                          {% else %}
+                          <a href="https://www.chargebee.com/">
+                          {% endif %}
+                          <div class="btn btn-primary-outline text-white rounded-pill shadow-lg w-100 mb-1">Get started
+                          </div> </a>
+                        </td>
+                        <td data-label="Webform Max" class="bg-primary w-25"><a class="btn" href="#"><span
+                              class="ptable-price">$249</span>/month</a>
+                          <p>
+                            $799 0ne time setup
+                          </p>
+                          {% if route == 'pricing_internal' %}
+                          <a href="https://datalabz.re/secure/login_user/" target="_blank">
+                          {% else %}
+                          <a href="https://www.chargebee.com/">
+                          {% endif %}
+                          <div class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1">
+                              Get started </div></a>
+                        </td>
+                      </tr>
+                    </tfoot>
+                  </table>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+        </div>
+
+
+      </div>
+
+
+
+  </section>
+  <!--Fub- Olny Plan END-->
+
+<!-- Notes -->
+<div class="container">
+  <div class="">
+    <h3>Notes</h3>
+    <p>*Form Field limits Apply</p>
+  </div>
+</div>
+<!-- Notes End -->
+
+
+  <!-- CTA -->
+
+  <div class="container-fluid p-5 cta-bg" style="background-color: #032241; margin-top: 300px;">
+    <div class="row">
+      <div class="container p-0 ">
+        <div class="cta-price row bg-white justify-content-md-center py-4 p-0" style="margin-top: -200px;">
+          <div class=" col-md-10 p-lg-5 p-4 py-5  m-0 text-center">
+            <h3 class="pb-2">Do you need extra automation or an enterpise solution?</h3>
+            <p class="pb-4">Please Subscribe to any suitable plan and enjoy. you can turn on auto-payment to avoid being
+              disconnected from you data and FUB automations. To get help you can schedule a demo. View pricing details
+              to add add-ons and plugins.</p>
+            <button onclick="location.href='https://demo.interface.re/interface-demo'" type="button" class="btn btn-primary">Schedule a Demo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/iconify/2.0.0/iconify.min.js"></script>
+
+
+  <script>
+    // targets the table data and assign data-label according to package
+    // displays only for mobile view
+    // can be use for javascript targeting
+
+
+    var td2 = document.querySelectorAll('tr td:nth-child(2)');
+    for (var i = 0; i < td2.length; i++) {
+      td2[i].setAttribute('data-label', 'FUB Emeded Plan');
+    }
+
+    var td3 = document.querySelectorAll('tr td:nth-child(3)');
+    for (var i = 0; i < td3.length; i++) {
+      td3[i].setAttribute('data-label', 'Webform Plus');
+    }
+
+    var td4 = document.querySelectorAll('tr td:nth-child(4)');
+    for (var i = 0; i < td4.length; i++) {
+      td4[i].setAttribute('data-label', 'Webform Max');
+    }
+
+
+
+  </script>
+{% endblock %}

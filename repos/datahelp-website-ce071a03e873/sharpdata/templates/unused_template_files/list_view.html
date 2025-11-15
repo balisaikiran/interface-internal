@@ -1,0 +1,516 @@
+{% load static %}
+<head>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="  https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://eia.followupboss.com/embeddedApps-v1.0.0.js" type="text/javascript"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body style="min-height:400px; height:auto">
+<style>
+
+    * {
+        box-sizing: border-radius;
+        font-family: 'Rubik', sans-serif;
+    }
+
+    .container {
+        /* border: 1px solid black; */
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+    color: white;
+        display: grid;
+        place-items: center;
+        background-color: white;
+    }
+
+
+    .list {
+        list-style-type: none;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 0px;
+        padding-bottom: 10px;
+    }
+
+    .testdiv1 {
+        box-shadow: 4px 4px 10px #C4C4C4;
+        width: 100%;
+        background-color: #3240a8;
+        display: flex;
+        margin-top: 3%;
+        color: white;
+    }
+
+    .Terminated_Stage {
+        box-shadow: 4px 4px 10px #C4C4C4;
+        width: 100%;
+        background-color: #a84432;
+        display: flex;
+        margin-top: 3%;
+        color: white;
+    }
+
+    .testDiv4 {
+        align-content: left;
+        width: 100%;
+        color: white;
+    }
+
+    .testdiv3 {
+        display: block;
+        width: 100%;
+        text-align: -webkit-center;
+        color: white;
+    }
+
+
+    .runnerIconImage {
+        width: 38px;
+        height: 38px;
+
+    }
+
+    .runnerBackground {
+        margin: 15px;
+        width: 35px;
+        height: 35px;
+        border-radius: 100px;
+        padding: 20px;
+        background-image: linear-gradient(45deg, #F5F7F9, #abd8ff);
+    }
+
+    .PDworkoutInfo {
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        color: white;
+        font-weight: 500;
+        font-size: 24px;
+        margin-top: 15px;
+        margin-bottom: 0px;
+        margin-left: 5px;
+    }
+
+    .created_on {
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        color: #333333;
+        font-weight: 300;
+        font-size: 14px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        text-align: right;
+        padding-right: 20px;
+
+    }
+
+    .PDworkoutProgress {
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        color: white;
+        font-weight: 500;
+        font-size: 35px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+    }
+
+    .PDworkoutProgressText {
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        color: white;
+        font-weight: 500;
+        font-size: 18px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+
+    .workoutListMainDiv {
+        width: 100%;
+    }
+
+    .btn-circle {
+        width: 45px;
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
+        padding: 0;
+        border-radius: 50%;
+    }
+
+    .btn-circle i {
+        position: relative;
+        top: -1px;
+    }
+
+    .btn-circle-sm {
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        font-size: 0.9rem;
+    }
+
+    .btn-circle-lg {
+        width: 55px;
+        height: 55px;
+        line-height: 55px;
+        font-size: 1.1rem;
+    }
+
+    .btn-circle-xl {
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        font-size: 1.3rem;
+    }
+.loading {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: visible;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Transparent Overlay */
+.loading:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
+
+/* :not(:required) hides these rules from IE9 and below */
+.loading:not(:required) {
+  /* hide "loading..." text */
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.loading:not(:required):after {
+  content: '';
+  display: block;
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  -webkit-animation: spinner 1500ms infinite linear;
+  -moz-animation: spinner 1500ms infinite linear;
+  -ms-animation: spinner 1500ms infinite linear;
+  -o-animation: spinner 1500ms infinite linear;
+  animation: spinner 1500ms infinite linear;
+  border-radius: 0.5em;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+}
+
+/* Animation */
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.dhh1 {
+  color: #3240a8;
+  position: absolute;
+  font-size: 2.5em;
+  height: 1em;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 2;
+  margin: auto;
+  text-align: center;
+  opacity: 0;
+  animation: appear 4s  forwards;
+  animation-iteration-count: infinite;
+}
+
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+    .boxcon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        margin: auto;
+        height: 200px;
+        width: 200px;
+    }
+
+    .box1 {
+        position: absolute;
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        border: 2px solid rgb(0, 225, 255);
+        animation-name: spinx;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        text-align: center;
+    }
+
+    .box2 {
+        position: absolute;
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        border: 2px solid rgb(0, 255, 255);
+        animation-name: spiny;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        text-align: center;
+    }
+
+    @keyframes spinx {
+        0% {
+            transform: rotateX(0deg);
+        }
+
+        100% {
+            transform: rotateX(360deg);
+        }
+    }
+
+    @keyframes spiny {
+        0% {
+            transform: rotateY(0deg);
+        }
+
+        100% {
+            transform: rotateY(360deg);
+        }
+    }
+
+</style>
+
+<div class="container" id="container">
+<!--    <div class="loading" id="loader" style="display: none">Loading&#8230;</div>-->
+    <div id="loader" style="display: none;">
+           <div class="boxcon">
+        <div class="box1">
+        </div>
+          <!-- <h1 class="dhh1" style="color:#3240a8"></h1> -->
+          <img alt="interface" class="dhh1" src="{% static 'images/interface_logo.png' %}">
+
+        <div class="box2">
+        </div>
+        </div>
+    </div>
+    <div class="workoutListMainDiv" id="workoutListMainDiv">
+        <div class="PDworkoutInfo">
+            <h2 class="PDworkoutInfo" style="color:#000;">Opportunities</h2>
+            {% if form_type == 'wufoo_link' %}
+            <a class=" button cool-btn3 ripple float-right"
+               href="#"
+               onclick="showLoaderOnClick('wufoo_form?context={{context_data}}&signature={{signature}}')"
+            >
+                <button class="btn btn-success btn-circle btn-circle-sm m-1" style="background-color: #3240a8"><i class="fa fa-plus"></i></button>
+            </a>
+            {% else %}
+            <a class=" button cool-btn3 ripple float-right"
+               href="#"
+               onclick="showLoaderOnClick('form?context={{context_data}}&signature={{signature}}')"
+            >
+                <button class="btn btn-success btn-circle btn-circle-sm m-1" style="background-color: #3240a8"><i class="fa fa-plus"></i></button>
+            </a>
+            {% endif %}
+            <hr>
+        </div>
+
+        <div>
+
+            <ul class="list">
+
+                {% for op in oppurtunity_list %}
+                {% if op.notshow %}
+                {% else %}
+                <li>
+                    {% if form_type == 'wufoo_link' %}
+                    <a href="#"
+               onclick="showLoaderOnClick('/common_form/update_wufoo_form?stage={{op.opp_stage}}&uid={{op.teamFubDealId}}&deal_id={{op.fub_deal_id}}&update_form=1&context={{context_data}}&signature={{signature}}')"
+                    >
+                        {% else %}
+                        <a href="#"
+                        onclick="showLoaderOnClick('/common_form/update_form?stage={{op.opp_stage}}&uid={{op.teamFubDealId}}&deal_id={{op.fub_deal_id}}&update_form=1&context={{context_data}}&signature={{signature}}')"
+                        >
+                        {% endif %}
+                        
+                                    
+                                    
+                        <div class="{% if op.opp_stage == 'Terminated' %} Terminated_Stage
+                                        {% else %}
+                                        testdiv1
+                                        {% endif %}"
+                        >
+                            <div class="testdiv3">
+                                <h3 class="PDworkoutInfo">Stage : {{op.opp_stage}}</h3>
+                                <div class="testDiv4">
+                                    <h3 class="PDworkoutProgress"></h3>
+                                    {% if op.opp_stage == 'Appointment Set' or op.opp_stage == 'Pipeline' %}
+                                    {% if op.opp_address != '' %}
+                                    <h3 class="PDworkoutProgressText">{{op.appt_set_lead_type}} -
+                                        {{op.opp_address}}</h3>
+                                    {% else %}
+                                    <h3 class="PDworkoutProgressText">{{op.appt_set_lead_type}} -
+                                        {{op.opp_last_name}}</h3>
+                                    {% endif %}
+                                    {% else %}
+                                    {% if op.opp_address %}
+                                    <h3 class="PDworkoutProgressText">{{op.opp_type}} - {{op.opp_address}}</h3>
+                                    {% else %}
+                                    <h3 class="PDworkoutProgressText">{{op.opp_type}} - {{op.opp_last_name}}</h3>
+                                    {% endif %}
+                                    {% endif %}
+                                </div>
+                                <h3 class="created_on">{{op.createdAt}}</h3>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                {% endif %}
+                {% empty %}
+                <p style="text-align: center; color:#000;">No deals found!</p>
+                {% endfor %}
+
+            </ul>
+
+            <div class="footer" id="footer" style="text-align:center">
+                <a href="https://knowledge.interface.re/fub-embedded-app-documentation" target="_blank" rel="noopener noreferrer" text-align="center">Learn about the InterFace App</a>
+                <br><br>
+                <img alt="datalabz" src="https://datalabz.re/static/images/interface_logo.png" style="width: 200; height: auto;  vertical-align: middle; display: inline-block;">
+            </div>        
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    $(document).ready(function () {
+        $(document).on("click", "a", function () {
+            console.log("loader added!!");
+            window.location.href = '/common_form/loader';
+            window.location.reload();
+        });
+    });
+
+    function showLoader(){
+        document.getElementById('workoutListMainDiv').style.display = "none";
+        document.getElementById('loader').style.display = "block";
+
+    }
+
+    var timeout;
+
+    function sleep(delay, url) {
+        if(timeout) {
+            clearTimeout(timeout);
+        }
+        timeout = setTimeout(function() {
+            window.location.href=url;
+        }, delay);
+    }
+
+    function myFunction() {
+        console.log("slept for 1 second!");
+    }
+
+    function showLoaderOnClick(url) {
+      showLoader();
+      console.log("sleep for 0.5 second");
+        sleep(500, url);
+    console.log(url);
+
+  }
+</script>
+
+</body>

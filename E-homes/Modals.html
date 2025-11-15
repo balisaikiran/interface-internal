@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=768, initial-scale=1" />
+
+    <title>Interface</title>
+    <!-- Fonts CDN -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+
+    <link href='assets/css/style.css' rel='stylesheet'>
+
+
+
+</head>
+
+
+
+<body>
+
+    <div class="container py-5 my-5">
+        <div class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#oppCreate">Create Opp table</div>
+        <div class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#oppCreate2">Create Opp table</div>
+    </div>
+
+
+    <div class="modal fade" id="oppCreate" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content border-0 shadow-lg ">
+            <div class="modal-header px-5">
+              <h5 class="modal-title fs-6">Create New Leaderboard</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-5">
+              <div class="text-center py-5 px-5">
+
+                <img class="mb-3" src="ld-img.png" height="200">
+                <h3 class="fw-bold">Leaderboards</h3>
+                <h5 class="fw-light">The fun way to drive accountability</h5>
+                <p class="mt-4 small fw-light">Leaderboards are created from the opportunity table. you can generate a leaderboard for different data parameters and from custom fields. 
+                    It’s super easy and fun to generate. You can apply filter or use default Data table</p>
+                <button type="button" class="px-4 btn btn-primary">Create New Leaderboard</button>
+                
+              </div>
+            </div>
+            <div class="modal-footer border-0">
+             
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+    <div class="modal fade" id="oppCreate2" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content border-0 shadow-lg ">
+            <div class="modal-header px-5">
+              <h5 class="modal-title fs-6">Create New Leaderboard</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body px-5 pt-4">
+
+                <div class="d-flex align-items-center">
+                    
+                    <div>
+                        <i class="iconify text-success" data-icon="bxs:check-circle"></i>
+                        <span class="text-decoration-underline small text-secondary">Filter applied</span>
+                    </div>
+                    <i class="text-secondary small mx-2">NB: You have the option to apply filters to streamline the dataset.</i>
+                </div>
+
+                <div class="mt-5 mb-5">
+                    <p style="font-weight: 500;">Which data parameter would you like to use for grouping your leaderboard?</p>
+                    <select class="form-control form-select input-bn" required>
+                        <option disabled selected>Select parameter</option>
+                        <option>closed Volume</option>
+                        <option>Agents</option>
+                    </select>
+                </div>
+
+                <div class="mb-5">
+                    <p class="m-0 mb-2" style="font-weight: 500;">How do you want your leaderboards</p>
+                    <span class="small text-secondary">Please choose the action you'd like to perform on the leaderboards.</span>
+
+                    <div class="mt-3">
+                        <div class="mb-3"> 
+                            <label class="d-flex form-check-label gap-3 p-3 border shadow-sm rounded-3" for="countRow">
+                                <input class="form-check-input d-x-cdheck" type="radio" name="actiontype" id="countRow">
+                                <div class="d-flex flex-column">
+                                    <span style="font-weight: 500;">Count Rows</span>
+                                    <span class="mt-1 small text-secondary">This function counts the total number of data row </span>
+                                </div>
+                            </label>
+                        </div>
+
+                        <div class="mb-3"> 
+                            <label class="d-flex form-check-label gap-3 p-3 border shadow-sm rounded-3" for="addCol">
+                                <input class="form-check-input d-x-check" type="radio" name="actiontype" id="addCol">
+                                <div class="d-flex flex-column">
+                                    <span style="font-weight: 500;">Add Data Column</span>
+                                    <span class="mt-1 small text-secondary">This function sums up all numeric datas only </span>
+                                </div>
+                            </label>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="mb-4">
+                    <p class="m-0 mb-2" style="font-weight: 500;">Select your Timeframe</p>
+                    <span class="small text-secondary">Choose the timeframe for which you'd like the leaderboards to be displayed.</span>
+                    <div class="d-flex align-items-end flex-nowrap input-group mt-3">
+                               
+                        <div>
+                            <label class="small">Start date</label>
+                            <input class="form-control rounded-0 search-fgy dy-filt" type="date" placeholder="start date">
+                        </div>
+                        
+
+                        <hr class="col-1 mb-4 my-auto">
+
+                        <div>
+                            <label class="small">End date</label>
+                            <input class="form-control search-fgy dy-filt rounded-0" type="date" placeholder="end date">
+                        </div>
+
+                    </div>
+                </div>
+                
+
+              
+            </div>
+            <div class="modal-footer px-5 py-4 border-0">
+                <button type="button" class="px-4 btn btn-primary-outline">Cancel</button>
+                <button type="button" class="px-4 btn btn-primary">Create New Leaderboard</button>
+            </div>
+          </div>
+        </div>
+    </div>
+
+</body>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<!-- Iconify icons -->
+<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+<!-- Bootstrap JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+
+</html>

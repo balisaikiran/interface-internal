@@ -1,0 +1,512 @@
+{% extends 'dashboard/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+<body>
+<div class="content">
+
+    <div class="animated fadeIn">
+
+
+        <h5>Secrets</h5>
+        <p class="text-secondary mt-2">Connect the following accounts to finish to enjoy Interface. The Following Integration are available for you account based on your subscription plan.</p>
+
+        <section class="d-flex justify-content-center justify-content-lg-start my-5 gap-xl-4 gap-4 flex-wrap">
+
+
+            {% if planFubTwillio %}
+            <div class="col-xl col-lg-3 col-md-5 col-9 d-flex justify-content-center align-items-center flex-column text-center bg-white p-0 rounded-3 border">
+
+                <div class="p-4">
+                    <img src="{% static 'images/twillo.png'%}"   width="150" class="">
+            
+                </div>
+                
+                <button type="button" class="rounded-0 w-100 mt-3 mb-0 mt-auto align-items-center btn btn-primary" data-bs-toggle="modal" data-bs-target="#TwilloPin">
+                    <span>Connect Twillo</span>
+                </button>
+                  
+            </div>
+            {% endif %}
+
+            {# if planFubTwillio or planFubSisu or planFubOtc or planFubWufoo or chatgpt_integration #}
+            <div class="col-xl col-lg-3 col-md-5 col-9 d-flex justify-content-center align-items-center flex-column text-center bg-white p-0 rounded-3 border">
+
+                <div class="p-4">
+                    <img src="https://assets-global.website-files.com/5c87ecb83f656c685ed4cf87/5caf60869e5e1c447811df96_logo_alt.png"   width="150" class="">
+            
+                </div>
+                
+                <button type="button" class="rounded-0 w-100 mt-3 mb-0 mt-auto align-items-center btn btn-primary" data-bs-toggle="modal" data-bs-target="#fubPin">
+                    <span>Connect Account</span>
+                </button>
+                  
+            </div>
+            {# endif #}
+
+            {# if planFubSisu #}
+            <div class="col-xl col-lg-3 col-md-5 col-9 d-flex justify-content-center align-items-center flex-column text-center bg-white p-0 rounded-3 border">
+
+                <div class="p-4">
+                    <img src="https://global-uploads.webflow.com/5f4444910aa0ad6a50bb4f52/5f444fb00e4dc15dd0f0416e_sisu-logo.svg" width="120" class="">
+                </div>
+                
+                <button type="button" class="rounded-0 w-100 mt-3 mb-0 mt-auto align-items-center btn btn-primary" data-bs-toggle="modal" data-bs-target="#sisupin">
+                    <span>Connect Account</span>
+                </button>
+                  
+            </div>
+            {# endif #}
+
+            {# if planFubOtc #}
+            <div class="col-xl col-lg-3 col-md-5 col-9 d-flex justify-content-center align-items-center flex-column text-center bg-white p-0 rounded-3 border">
+
+                <div class="p-4">
+                    <img src="{% static 'images/otc.png'%}" width="150" class="">
+                </div>
+                
+                <button type="button" class="rounded-0 w-100 mt-3 mb-0 mt-auto align-items-center btn btn-primary" data-bs-toggle="modal" data-bs-target="#otcpin">
+                    <span>Connect Account</span>
+                </button>
+                  
+            </div>
+            {# endif #}
+          
+        </section>
+
+    </div>
+    
+
+    <div class="modal fade right" id="TwilloPin" tabindex="-1" data-bs-backdrop="static" role="dialog" aria-hidden="true">
+        <div class="col-8 col-lg-5 col-xl-5 modal-dialog h-100" style="margin:0; margin-left:auto;" role="document">
+
+            <div class="modal-content h-100">
+                <div class="modal-header border-0">
+                    <img src="{% static 'images/twillo.png'%}"   width="150" class="">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body overflow-auto p-md-5 border-0">
+                    <section>
+
+                        <div class="d-flex justify-content-between">
+                            <p class="m-0">Please Input correct credentials</p>
+                            <span class="d-flex align-items-center togglePassword" id="togglePassword">
+                                <i class="iconify mx-1" data-icon="mdi:eye"></i>
+                                <span class="small pointer text-decoration-underline d-none d-md-block">Show Details</span>
+                            </span>
+                        </div>
+            
+                    
+                        <form class="mt-4" action="" method="POST">
+                            {% csrf_token%}
+
+                            <div class="mb-4">
+                                <div class="form-floating w-100 form-group">
+                                    <input
+                                        placeholder="Follow-boss-email "
+                                        class="form-control input-bn"
+                                        type="text"
+                                        required
+                                        name="Tw_username"
+                                        value="{{twillio_email}}"
+                                      />
+                                     
+                                    <label>
+                                        <span class="d-flex align-items-center">
+                                            <i class="iconify me-1 mr-1 fs-5" data-icon="mdi:account-security" ></i>
+                                            <span>Twilio Username</span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <!-- placeholder for errors -->
+                                
+                            </div>
+        
+                            <div class="mb-4">
+                                <div class="form-floating w-100 form-group">
+                                    <input
+                                        placeholder="Workspace title "
+                                        class="form-control input-bn keys"
+                                        type="password"
+                                        required
+                                        name="Tw_password"
+                                        value="{{twillio_password}}"
+                                      />
+                                    <label>
+                                        <span class="d-flex align-items-center">
+                                            <i class="iconify me-1 mr-1 fs-5" data-icon="material-symbols:lock-person-sharp" ></i>
+                                            <span>Twilio Password</span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <!-- placeholder for errors -->
+                                
+                            </div>
+                           
+                            <div class="d-flex mt-4  gap-2">
+                                <button type="button" data-bs-dismiss="modal" class="btn btn-primary-outline">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+            
+                        </form>
+            
+                
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="modal fade right" id="fubPin" tabindex="-1" data-bs-backdrop="static" role="dialog" aria-hidden="true">
+        <div class="col-8 col-lg-5 col-xl-5 modal-dialog h-100" style="margin:0; margin-left:auto;" role="document">
+
+            <div class="modal-content h-100">
+                <div class="modal-header border-0">
+                    <img src="https://assets-global.website-files.com/5c87ecb83f656c685ed4cf87/5caf60869e5e1c447811df96_logo_alt.png"   width="150" class="">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body overflow-auto p-md-5 border-0">
+                    <section>
+
+                        <div class="d-flex justify-content-between">
+                            <p class="m-0">Please Input correct credentials</p>
+                            <span class="d-flex align-items-center togglePassword" id="togglePassword">
+                                <i class="iconify mx-1" data-icon="mdi:eye"></i>
+                                <span class="small pointer text-decoration-underline d-none d-md-block">Show Details</span>
+                            </span>
+                        </div>
+            
+                    
+                        <form class="mt-4" action="" method="POST">
+                            {% csrf_token%}
+
+                            <div class="mb-4">
+                                <div class="form-floating w-100 form-group">
+                                    <input
+                                        placeholder="Follow-boss-email"
+                                        class="form-control input-bn"
+                                        type="text"
+                                        name="FUB_username"
+                                        value="{{fub_email}}"
+                                      />
+                                     
+                                    <label>
+                                        <span class="d-flex align-items-center">
+                                            <i class="iconify me-1 mr-1 fs-5" data-icon="mdi:account-security" ></i>
+                                            <span>FUB Username</span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <!-- placeholder for errors -->
+                                
+                            </div>
+        
+                            <div class="mb-4">
+                                <div class="form-floating w-100 form-group">
+                                    <input
+                                        placeholder="Enter password"
+                                        class="form-control input-bn keys"
+                                        type="password"
+                                        name="FUB_password"
+                                        value="{{fub_password}}"
+                                      />
+                                    <label>
+                                        <span class="d-flex align-items-center">
+                                            <i class="iconify me-1 mr-1 fs-5" data-icon="material-symbols:lock-person-sharp" ></i>
+                                            <span>FUB Password</span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <!-- placeholder for errors -->
+                                
+                            </div>
+        
+                            <div class="mb-4">
+                                <div class="form-floating w-100 form-group">
+                                    <input
+                                        placeholder="Enter API Key"
+                                        class="form-control input-bn keys fub"
+                                        type="text"
+                                        id="fub_key"
+                                        name="fub_key"
+                                        value=""
+                                      />
+                                    
+                                    <label>
+                                        <span class="d-flex align-items-center">
+                                            <i class="iconify me-1 mr-1 fs-5" data-icon="ic:round-key" ></i>
+                                            <span>FUB API Key</span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <!-- placeholder for errors -->
+                                {% if fub_key %} 
+                                <span class="mt-2 d-flex align-items-center"><i class="bx bxs-check-shield text-success me-1"></i>FUB Api Key already present, enter to update existing key</span>
+                                {% else%}
+                                <span class="mt-2 d-flex align-items-center"><i class="bx bxs-info-circle text-secondary me-1"></i><p class="m-0">Click <a class="link-primary" href="https://kb.interface.re/en/articles/8154366-how-to-add-credentials-and-api-key-to-your-interface-account" target="_blank">here</a> to learn how to get your FUB API KEY</p></span>
+                                {% endif %}
+                                
+                                
+                                {% if fub_key_authorised == "1" %}<span class="fa fa-check-circle checkspan" title="Fub Api Key Authenticated!"></span> Fub Api Key Authenticated!{% endif %}  
+                                {% if fub_key_authorised_Secondarykey == "2" %}<span class="fa fa-check-circle checkspan" title="Fub Api Key Authenticated!"></span> Fub Api Key Authenticated!{% endif %}  
+                                {% if fub_key_unauthorised == "0" %}<span class="fa fa-exclamation-circle errspan" title="Fub Api Key Authentication Failed!"></span> Fub Api Key Authentication Failed! {% endif %} 
+                                
+                            </div>
+                           
+                            <div class="d-flex mt-4  gap-2">
+                                <button type="button" data-bs-dismiss="modal" class="btn btn-primary-outline">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+            
+                        </form>
+            
+                
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="modal fade right" id="sisupin" tabindex="-1" data-bs-backdrop="static" role="dialog" aria-hidden="true">
+        <div class="col-8 col-lg-5 col-xl-5 modal-dialog h-100" style="margin:0; margin-left:auto;" role="document">
+
+            <div class="modal-content h-100">
+                <div class="modal-header border-0">
+                    <img src="https://global-uploads.webflow.com/5f4444910aa0ad6a50bb4f52/5f444fb00e4dc15dd0f0416e_sisu-logo.svg" width="100" class="">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body overflow-auto p-md-5 border-0">
+                    <section>
+
+                        <div class="d-flex justify-content-between">
+                            <p class="m-0">Please Input correct credentials</p>
+                            <span class="d-flex align-items-center togglePassword" id="togglePassword">
+                                <i class="iconify mx-1" data-icon="mdi:eye"></i>
+                                <span class="small pointer text-decoration-underline d-none d-md-block">Show Details</span>
+                            </span>
+                        </div>
+            
+                    
+                        <form class="mt-4" action="" method="POST">
+                            {% csrf_token%}
+
+                            <div class="mb-4">
+                                <div class="form-floating w-100 form-group">
+                                    <input
+                                        placeholder="Follow-boss-email "
+                                        class="form-control input-bn"
+                                        type="text"
+                                        required
+                                        name="SISU_username"
+                                        value="{{SISU_username}}"
+                                      />
+                                     
+                                    <label>
+                                        <span class="d-flex align-items-center">
+                                            <i class="iconify me-1 mr-1 fs-5" data-icon="mdi:account-security" ></i>
+                                            <span>SISU username</span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <!-- placeholder for errors -->
+                                
+                            </div>
+        
+                            <div class="mb-4">
+                                <div class="form-floating w-100 form-group">
+                                    <input
+                                        placeholder="Workspace title "
+                                        class="form-control input-bn keys"
+                                        type="password"
+                                        required
+                                        name="SISU_password"
+                                        value="{{SISU_password}}"
+                                      />
+                                    <label>
+                                        <span class="d-flex align-items-center">
+                                            <i class="iconify me-1 mr-1 fs-5" data-icon="material-symbols:lock-person-sharp" ></i>
+                                            <span>SISU Password</span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <!-- placeholder for errors -->
+                                
+                            </div>
+        
+                            <div class="d-flex mt-4  gap-2">
+                                <button type="button" data-bs-dismiss="modal" class="btn btn-primary-outline">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+            
+                        </form>
+            
+                
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="modal fade right" id="otcpin" tabindex="-1" data-bs-backdrop="static" role="dialog" aria-hidden="true">
+        <div class="col-8 col-lg-5 col-xl-5 modal-dialog h-100" style="margin:0; margin-left:auto;" role="document">
+
+            <div class="modal-content h-100">
+                <div class="modal-header border-0">
+                    <img src="{% static 'images/otc.png'%}" width="150" class="">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body overflow-auto p-md-5 border-0">
+                    <section>
+
+                        <div class="d-flex justify-content-between">
+                            <p class="m-0">Please Input correct credentials</p>
+                            <span class="d-flex align-items-center togglePassword" id="togglePassword">
+                                <i class="iconify mx-1" data-icon="mdi:eye"></i>
+                                <span class="small pointer text-decoration-underline d-none d-md-block">Show Details</span>
+                            </span>
+                        </div>
+            
+                    
+                        <form class="mt-4" action="" method="POST">
+                            {% csrf_token%}
+
+                            <div class="mb-4">
+                                <div class="form-floating w-100 form-group">
+                                    <input
+                                        placeholder="Follow-boss-email "
+                                        class="form-control input-bn"
+                                        type="text"
+                                        required
+                                        name="OTC_username"
+                                        value="{{OTC_username}}"
+                                      />
+                                     
+                                    <label>
+                                        <span class="d-flex align-items-center">
+                                            <i class="iconify me-1 mr-1 fs-5" data-icon="mdi:account-security" ></i>
+                                            <span>OTC username</span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <!-- placeholder for errors -->
+                                
+                            </div>
+        
+                            <div class="mb-4">
+                                <div class="form-floating w-100 form-group">
+                                    <input
+                                        placeholder="Workspace title "
+                                        class="form-control input-bn keys"
+                                        type="password"
+                                        required
+                                        name="SISU_password"
+                                        value="{{OTC_password}}"
+                                      />
+                                    <label>
+                                        <span class="d-flex align-items-center">
+                                            <i class="iconify me-1 mr-1 fs-5" data-icon="material-symbols:lock-person-sharp" ></i>
+                                            <span>OTC Password</span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <!-- placeholder for errors -->
+                                
+                            </div>
+        
+                            <div class="d-flex mt-4  gap-2">
+                                <button type="button" data-bs-dismiss="modal" class="btn btn-primary-outline">Close</button>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+            
+                        </form>
+            
+                
+                    </section>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+    var is_success = "{{ is_success }}"
+    var fub_key_authorised = "{{ fub_key_authorised }}"
+    var fub_key_authorised_Secondarykey = "{{ fub_key_authorised_Secondarykey }}"
+    var fub_key_unauthorised = "{{ fub_key_unauthorised }}"
+    
+    if (is_success === "1"){
+        createSwal('Update Successful!', 'Credentials Updated.', 'success')
+    }
+
+    if (fub_key_authorised === "1"){
+        createSwal('Update Successful!', 'FUB API Key Authenticated.', 'success')
+    }
+    if (fub_key_unauthorised === "0"){
+        createSwal('Update Failed!', 'FUB API Key authentication failed. Please re-enter FUB API Key.', 'error')
+    }
+    if(fub_key_authorised === "2"){
+        createSwal('Update Successful!!', 'Credentials have been successfully updated. These are NOT FUB Primary (Owner) Account Credentials and wont work with Automation Build', 'success')
+    }
+    
+    function createSwal(title, text, icon){
+        swal({
+                title: title,
+                text: text,
+                icon: icon,
+                confirmButtonText: 'Ok'
+        });
+    }
+</script>
+
+<script>
+    $(".togglePassword").on("click", function () {
+        if ($(".keys").attr("type") === "password") {
+          $(".keys").attr("type", "text");
+        } else {
+          $(".keys").attr("type", "password");
+        }
+    });
+
+
+
+</script>
+<script>
+
+$(document).ready(function () {
+    $(".fubbb").on("input", function () {
+    
+        var inputValue = $(this).val();
+        var length = inputValue.length;
+
+        if (length > 4) {
+            var maskedValue = '*'.repeat(length - 4) + inputValue.substring(length - 4);
+            $(this).val(maskedValue); // Set the masked value in the input field
+            $(this).attr("data-fub_key", inputValue); // Store the real value in a data attribute
+        } else {
+            $(this).attr("data-fub_key", inputValue); // If input length is <= 4, store the real value.
+        }
+    });
+}
+);
+
+
+
+  
+</script>
+{% endblock %}

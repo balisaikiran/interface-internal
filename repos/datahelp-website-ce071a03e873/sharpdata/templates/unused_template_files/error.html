@@ -1,0 +1,131 @@
+{% load static %}
+
+<head>
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link crossorigin="anonymous"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css"
+          integrity="sha512-63+XcK3ZAZFBhAVZ4irKWe9eorFG0qYsy2CaM5Z+F3kUn76ukznN0cp4SArgItSbDFD1RrrWgVMBY9C/2ZoURA=="
+          rel="stylesheet"/>
+    <link crossorigin="anonymous"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+          integrity="sha512-aEe/ZxePawj0+G2R+AaIxgrQuKT68I28qh+wgLrcAJOz3rxCP+TwrK5SPN+E5I+1IQjNtcfvb96HDagwrKRdBw=="
+          rel="stylesheet"/>
+    <link crossorigin="anonymous"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker-standalone.css"
+          integrity="sha512-2e0Kl/wKgOUm/I722SOPMtmphkIjECJFpJrTRRyL8gjJSJIP2VofmEbqyApMaMfFhU727K3voz0e5EgE3Zf2Dg=="
+          rel="stylesheet"/>
+    <link crossorigin="anonymous"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker-standalone.min.css"
+          integrity="sha512-tjNtfoH+ezX5NhKsxuzHc01N4tSBoz15yiML61yoQN/kxWU0ChLIno79qIjqhiuTrQI0h+XPpylj0eZ9pKPQ9g=="
+          rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <style>
+        /* Just makin' it look nice. */
+        body {
+            background: #00008B;
+            min-height: 600px;
+        }
+
+        .conditional {
+            margin: 1em 0 0.5em;
+            border-top: 2px dotted #eee;
+            padding-top: 1em;
+            color: rgba(0, 0, 0, .7);
+            font-size: .9em;
+        }
+
+        .conditional > .conditional {
+            color: rgba(0, 0, 0, .5);
+        }
+
+        #demo {
+            text-align: left;
+            padding: 1.5em 3em;
+            background: #fff;
+            width: 100%;
+            margin: 2em auto;
+            border-radius: .5em;
+            font: 18px/22px 'Open Sans', Arial, Verdana, serif;
+        }
+
+        /* label+label {
+            margin-left: 1em;
+        } */
+        label {
+            white-space: pre-wrap;
+        }
+
+        input + span {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 15px;
+            height: 15px;
+            border: 2px solid #6ab5a8;
+        }
+
+        input[type=radio] + span {
+            border-radius: 50%;
+        }
+
+        input[type=radio]:checked + span {
+            background: rgba(106, 181, 169, 1);
+            background: -moz-radial-gradient(center, ellipse cover, rgba(106, 181, 169, 1) 44%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 46%, rgba(255, 255, 255, 1) 55%);
+            background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(44%, rgba(106, 181, 169, 1)), color-stop(45%, rgba(255, 255, 255, 1)), color-stop(46%, rgba(255, 255, 255, 1)), color-stop(55%, rgba(255, 255, 255, 1)));
+            background: -webkit-radial-gradient(center, ellipse cover, rgba(106, 181, 169, 1) 44%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 46%, rgba(255, 255, 255, 1) 55%);
+            background: -o-radial-gradient(center, ellipse cover, rgba(106, 181, 169, 1) 44%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 46%, rgba(255, 255, 255, 1) 55%);
+            background: -ms-radial-gradient(center, ellipse cover, rgba(106, 181, 169, 1) 44%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 46%, rgba(255, 255, 255, 1) 55%);
+            background: radial-gradient(ellipse at center, rgba(106, 181, 169, 1) 44%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 46%, rgba(255, 255, 255, 1) 55%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6ab5a9', endColorstr='#ffffff', GradientType=1);
+        }
+
+        input[type=checkbox]:checked + span:after {
+            content: "\00d7";
+            font-weight: bold;
+            position: absolute;
+            top: -7px;
+            left: 1px;
+            font-size: 20px;
+            color: #6ab5a8;
+        }
+
+        input[type=radio],
+        input[type=checkbox] {
+            /*hide the radio button*/
+            filter: alpha(opacity=0);
+            -moz-opacity: 0;
+            -khtml-opacity: 0;
+            opacity: 0;
+        }
+
+        select,
+        input[type=text] {
+            border-radius: 5px;
+            padding: 6px 10px;
+            border: 2px solid #00008B;
+            font-color: #666;
+            font-size: 15px;
+            width: 65%;
+        }
+    </style>
+</head>
+
+<body>
+<div id="demo">
+    <div style="text-align: center;">
+        <a href="https://datalabz.re">
+        <button class="btn btn-success btn-circle btn-circle-sm m-1" style="background-color: #3240a8;">Something Went Wrong!! Please email us at support@interface.re</button></a>
+    </div>
+    <br>
+    <hr>
+    <div class="footer" id="footer" style="text-align:center">
+        <a href="https://datalabz.helpwise.help/articles/217305" text-align="center">Learn about the DataLabz App </a>
+        <br><br>
+        <img alt="datalabz" src="https://datalabz.re/static/img/logo.png" style="width: 40px;height: auto; box-shadow: 1px 0px 1px 1px #2730a2; vertical-align: middle; border-radius: 50%; display: inline-block;">
+        <h1 id="logo text_text" style="margin:0px;font-family: 'Quantico'; letter-spacing: 3px; color: #000; display: inline-block; vertical-align: middle;" >&nbsp DataLabz</h1>
+    </div>
+</div>
+</body>

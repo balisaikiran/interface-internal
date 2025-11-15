@@ -1,0 +1,87 @@
+{% load static %}
+<!doctype html>
+
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="At Real Estate DataLabz, we help real estate teams & agents sell more homes by optimizing their CRM & IDX platforms, setting up effective follow-up systems, and making non-income generating work disappear by automating as much of the sales, marketing, and business operations processes as possible.        "
+          name="description">
+    <meta content="DataLabz" name="author">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78898293-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-78898293-3');
+    </script>
+
+
+    <!-- tapfiliate Code -->
+    <script src="https://script.tapfiliate.com/tapfiliate.js" type="text/javascript" async></script>
+    <script type="text/javascript">
+    (function(t,a,p){t.TapfiliateObject=a;t[a]=t[a]||function(){ (t[a].q=t[a].q||[]).push(arguments)}})(window,'tap');
+
+    tap('create', '37727-1b0329', { integration: "javascript" });
+    tap('detect');
+    </script>
+    <!-- tapfiliate Code  Ends-->
+
+    {% block title %}{% endblock %}
+
+    <link href="{% static 'img/logo.png' %}}" rel="shortcut icon" type="image/x-icon">
+
+    <!-- Font Awesome CSS -->
+    <link href="{% static 'css/fontawesome.min.css' %}" rel="stylesheet">
+    <!-- Themify Icons CSS -->
+    <link href="{% static 'css/themify-icons.css' %}" rel="stylesheet">
+    <!-- Elegant Line Icons CSS -->
+    <link href="{% static 'css/elegant-line-icons.css' %}" rel="stylesheet">
+    <!-- Elegant Icons CSS -->
+    <link href="{% static 'css/elegant-font-icons.css' %}" rel="stylesheet">
+    <!-- Saasbiz Icons CSS -->
+    <link href="{% static 'css/saasbiz-icons.css' %}" rel="stylesheet">
+    <!-- Animate CSS -->
+    <link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
+    <!-- Nice Select CSS -->
+    <link href="{% static 'css/nice-select.css' %}" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Slicknav CSS -->
+    <link href="{% static 'css/slicknav.min.css' %}" rel="stylesheet">
+    <!-- Pricing CSS -->
+    <link href="{% static 'css/pricing-table.css' %}" rel="stylesheet">
+    <!-- Odometer CSS -->
+    <link href="{% static 'css/odometer.min.css' %}" rel="stylesheet">
+    <!-- Venobox CSS -->
+    <link href="{% static 'css/venobox/venobox.css' %}" rel="stylesheet">
+    <!-- OWL-Carousel CSS -->
+    <link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
+    <!-- Main CSS -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    <!-- logo font -->
+    <link href="https://fonts.googleapis.com/css2?family=Emblema+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+    {% block styles %}{% endblock %}
+    <link href='https://fonts.googleapis.com/css?family=Quantico' rel='stylesheet'>
+
+
+</head>
+<body data-offset="70" data-spy="scroll" data-target="#navmenu">
+
+{% block content %}{% endblock %}
+
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

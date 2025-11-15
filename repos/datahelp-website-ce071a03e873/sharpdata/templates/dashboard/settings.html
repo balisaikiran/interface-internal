@@ -1,0 +1,419 @@
+{% extends 'dashboard/base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .root {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .types {
+        display: flex;
+        width: 100%;
+        max-height: 500px;
+    }
+
+    .types .typeItem {
+        margin: 10px 10px;
+        width: 100%;
+        height: 100px;
+        box-shadow: 0px 0px 17px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        background-color: azure;
+    }
+
+    .types .typeItem input {
+        display: none;
+        position: absolute;
+        opacity: 0;
+    }
+
+    .types .typeItem div {
+        width: 100%;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid white;
+        box-sizing: border-box;
+        border-radius: 10px;
+        margin: 0 0;
+        transition: .3s;
+    }
+
+    .types .typeItem label {
+        -webkit-box-sizing: border-box;
+        /* Safari/Chrome, other WebKit */
+        -moz-box-sizing: border-box;
+        /* Firefox, other Gecko */
+        box-sizing: border-box;
+        /* Opera/IE 8+ */
+        padding-top: 40px;
+        height: 100px;
+        font-family: arial;
+        width: inherit;
+        text-align: center;
+        cursor: pointer;
+        position: relative;
+        align-items: center;
+    }
+
+    .types .typeItem label::after {
+        content: '';
+        width: 7px;
+        height: 7px;
+        background: transparent;
+        border-radius: 50%;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        border: 3px solid rgba(0, 0, 0, 0.3);
+    }
+
+    .types .typeItem > input[type="checkbox"]:checked ~ div {
+        border-color: rgb(93, 120, 255);
+    }
+
+    .types .typeItem > input[type="checkbox"]:checked ~ div label::after {
+        background: rgb(93, 120, 255);
+    }
+
+    .types .typeItem > input[type="checkbox"]:checked ~ div label {
+        color: rgb(93, 120, 255);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="content">
+    <!-- Animated -->
+    <div class="pb-4">
+        <h4 class="box-title">Settings</h4>
+    </div>
+    <div class="animated fadeIn">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="" method="POST">
+                            {% csrf_token%}
+
+                            <!-- <div class="card">
+                              <div class="card-header">
+                                <h5 class="card-title">Plan</h5>
+                              </div>
+                              <div class="card-body">
+                                <div class="root">
+                                  <div class="types">
+                                    <div class="typeItem">
+                                      <input type="checkbox" checked="checked" id="plan1" name="Fub" value="True">
+                                      <div>
+                                        <label for="plan1">Follow Up Boss (required) </label>
+                                      </div>
+                                    </div>
+                                    <div class="typeItem">
+
+                                      <input type="checkbox" id="plan2" name="planFubTwillio" value="true">
+                                      {% if planFubTwillio %}
+                                      <script>document.getElementById("plan2").checked = true;</script>
+                                      {% endif %}
+                                      <div>
+                                        <label for="plan2">Twillio</label>
+                                      </div>
+                                    </div>
+                                    <div class="typeItem">
+                                      <input type="checkbox" id="plan3" name="planFubSisu" value="true">
+                                      {% if planFubSisu %}
+                                      <script>document.getElementById("plan3").checked = true;</script>
+                                      {% endif %}
+                                      <div>
+                                        <label for="plan3">Sisu</label>
+                                      </div>
+                                    </div>
+                                    <div class="typeItem">
+                                      <input type="checkbox" id="plan4" name="planFubReport" id="planFubReport" value="true"
+                                        onchange="updateReportView()">
+                                      {% if planFubReport %}
+                                      <script>document.getElementById("plan4").checked = true;</script>
+                                      {% endif %}
+                                      <div>
+                                        <label for="plan4">FUB Report</label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div> -->
+                            <div class="card" id="report_setting" style="display: none;">
+                                <div class="card-header">
+                                    <h5 class="card-title">Fub Repoort</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="sisu">
+                                        <div class="row form-group">
+                                            <div class="col-lg-2 col-md-2">
+                                                <label class="form-check-label" for="text-input">Smartlist Heatmap
+                                                    Report</label>
+                                            </div>
+                                            <div class="col-lg-1 col-md-1">
+                                                <input class="form-check-input" disabled
+                                                       id="smartlist_heatmap_report"
+                                                       name="smartlist_heatmap_report" type="checkbox" value="True">
+                                                {% if smartlist_heatmap_report is True %}
+                                                <script>document.getElementById("smartlist_heatmap_report").checked = true;</script>
+                                                {% endif %}
+
+
+                                            </div>
+                                            <!-- <div class="col-lg-2 col-md-2">
+                                                  <label for="text-input" class="form-check-label">Enable Embedded Users</label>
+                                                </div>
+                                                <div class="col-lg-1 col-md-1">
+                                                  <input class="form-check-input" name="fub_user_list" id="fub_user_list"
+                                                    type="checkbox" value="True">
+                                                  {% if fub_user_list is True %}
+                                                  <script>document.getElementById("fub_user_list").checked = true;</script>
+                                                  {% endif %}
+
+
+                                                </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card" id="sisu_settings" style="display: none;">
+                                <div class="card-header">
+                                    <h5 class="card-title">Sisu</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="sisu">
+                                        <div class="row form-group">
+                                            <!-- <div class="col-lg-2 col-md-2">
+                                                  <label for="text-input" class=" form-check-label">Sisu FUB Integration</label>
+                                                </div>
+                                                <div class="col-lg-1 col-md-1">
+                                                  <input class="form-check-input" name="sisu_fub_integration" type="checkbox" id="sisu_fub_integration"
+                                                  value="True" >
+                                                   {% if sisu_fub_integration is True %}
+                                                  <script>document.getElementById("sisu_fub_integration").checked=true;</script>
+                                                  {% endif %}
+                                                </div> -->
+
+                                            <div class="col-lg-2 col-md-2">
+                                                <label class="form-check-label" for="text-input">Minutes Talk Time
+                                                    Sync</label>{{minutes_talk_time_sync}}
+                                            </div>
+                                            <div class="col-lg-1 col-md-1">
+                                                <input class="form-check-input" id="minutes_talk_time_sync"
+                                                       name="minutes_talk_time_sync"
+                                                       type="checkbox" value="True">
+                                                {% if minutes_talk_time_sync is True %}
+                                                <script>document.getElementById("minutes_talk_time_sync").checked = true;</script>
+                                                {% endif %}
+
+
+                                            </div>
+
+                                            <div class="col-lg-2 col-md-2">
+                                                <label class=" form-check-label" for="text-input">Number Of Unique Dials
+                                                    Sync</label>
+                                            </div>
+                                            <div class="col-lg-1 col-md-1">
+                                                <input class="form-check-input" id="number_of_unique_dials_sync"
+                                                       name="number_of_unique_dials_sync"
+                                                       type="checkbox" value="True">
+                                                {% if number_of_unique_dials_sync is True %}
+                                                <script>document.getElementById("number_of_unique_dials_sync").checked = true;</script>
+                                                {% endif %}
+
+                                            </div>
+
+                                            <div class="col-lg-2 col-md-2">
+                                                <label class=" form-check-label" for="text-input">Connections
+                                                    Sync</label>
+                                            </div>
+                                            <div class="col-lg-1 col-md-1">
+                                                <input class="form-check-input" id="connections_sync"
+                                                       name="connections_sync"
+                                                       onchange="updateSisuView()" type="checkbox" value="True">
+                                                {% if connections_sync is True %}
+                                                <script>document.getElementById("connections_sync").checked = true;
+                                                </script>
+                                                {% endif %}
+                                            </div>
+                                            <div class="col-lg-2 col-md-2">
+                                                <label class=" form-check-label" for="text-input">Inbound Calls
+                                                    Sync</label>
+                                            </div>
+                                            <div class="col-lg-1 col-md-1">
+                                                <input class="form-check-input" id="inbound_calls_sync"
+                                                       name="inbound_calls_sync"
+                                                       type="checkbox" value="True">
+                                                {% if inbound_calls_sync is True %}
+                                                <script>document.getElementById("inbound_calls_sync").checked = true;</script>
+
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row my-4 form-group">
+                                            <div class="col-lg-3 col-md-3">
+                                                <label class=" form-control-label" for="text-input"> Conversation
+                                                    Duration</label>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3">
+                                                <input class="form-control" name="sisu_conversation_duration"
+                                                       type="number"
+                                                       value="{{sisu_conversation_duration}}">
+                                                <small class="form-text text-muted">Duration in seconds. Default : 120
+                                                    seconds</small>
+
+                                            </div>
+                                            <div class="col-lg-12 col-md-12" id="sisu_connection_data"
+                                                 style="display: none;">
+                                                <div class="row form-group">
+                                                    <div class="col-lg-3 col-md-3 sisu_connection_data">
+                                                        <label class=" form-control-label" for="text-input">Sisu
+                                                            Connection Duration
+                                                            Minimum</label>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 sisu_connection_data">
+                                                        <input class="form-control"
+                                                               name="sisu_connection_duration_minimum" type="number"
+                                                               value="{{sisu_connection_duration_minimum}}">
+                                                        <small class="form-text text-muted">Duration in seconds. Default
+                                                            : 60 seconds</small>
+
+                                                    </div>
+
+                                                    <div class="col-lg-3 col-md-3 sisu_connection_data">
+                                                        <label class=" form-control-label" for="text-input">Sisu
+                                                            Connection Duration
+                                                            Maximum</label>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3 sisu_connection_data">
+                                                        <input class="form-control"
+                                                               name="sisu_connection_duration_maximum" type="number"
+                                                               value="{{sisu_connection_duration_maximum}}">
+                                                        <small class="form-text text-muted">Duration in seconds. Default
+                                                            : Unlimited</small>
+
+                                                    </div>
+                                                </div>
+                                                {% if connections_sync is True %}
+                                                <script>document.getElementById("sisu_connection_data").style.display = "block";</script>
+                                                {% endif %}
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- <input class="form-control" hidden name="inbound_calls" type="text" value="{{inbound_calls}}" >
+                                <input class="form-control" hidden name="minutes_talk_time_inbound_calls" type="text" value="{{minutes_talk_time_inbound_calls}}" >
+                                <input class="form-control" hidden name="sisu_conversations_stage_filters" type="text" value="{{sisu_conversations_stage_filters}}" >
+                                <input class="form-control" hidden name="sisu_dials_stage_filters" type="text" value="{{sisu_dials_stage_filters}}" >
+                                <input class="form-control" hidden name="sisu_source_filter_1" type="text" value="{{sisu_source_filter_1}}" >
+                                <input class="form-control" hidden name="sisu_source_filter_2" type="text" value="{{sisu_source_filter_2}}" >
+                                <input class="form-control" hidden name="sisu_talk_time_stage_filters" type="text" value="{{sisu_talk_time_stage_filters}}" >
+                                <input class="form-control" hidden name="sisu_weighted_activities" type="text" value="{{sisu_weighted_activities}}" >
+                                <input class="form-control" hidden name="sisu_weighted_stage_filters" type="text" value="{{sisu_weighted_stage_filters}}" > -->
+                            {% for k, v in results_to_hide.items %}
+                            <input class="form-control" hidden name="{{k}}" type="text" value="{{v}}">
+                            {% endfor %}
+
+
+                            <div class="form-actions form-group mt-3">
+                                <button class="btn btn-primary  float-right" type="submit" value="submit">Submit
+                                </button>
+                            </div>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div><!-- /# column -->
+</div>
+<!--  /Traffic -->
+<!-- /#add-category -->
+</div>
+<!-- .animated -->
+
+{% if minutes_talk_time_sync is True %}
+<script>document.getElementById("minutes_talk_time_sync").checked = true;</script>
+<script>
+
+    document.getElementById("minutes_talk_time_sync").onchange(updateSisuView())
+</script>
+{% endif %}
+
+
+{% if connections_sync is True %}
+<script>
+
+    document.getElementById("sisu_connection_data").style.display = "block";
+
+</script>
+{% endif %}
+<script>
+    function updateSisuView() {
+        if (document.getElementById("sisu_connection_data").style.display == "block") {
+            document.getElementById("sisu_connection_data").style.display = "none";
+        } else {
+            document.getElementById("sisu_connection_data").style.display = "block";
+        }
+    }
+
+    function updateReportView() {
+        if (document.getElementById("plan4").checked != true) {
+            document.getElementById("report_setting").style.display = "none";
+        } else {
+            document.getElementById("report_setting").style.display = "flex";
+        }
+    }
+
+
+</script>
+{% if planFubSisu %}
+<script>document.getElementById("sisu_settings").style.display = "block";
+
+function showSisu() {
+    document.getElementById("sisu_settings").style.display = "block";
+}
+</script>
+{% endif %}
+
+{% if planFubReport %}
+<script>document.getElementById("report_setting").style.display = "flex";
+
+function showReport() {
+    document.getElementById("report_setting").style.display = "flex";
+}
+</script>
+{% endif %}
+
+{% if planFubReport %}
+<script>document.getElementById("fub_report").style.display = "block";
+
+function showSisu() {
+    document.getElementById("fub_report").style.display = "block";
+}
+</script>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,249 @@
+{% load static %}
+<!doctype html>
+
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="At Real Estate DataLabz, we help real estate teams & agents sell more homes by optimizing their CRM & IDX platforms, setting up effective follow-up systems, and making non-income generating work disappear by automating as much of the sales, marketing, and business operations processes as possible.        "
+          name="description">
+    <meta content="DataLabz" name="author">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78898293-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-78898293-3');
+    </script>
+
+    {% block title %}{% endblock %}
+
+    <link href="{% static 'img/logo.png' %}}" rel="shortcut icon" type="image/x-icon">
+
+    <!-- Font Awesome CSS -->
+    <link href="{% static 'css/fontawesome.min.css' %}" rel="stylesheet">
+    <!-- Themify Icons CSS -->
+    <link href="{% static 'css/themify-icons.css' %}" rel="stylesheet">
+    <!-- Elegant Line Icons CSS -->
+    <link href="{% static 'css/elegant-line-icons.css' %}" rel="stylesheet">
+    <!-- Elegant Icons CSS -->
+    <link href="{% static 'css/elegant-font-icons.css' %}" rel="stylesheet">
+    <!-- Saasbiz Icons CSS -->
+    <link href="{% static 'css/saasbiz-icons.css' %}" rel="stylesheet">
+    <!-- Animate CSS -->
+    <link href="{% static 'css/animate.min.css' %}" rel="stylesheet">
+    <!-- Nice Select CSS -->
+    <link href="{% static 'css/nice-select.css' %}" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <!-- Slicknav CSS -->
+    <link href="{% static 'css/slicknav.min.css' %}" rel="stylesheet">
+    <!-- Pricing CSS -->
+    <link href="{% static 'css/pricing-table.css' %}" rel="stylesheet">
+    <!-- Odometer CSS -->
+    <link href="{% static 'css/odometer.min.css' %}" rel="stylesheet">
+    <!-- Venobox CSS -->
+    <link href="{% static 'css/venobox/venobox.css' %}" rel="stylesheet">
+    <!-- OWL-Carousel CSS -->
+    <link href="{% static 'css/owl.carousel.css' %}" rel="stylesheet">
+    <!-- Main CSS -->
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <!-- Responsive CSS -->
+    <link href="{% static 'css/responsive.css' %}" rel="stylesheet">
+    <!-- logo font -->
+    <link href="https://fonts.googleapis.com/css2?family=Emblema+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <script src="{% static 'js/vendor/modernizr-2.8.3-respond-1.4.2.min.js' %}"></script>
+    {% block styles %}{% endblock %}
+    <link href='https://fonts.googleapis.com/css?family=Quantico' rel='stylesheet'>
+
+
+    <!-- tapfiliate Code -->
+    <script src="https://script.tapfiliate.com/tapfiliate.js" type="text/javascript" async></script>
+    <script type="text/javascript">
+    (function(t,a,p){t.TapfiliateObject=a;t[a]=t[a]||function(){ (t[a].q=t[a].q||[]).push(arguments)}})(window,'tap');
+
+    tap('create', '37727-1b0329', { integration: "javascript" });
+    tap('detect');
+    </script>
+    <!-- tapfiliate Code  Ends-->
+
+</head>
+<body data-offset="70" data-spy="scroll" data-target="#navmenu">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<div class="site-preloader-wrap">
+    <div class="spinner"></div>
+</div><!-- Preloader -->
+
+<header class="header-section" id="header">
+    <div class="container">
+        <nav class="navbar ">
+            <a class="navbar-brand d-flex" href="/">
+                <img alt="DataLabz" src="{% static 'img/logo.png' %}" style="width: 46px;height: auto;    margin: auto;margin-right: 15px;box-shadow: 1px 0px 20px 1px #2730a2;
+                        border-radius: 50%;">
+                <h1 id="header_text" style="margin:0px;font-family: 'Quantico'; letter-spacing: 3px;
+                        ">DataLabz</h1>
+            </a>
+            <div class="d-flex menu-wrap">
+                <div class="mainmenu" id="mainmenu">
+                    <ul class="nav">
+                        <!-- <li><a data-scroll class="nav-link" href="/">Home<span class="sr-only">(current)</span></a>
+                         </li> -->
+                        <li><a class="nav-link" data-scroll href="/about">About<span
+                                class="sr-only">(current)</span></a>
+                        </li>
+                        <li>
+                            <a href="#!">Products</a>
+                            <ul class="nav-dropdown">
+                                <!--                                <li>-->
+                                <!--                                    <a href="#">Fub Sisu Integration</a>-->
+                                <!--                                </li>-->
+                                <li>
+                                    <a href="https://interface.re">InterFace</a>
+                                </li>
+                                <li>
+                                    <a href="https://sms.interface.re/sms-landing">FUB Twilio Integration</a>
+                                </li>
+                                <!--                                <li>-->
+                                <!--                                    <a href="#">FUB Webform Integration</a>-->
+                                <!--                                </li>-->
+                            </ul>
+                        </li>
+                        <!--                        <li>-->
+                        <!--                            <a href="#!">Pricing</a>-->
+                        <!--                            <ul class="nav-dropdown">-->
+                        <!--                                <li>-->
+                        <!--                                    <a href="/pricing_fub_sisu_inte">Fub Sisu Integration</a>-->
+                        <!--                                </li>-->
+                        <!--                                <li>-->
+                        <!--                                    <a href="/pricing_fub_twilio_inte">FUB Twilio Integration</a>-->
+                        <!--                                </li>-->
+                        <!--                                <li>-->
+                        <!--                                    <a href="/pricing_fub_webform_inte">FUB Webform Integration</a>-->
+                        <!--                                </li>-->
+                        <!--                            </ul>-->
+                        <!--                        </li>-->
+                        <li><a href="/pricing">Pricing</a></li>
+                        <li><a href="/contact">Contact</a></li>
+
+                        <li><a href="https://interface.re/blogs">Blog</a></li>
+
+                        <li><a href="https://strategy.interface.re/free-strategy-sesh-1">Free Strategy Sesh</a></li>
+                        <li><a href="/secure/login_user">Login</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+</header> <!--.header-section -->
+
+<div class="header-height"></div>
+
+
+{% block content %}{% endblock %}
+
+<section class="widget-section bg-dark padding " style="width: -webkit-fill-available">
+    <div class="left-design"></div>
+    <div class="right-design"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-sm-6 sm-padding">
+                <div class="widget-content">
+                    <a class="navbar-brand d-flex align-items-center" href="/">
+                        <img alt="DataLabz" src="{% static 'img/logo.png' %}" style="width: 46px;height: auto;    margin: auto;margin-left:0px; margin-right: 10px;box-shadow: 1px 0px 20px 1px #2730a2;
+                                border-radius: 50%;">
+                        <h1 id="header_text" style="margin:0px;font-family: 'Quantico'; letter-spacing: 3px;
+                                 ">DataLabz</h1>
+                    </a>
+                    <p>Data Superpowers for Real Estate Sales, Marketing & Operations</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 sm-padding">
+                <div class="widget-content">
+                    <h4>Company</h4>
+                    <ul class="widget-links">
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms">Terms</a></li>
+                        <li><a href="/disclosure">Disclosure</a></li>
+                        <li><a href="/contact">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 sm-padding">
+                <div class="widget-content">
+                    <h4>Headquaters</h4>
+                    <p>302 Washington St. #150-14185</p>
+                    <p>San Diego, CA 92103</p>
+                    <span>info@datalabz.re</span>
+                    <span>619-473-4883</span>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 sm-padding">
+
+            </div>
+        </div>
+    </div>
+</section><!--/.widget-section-->
+
+<footer class="footer-section bg-dark align-center">
+    <div class="container">
+        <p>&copy; DataLabz, Inc. 2020</p>
+    </div>
+</footer><!-- /.footer-section -->
+
+<a data-scroll href="#header" id="scroll-to-top"><i class="arrow_carrot-up"></i></a>
+
+<!-- Load scripts -->
+
+<script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+<!-- jQuery Lib -->
+<script src="{% static 'js/vendor/jquery-1.12.4.min.js' %}"></script>
+<!-- Bootstrap JS -->
+<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>
+<!-- Tether JS -->
+<script src="{% static 'js/vendor/tether.min.js' %}"></script>
+<!-- Slicknav JS -->
+<script src="{% static 'js/vendor/jquery.slicknav.min.js' %}"></script>
+<!-- OWL-Carousel JS -->
+<script src="{% static 'js/vendor/owl.carousel.min.js' %}"></script>
+<!-- Smooth Scroll JS -->
+<script src="{% static 'js/vendor/smooth-scroll.min.js' %}"></script>
+<!-- Venobox JS -->
+<script src="{% static 'js/vendor/venobox.min.js' %}"></script>
+<!-- Ajaxchimp JS -->
+<script src="{% static 'js/vendor/jquery.ajaxchimp.min.js' %}"></script>
+<!--YTPlayer Js-->
+<script src="{% static 'js/vendor/jquery.mb.YTPlayer.min.js' %}"></script>
+<!-- Nice Select JS -->
+<script src="{% static 'js/vendor/jquery.nice-select.min.js' %}"></script>
+<!-- Pricing Switcher JS -->
+<script src="{% static 'js/vendor/pricing-switcher.js' %}"></script>
+<!-- Waypoints JS -->
+<script src="{% static 'js/vendor/waypoints.min.js' %}"></script>
+<!-- Odometer JS -->
+<script src="{% static 'js/vendor/odometer.min.js' %}"></script>
+<!-- Wow JS -->
+<script src="{% static 'js/vendor/wow.min.js' %}"></script>
+<!-- Main JS -->
+<script src="{% static 'js/main.js' %}"></script>
+<!-- <script>helpwiseSettings = {'widget_id': '60d28479320a2', 'align': 'right'}</script>
+<script src='https://cdn.helpwise.io/assets/js/livechat.js'></script> -->
+<script src="{% static 'js/intercom.js' %}"></script>
+
+{% block scripts %}{% endblock %}
+
+</body>
+</html>

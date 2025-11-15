@@ -1,0 +1,66 @@
+{% extends 'dashboard/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+
+<div class="content">
+    <!-- Animated -->
+    <div class="animated fadeIn">
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card-body">
+                                <div id="wufoo-k116oqy31q2lop5"> Fill out my
+                                    <a href="https://datahelp.wufoo.com/forms/k116oqy31q2lop5">online form</a>.
+                                </div>
+                                <script type="text/javascript"> var k116oqy31q2lop5;
+                                (function (d, t) {
+                                    var s = d.createElement(t), options = {
+                                        'userName': 'datahelp',
+                                        'formHash': 'k116oqy31q2lop5',
+                                        'autoResize': true,
+                                        'height': '1377',
+                                        'async': true,
+                                        'host': 'wufoo.com',
+                                        'header': 'show',
+                                        'ssl': true
+                                    };
+                                    s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'secure.wufoo.com/scripts/embed/form.js';
+                                    s.onload = s.onreadystatechange = function () {
+                                        var rs = this.readyState;
+                                        if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+                                        try {
+                                            k116oqy31q2lop5 = new WufooForm();
+                                            k116oqy31q2lop5.initialize(options);
+                                            k116oqy31q2lop5.display();
+                                        } catch (e) {
+                                        }
+                                    };
+                                    var scr = d.getElementsByTagName(t)[0], par = scr.parentNode;
+                                    par.insertBefore(s, scr);
+                                })(document, 'script'); </script>
+                            </div> <!-- /.card-body -->
+                        </div>
+                    </div> <!-- /.row -->
+                    <div class="card-body"></div>
+                </div>
+            </div><!-- /# column -->
+        </div>
+
+        <!--  /Traffic -->
+        <div class="clearfix"></div>
+
+
+        <!-- /#add-category -->
+    </div>
+    <!-- .animated -->
+</div>
+
+{% endblock %}

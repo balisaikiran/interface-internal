@@ -1,0 +1,1475 @@
+{% load static %}
+
+<head>
+
+
+   <!-- Fonts CDN -->
+   <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+   <!-- Bootstrap CDN -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+       integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+
+  <link
+    href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    rel="stylesheet"
+  />
+  <link
+    crossorigin="anonymous"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css"
+    integrity="sha512-63+XcK3ZAZFBhAVZ4irKWe9eorFG0qYsy2CaM5Z+F3kUn76ukznN0cp4SArgItSbDFD1RrrWgVMBY9C/2ZoURA=="
+    rel="stylesheet"
+  />
+  <link
+    crossorigin="anonymous"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+    integrity="sha512-aEe/ZxePawj0+G2R+AaIxgrQuKT68I28qh+wgLrcAJOz3rxCP+TwrK5SPN+E5I+1IQjNtcfvb96HDagwrKRdBw=="
+    rel="stylesheet"
+  />
+  <link
+    crossorigin="anonymous"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker-standalone.css"
+    integrity="sha512-2e0Kl/wKgOUm/I722SOPMtmphkIjECJFpJrTRRyL8gjJSJIP2VofmEbqyApMaMfFhU727K3voz0e5EgE3Zf2Dg=="
+    rel="stylesheet"
+  />
+  <link
+    crossorigin="anonymous"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker-standalone.min.css"
+    integrity="sha512-tjNtfoH+ezX5NhKsxuzHc01N4tSBoz15yiML61yoQN/kxWU0ChLIno79qIjqhiuTrQI0h+XPpylj0eZ9pKPQ9g=="
+    rel="stylesheet"
+  />
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    rel="stylesheet"
+  />
+
+  <style>
+    * {
+      box-sizing: border-radius;
+      font-family: "poppins" !important;
+    }
+
+    body {
+      font-size: 13px;
+      font-family: "poppins" !important;
+    }
+
+    .fs-small {
+      font-size: 8px;
+    }
+
+    .add-on:hover {
+      transform: scale(1.2);
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: ease-out 0.2s;
+    }
+
+    :root {
+      --background-color: #eeeef5;
+      --primary: #065697;
+      --primary-hover: #065697;
+    }
+
+    .shadow-add {
+      box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .hrx {
+      opacity: 0.1;
+    }
+
+    .card-chip:hover {
+      box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, .15) !important;
+      transition: ease-out 0.1s;
+    }
+
+    .card-chip {
+      cursor: pointer;
+    }
+
+    .bd {
+      border: solid red 1px !important;
+    }
+
+    a {
+      cursor: pointer;
+    }
+
+    a:hover {
+      color: inherit;
+    }
+
+    .bg-color-1 {
+      background: #F9F9F9;
+    }
+
+    .pointer {
+      cursor: pointer;
+    }
+
+    img {
+      object-fit: cover;
+    }
+
+    .text-justify {
+      text-align: justify;
+    }
+
+
+    .btn-primary {
+      background-color: var(--primary);
+      font-size: 14px;
+      border-color: var(--primary);
+      color: #fff;
+      outline: none !important;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus,
+    .btn-primary:active {
+      background-color: transparent;
+      border-color: var(--primary-hover);
+      color: #065697;
+      outline: 0px !important;
+    }
+
+    .btn-primary-outline {
+      background-color: transparent;
+      border-color: var(--primary);
+      color: var(--primary);
+      outline: 0px !important;
+    }
+
+    .btn-primary-outline:hover,
+    .btn-primary-outline:focus,
+    .btn-primary-outline:active {
+      background-color: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+      outline: 0px !important;
+    }
+
+    .text-primary {
+      color: var(--primary) !important;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .input-bn {
+      font-size: 14px;
+      box-sizing: border-box;
+      border-radius: 5px !important;
+      border: 1.5px solid #8692A6 !important;
+      height: 55px !important;
+    }
+
+    .input-bn:focus {
+      border: 2px solid #065697 !important;
+      box-shadow: none;
+      background: #FFFFFF;
+      box-sizing: border-box;
+      border-radius: 6px;
+    }
+
+    textarea {
+      font-size: 14px;
+      box-sizing: border-box;
+      border-radius: 5px !important;
+      border: 1.5px solid #8692A6 !important;
+      min-height: 150px !important;
+    }
+
+    textarea:focus {
+      border: 2px solid #065697 !important;
+      box-shadow: none !important;
+      background: #FFFFFF;
+      box-sizing: border-box;
+      border-radius: 6px;
+    }
+
+
+    .form-floating>.form-control:focus~label,
+    .form-floating>.form-control:not(:placeholder-shown)~label,
+    .form-floating>.form-select~label {
+      opacity: 1 !important;
+      color: #808080;
+      height: 15px !important;
+      padding: 2px !important;
+      background: white;
+      transform: scale(1) translateY(-0.6rem) translateX(0.85rem) !important;
+    }
+
+    .form-floating>.form-control:focus,
+    .form-floating>.form-control:not(:placeholder-shown) {
+      padding-top: 0.925rem !important;
+    }
+
+    .form-floating>.form-select {
+      padding-top: 0.925rem !important;
+      padding-bottom: 0.625rem;
+    }
+
+    .testdiv1 {
+      box-shadow: 4px 4px 10px #C4C4C4;
+      width: 100%;
+      background-color: #3240a8;
+      display: flex;
+      margin-top: 3%;
+      color: white;
+    }
+
+    .Terminated_Stage {
+      box-shadow: 4px 4px 10px #C4C4C4;
+      width: 100%;
+      background-color: #a84432;
+      display: flex;
+      margin-top: 3%;
+      color: white;
+    }
+
+    .runnerIconImage {
+      width: 38px;
+      height: 38px;
+    }
+
+    .runnerBackground {
+      margin: 15px;
+      width: 35px;
+      height: 35px;
+      border-radius: 100px;
+      padding: 20px;
+      background-image: linear-gradient(45deg, #F5F7F9, #abd8ff);
+    }
+
+    .loading {
+      position: fixed;
+      z-index: 999;
+      height: 2em;
+      width: 2em;
+      overflow: visible;
+      margin: auto;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+
+    /* Transparent Overlay */
+    .loading:before {
+      content: '';
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    /* :not(:required) hides these rules from IE9 and below */
+    .loading:not(:required) {
+      /* hide "loading..." text */
+      font: 0/0 a;
+      color: transparent;
+      text-shadow: none;
+      background-color: transparent;
+      border: 0;
+    }
+
+    .loading:not(:required):after {
+      content: '';
+      display: block;
+      font-size: 10px;
+      width: 1em;
+      height: 1em;
+      margin-top: -0.5em;
+      -webkit-animation: spinner 1500ms infinite linear;
+      -moz-animation: spinner 1500ms infinite linear;
+      -ms-animation: spinner 1500ms infinite linear;
+      -o-animation: spinner 1500ms infinite linear;
+      animation: spinner 1500ms infinite linear;
+      border-radius: 0.5em;
+      -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+      box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+    }
+
+    /* Animation */
+
+    @-webkit-keyframes spinner {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    @-moz-keyframes spinner {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    @-o-keyframes spinner {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes spinner {
+      0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+      }
+
+      100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+      }
+    }
+
+    .dhh1 {
+      color: #3240a8;
+      position: absolute;
+      font-size: 2.5em;
+      height: 1em;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      margin: auto;
+      text-align: center;
+      opacity: 0;
+      animation: appear 4s forwards;
+      animation-iteration-count: infinite;
+    }
+
+
+    @keyframes appear {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+
+    .boxcon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      height: 200px;
+      width: 200px;
+    }
+
+    .box1 {
+      position: absolute;
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      border: 2px solid rgb(0, 225, 255);
+      animation-name: spinx;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      text-align: center;
+    }
+
+    .box2 {
+      position: absolute;
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      border: 2px solid rgb(0, 255, 255);
+      animation-name: spiny;
+      animation-duration: 3s;
+      animation-iteration-count: infinite;
+      text-align: center;
+    }
+
+    @keyframes spinx {
+      0% {
+        transform: rotateX(0deg);
+      }
+
+      100% {
+        transform: rotateX(360deg);
+      }
+    }
+
+    @keyframes spiny {
+      0% {
+        transform: rotateY(0deg);
+      }
+
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+
+    .error_message {
+      color: red;
+    }
+
+    .reqField {
+      font-size: 8px;
+      color: red;
+    }
+
+    .missingField {
+      color: red !important;
+    }
+  </style>
+
+<style>
+  .show{
+    display: block;
+  }
+  .accordion-button:not(.collapsed){
+    color: #444 !important;
+    background: none !important;
+    box-shadow: none !important;
+  }
+  .accordion-button:focus{
+    border-color: none !important;
+    box-shadow: none !important;
+  }
+  .seh{
+        margin-left: -5px !important;
+  }
+  .seh:hover, .seh:focus, .seh:active:focus{
+    background: #0097cf;
+    color: white;
+    border-color: #0097cf;
+    outline: none;
+    box-shadow: none;
+  }
+  .link-btn {
+    background: #065697;
+    font-size: 12px;
+    padding: 5px 5px;
+    float: right;
+    color: white;
+    border-radius: 4px;
+  }
+  .link-btn::before {
+    content: \e1cd !important;
+  }
+  .link-btn:hover {
+    color: #f9f9f9;
+    background: #0097cf !important;
+    transform: scale(1.1);
+  }
+  .autocomplete-active .link-btn {
+    background: white !important;
+    color: #065697;
+  }
+
+  .autocomplete {
+    /*the container must be positioned relative:*/
+    position: relative;
+    display: inline-block;
+  }
+  .autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+  .autocomplete-items div {
+    padding: 15px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+  }
+  .autocomplete-items div:hover {
+    /*when hovering an item:*/
+    background-color: #f9f9f9;
+  }
+  .autocomplete-active {
+    /*when navigating through the items using the arrow keys:*/
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+  }
+  .ixc .tool-tip {
+    visibility: hidden;
+    max-width: 170px;
+    font-size: 12px;
+    background-color: #23455B;
+    color: #f4f4f4;
+    border-radius: 6px;
+    padding: 10px 13px;
+    position: absolute;
+    left:40px;
+    top: 45px;
+    z-index: 1;
+    box-shadow:3px 5px 15px rgba(0, 0, 0, 0.15);
+  }
+  .ixc:hover .tool-tip {
+    visibility: visible;
+  }   
+
+</style>
+
+</head>
+
+<body class="bg-white">
+  <div id="loader" style="display: none;">
+    {% include "common_form/loader.html" %}    
+  </div>
+  <div id="demo" class="p-4">
+    <div class=" d-flex justify-content-between align-items-center">
+      <img src="https://fs.hubspotusercontent00.net/hub/21128156/hubfs/Interface-dark-logo.png?width=108&height=108"
+        width="45">
+
+      <b class="text-decoration-underline text-dark pointer"><i class="iconify"
+          data-icon="material-symbols:arrow-back-rounded"> </i>
+          <a
+          onclick="showLoaderOnClick('{% url 'list_view' %}?context={{context_data}}&signature={{signature}}')"
+        >
+        Go back
+      </a>
+        </b>
+    </div>
+
+    <hr class="hr">
+
+    <div class=" mb-4 d-flex justify-content-between align-items-center">
+      <b class="fs-6">Create New Opportunities</b>
+
+      <!-- <span class="text-decoration-underline text-danger pointer">Terminate <i class="iconify"
+          data-icon="ri:indeterminate-circle-line"> </i></span> -->
+    </div>
+
+    <div class="accordion accordion-flush pb-3" id="accordionFlushExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+          <button class="accordion-button collapsed px-0" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+            <span class="text-decoration-underline fw-bold">Link client</span>
+            <div class="ixc">
+              <i class="bg-dark text-white rounded-circle p-1 shadow fas mx-2 fa-help">
+              </i>
+              <span class="tool-tip">Connect your existing transaction with SISU by email or ID</span>
+            </div>
+            
+          </button>
+        </h2>
+
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+          
+          <form class="w-100 mt-2" autocomplete="off" action="/action_page.php">
+              <div class="autocomplete w-100">
+                <div class="input-group">
+                  <input
+                    id="myInput"
+                    type="search"
+                    name="search"
+                    placeholder="Search SISU client"
+                    class="form-control input-bn"
+                  />
+                  <button type="button" class="seh btn btn-primary">
+                    <i class="fas fa-user-check"></i>
+                  </button>
+                </div>
+              </div>
+          </form>
+          
+        </div>
+      </div>
+
+    </div>
+    <form method="POST" id="common_form">
+      {% csrf_token %} {% if deal_id %}
+      <input hidden name="deal_id" value="{{deal_id}}" />
+      <input hidden name="appt_set_entry_id" value="{{appt_set_entry_id}}" />
+      <input hidden name="appt_set_lead_type" value="{{appt_set_lead_type}}" />
+      <input hidden name="appt_set_platform" value="{{appt_set_platform}}" />
+
+      {% endif %}
+
+      <input hidden name="domain" value="{{domain}}" />
+
+
+      <div>
+
+
+        <div class="form-floating mb-3 w-100 form-group">
+          <select id="stage_select" class="form-control common-fields select form-select input-bn " name="opp_stage" required>
+            <option value="" selected>Select Stage</option>
+            <option id="Pipeline" value="Pipeline">Pipeline</option>
+            <option id="AppointmentSet" value="Appointment_Set">
+              Appointment Set
+            </option>
+            {% if is_update == 1 %}
+            <option id="AppointmentMet" value="Appointment_Met">
+              Appointment Met
+            </option>
+            {% endif %}
+            <option id="AgreementSigned" value="Agreement_Signed">
+              Agreement Signed
+            </option>
+            <option id="Pending" value="Pending">Pending</option>
+            <option id="Closed" value="Closed">Closed</option>
+
+          </select>
+          <label>Stage <i class="iconify text-danger" data-icon="gg:asterisk"></i></label>
+        </div>
+
+        <div class="form-floating mb-3 w-100 form-group">
+
+          <!-- <select class="form-select input-bn select form-control common-fields" name="opp_assigned_osa" required> -->
+          {% if osa_list %}
+          <select class="form-control select common-fields form-select input-bn" name="opp_assigned_osa" required>
+          {% else %}
+          <select class="form-control select common-fields form-select input-bn" name="opp_assigned_osa">
+          {% endif %}
+
+            <option value="" selected>Select OSA</option>
+            {% for item in osa_list %}
+            <option id="{{item.name}}" value="{{item.name}}">
+              {{item.name}}
+            </option>
+            {% endfor %}
+
+          </select>
+
+          <label>Assigned OSA<i class="iconify text-danger" data-icon="gg:asterisk"></i></label>
+        </div>
+
+
+        <!-- <script>document.getElementById("{{stageName}}").selected = true;</script> -->
+
+        <div class="form-floating mb-3 w-100 form-group">
+          <textarea class="form-control" placeholder="Description" id="opp_notes" name="opp_notes"></textarea>
+          <label>Description</label>
+        </div>
+
+        {% if description %}
+        <script>
+          document.getElementById("opp_notes").value = {{ description }}
+        </script>
+        {% endif %}
+
+      </div>
+      <div id="main_box">
+      </div>
+      <div class="form-actions form-group mt-3">
+        <div id="pendingFields">
+
+        </div>
+        <div class="d-flex w-100 justify-content-between">
+          <button id="btnSubmit" class="btn btn-primary px-3" type="submit" value="submit">
+            Submit
+          </button>
+        </div>
+
+      </div>
+
+    </form>
+  </div>
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+   <!-- Iconify icons -->
+   <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+   <!-- Bootstrap JS-->
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+       integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+       crossorigin="anonymous"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+  <script
+    src="https://eia.followupboss.com/embeddedApps-v1.0.0.js"
+    type="text/javascript"
+  ></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src="{% static 'js/conditionize.flexible.jquery.js' %}"></script>
+  <script src="../../static/js/conditionize.flexible.jquery.js"></script>
+
+  <script>
+    function autocomplete(inp, arr) {
+      /*the autocomplete function takes two arguments,
+      the text field element and an array of possible autocompleted values:*/
+      var currentFocus;
+      /*execute a function when someone writes in the text field:*/
+      inp.addEventListener("input", function (e) {
+        var a,
+          b,
+          i,
+          val = this.value;
+        /*close any already open lists of autocompleted values*/
+        closeAllLists();
+        if (!val) {
+          return false;
+        }
+        currentFocus = -1;
+        /*create a DIV element that will contain the items (values):*/
+        a = document.createElement("DIV");
+        a.setAttribute("id", this.id + "autocomplete-list");
+        a.setAttribute("class", "autocomplete-items");
+        /*append the DIV element as a child of the autocomplete container:*/
+        this.parentNode.appendChild(a);
+        /*for each item in the array...*/
+        for (i = 0; i < arr.length; i++) {
+          /*check if the item starts with the same letters as the text field value:*/
+          if (
+            arr[i].substr(0, val.length).toUpperCase() == val.toUpperCase()
+          ) {
+            /*create a DIV element for each matching element:*/
+            b = document.createElement("DIV");
+            /*make the matching letters bold:*/
+            b.innerHTML =
+              "<strong>" + arr[i].substr(0, val.length) + "</strong>";
+            b.innerHTML +=
+              arr[i].substr(val.length) +
+              "<a href='www.google.com' target='_blank' class='link-btn'><i class='fas fa-up-right-from-square'></i></a>";
+            /*insert a input field that will hold the current array item's value:*/
+            b.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+            /*execute a function when someone clicks on the item value (DIV element):*/
+            b.addEventListener("click", function (e) {
+              /*insert the value for the autocomplete text field:*/
+              inp.value = this.getElementsByTagName("input")[0].value;
+              /*close the list of autocompleted values,
+                  (or any other open lists of autocompleted values:*/
+              closeAllLists();
+            });
+            a.appendChild(b);
+          }
+        }
+      });
+      /*execute a function presses a key on the keyboard:*/
+      inp.addEventListener("keydown", function (e) {
+        var x = document.getElementById(this.id + "autocomplete-list");
+        if (x) x = x.getElementsByTagName("div");
+        if (e.keyCode == 40) {
+          /*If the arrow DOWN key is pressed,
+            increase the currentFocus variable:*/
+          currentFocus++;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 38) {
+          //up
+          /*If the arrow UP key is pressed,
+            decrease the currentFocus variable:*/
+          currentFocus--;
+          /*and and make the current item more visible:*/
+          addActive(x);
+        } else if (e.keyCode == 13) {
+          /*If the ENTER key is pressed, prevent the form from being submitted,*/
+          e.preventDefault();
+          if (currentFocus > -1) {
+            /*and simulate a click on the "active" item:*/
+            if (x) x[currentFocus].click();
+          }
+        }
+      });
+      function addActive(x) {
+        /*a function to classify an item as "active":*/
+        if (!x) return false;
+        /*start by removing the "active" class on all items:*/
+        removeActive(x);
+        if (currentFocus >= x.length) currentFocus = 0;
+        if (currentFocus < 0) currentFocus = x.length - 1;
+        /*add class "autocomplete-active":*/
+        x[currentFocus].classList.add("autocomplete-active");
+      }
+      function removeActive(x) {
+        /*a function to remove the "active" class from all autocomplete items:*/
+        for (var i = 0; i < x.length; i++) {
+          x[i].classList.remove("autocomplete-active");
+        }
+      }
+      function closeAllLists(elmnt) {
+        /*close all autocomplete lists in the document,
+        except the one passed as an argument:*/
+        var x = document.getElementsByClassName("autocomplete-items");
+        for (var i = 0; i < x.length; i++) {
+          if (elmnt != x[i] && elmnt != inp) {
+            x[i].parentNode.removeChild(x[i]);
+          }
+        }
+      }
+      /*execute a function when someone clicks in the document:*/
+      document.addEventListener("click", function (e) {
+        closeAllLists(e.target);
+      });
+    }
+
+    /*An array containing all the country names in the world:*/
+    var countries = [
+      "Afghanistan",
+      "Albania",
+      "Algeria",
+      "Andorra",
+      "Angola",
+      "Anguilla",
+      "Antigua & Barbuda",
+      "Argentina",
+      "Armenia",
+      "Aruba",
+      "Australia",
+      "Austria",
+      "Azerbaijan",
+      "Bahamas",
+      "Bahrain",
+      "Bangladesh",
+      "Barbados",
+      "Belarus",
+      "Belgium",
+      "Belize",
+      "Benin",
+      "Bermuda",
+      "Bhutan",
+      "Bolivia",
+      "Bosnia & Herzegovina",
+      "Botswana",
+      "Brazil",
+      "British Virgin Islands",
+      "Brunei",
+      "Bulgaria",
+      "Burkina Faso",
+      "Burundi",
+      "Cambodia",
+      "Cameroon",
+      "Canada",
+      "Cape Verde",
+      "Cayman Islands",
+      "Central Arfrican Republic",
+      "Chad",
+      "Chile",
+      "China",
+      "Colombia",
+      "Congo",
+      "Cook Islands",
+      "Costa Rica",
+      "Cote D Ivoire",
+      "Croatia",
+      "Cuba",
+      "Curacao",
+      "Cyprus",
+      "Czech Republic",
+      "Denmark",
+      "Djibouti",
+      "Dominica",
+      "Dominican Republic",
+      "Ecuador",
+      "Egypt",
+      "El Salvador",
+      "Equatorial Guinea",
+      "Eritrea",
+      "Estonia",
+      "Ethiopia",
+      "Falkland Islands",
+      "Faroe Islands",
+      "Fiji",
+      "Finland",
+      "France",
+      "French Polynesia",
+      "French West Indies",
+      "Gabon",
+      "Gambia",
+      "Georgia",
+      "Germany",
+      "Ghana",
+      "Gibraltar",
+      "Greece",
+      "Greenland",
+      "Grenada",
+      "Guam",
+      "Guatemala",
+      "Guernsey",
+      "Guinea",
+      "Guinea Bissau",
+      "Guyana",
+      "Haiti",
+      "Honduras",
+      "Hong Kong",
+      "Hungary",
+      "Iceland",
+      "India",
+      "Indonesia",
+      "Iran",
+      "Iraq",
+      "Ireland",
+      "Isle of Man",
+      "Israel",
+      "Italy",
+      "Jamaica",
+      "Japan",
+      "Jersey",
+      "Jordan",
+      "Kazakhstan",
+      "Kenya",
+      "Kiribati",
+      "Kosovo",
+      "Kuwait",
+      "Kyrgyzstan",
+      "Laos",
+      "Latvia",
+      "Lebanon",
+      "Lesotho",
+      "Liberia",
+      "Libya",
+      "Liechtenstein",
+      "Lithuania",
+      "Luxembourg",
+      "Macau",
+      "Macedonia",
+      "Madagascar",
+      "Malawi",
+      "Malaysia",
+      "Maldives",
+      "Mali",
+      "Malta",
+      "Marshall Islands",
+      "Mauritania",
+      "Mauritius",
+      "Mexico",
+      "Micronesia",
+      "Moldova",
+      "Monaco",
+      "Mongolia",
+      "Montenegro",
+      "Montserrat",
+      "Morocco",
+      "Mozambique",
+      "Myanmar",
+      "Namibia",
+      "Nauro",
+      "Nepal",
+      "Netherlands",
+      "Netherlands Antilles",
+      "New Caledonia",
+      "New Zealand",
+      "Nicaragua",
+      "Niger",
+      "Nigeria",
+      "North Korea",
+      "Norway",
+      "Oman",
+      "Pakistan",
+      "Palau",
+      "Palestine",
+      "Panama",
+      "Papua New Guinea",
+      "Paraguay",
+      "Peru",
+      "Philippines",
+      "Poland",
+      "Portugal",
+      "Puerto Rico",
+      "Qatar",
+      "Reunion",
+      "Romania",
+      "Russia",
+      "Rwanda",
+      "Saint Pierre & Miquelon",
+      "Samoa",
+      "San Marino",
+      "Sao Tome and Principe",
+      "Saudi Arabia",
+      "Senegal",
+      "Serbia",
+      "Seychelles",
+      "Sierra Leone",
+      "Singapore",
+      "Slovakia",
+      "Slovenia",
+      "Solomon Islands",
+      "Somalia",
+      "South Africa",
+      "South Korea",
+      "South Sudan",
+      "Spain",
+      "Sri Lanka",
+      "St Kitts & Nevis",
+      "St Lucia",
+      "St Vincent",
+      "Sudan",
+      "Suriname",
+      "Swaziland",
+      "Sweden",
+      "Switzerland",
+      "Syria",
+      "Taiwan",
+      "Tajikistan",
+      "Tanzania",
+      "Thailand",
+      "Timor L'Este",
+      "Togo",
+      "Tonga",
+      "Trinidad & Tobago",
+      "Tunisia",
+      "Turkey",
+      "Turkmenistan",
+      "Turks & Caicos",
+      "Tuvalu",
+      "Uganda",
+      "Ukraine",
+      "United Arab Emirates",
+      "United Kingdom",
+      "United States of America",
+      "Uruguay",
+      "Uzbekistan",
+      "Vanuatu",
+      "Vatican City",
+      "Venezuela",
+      "Vietnam",
+      "Virgin Islands (US)",
+      "Yemen",
+      "Zambia",
+      "Zimbabwe",
+    ];
+
+    /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+    autocomplete(document.getElementById("myInput"), countries);
+  </script>
+  
+
+
+  <script>
+    $(function () {
+      $(".datePicker").datepicker();
+    });
+  </script>
+
+  <script>
+    /* * * * * * * * * * * * * * * * * *
+     * Show/hide fields conditionally
+     * * * * * * * * * * * * * * * * * */
+    (function ($) {
+      $.fn.conditionize = function (options) {
+        var settings = $.extend(
+          {
+            hideJS: true,
+          },
+          options
+        );
+
+        $.fn.showOrHide = function (listenTo, listenFor, $section) {
+          if (
+            $(listenTo).is("select, input[type=text]") &&
+            $(listenTo).val() == listenFor
+          ) {
+            $section.slideDown();
+          } else if ($(listenTo + ":checked").val() == listenFor) {
+            $section.slideDown();
+          } else {
+            $section.slideUp();
+          }
+        };
+
+        this.each(function () {
+          var listenTo = "[name=" + $(this).data("cond-option") + "]";
+          var listenFor = $(this).data("cond-value");
+          var $section = $(this);
+
+          //Set up event listener
+          $(listenTo).on("change", function () {
+            $.fn.showOrHide(listenTo, listenFor, $section);
+          });
+          //If setting was chosen, hide everything first...
+          if (settings.hideJS) {
+            $(this).hide();
+          }
+          //Show based on current value on page load
+          $.fn.showOrHide(listenTo, listenFor, $section);
+        });
+      };
+    })(jQuery);
+
+
+    $(document).ready(function () {
+
+
+      function make_api_call(URL, TYPE, payload = {}) {
+        // Summary: Function used for ajax call
+        // Parameters: Url : Url for call, Type: POST/GET, Payload
+        // Return: Response from the call
+        
+        return new Promise((resolve, reject) => {
+          $.ajax({
+            url: URL,
+            type: TYPE,
+            data: payload,
+            success: function (data) {
+              console.log(data);
+              resolve(data)
+            },
+            error: function (error) {
+              console.log(error);
+              reject(error)
+            },
+          })
+        })
+      }
+      var jsonInput;
+      var isa_list = "{{isa_list |safe}}"
+      console.log("ISA", isa_list);
+
+
+      make_api_call("{% url 'common_form_fields' %}", "GET", { "isa_list": isa_list }).then(response => {
+      //This will return the dict of fields.
+        jsonInput = response;
+      });
+
+
+      function createSelectField(label, name, value = [], required = false) {
+        // Function Return HTML of Select field
+        var options = "";
+        for (v in value) {
+          options += `<option value="${value[v]}" >${value[v]}</option>`;
+        }
+        options += `<option disabled selected value="null">Select</option>`
+        var base = `<div class="form-floating mb-3 w-100 form-group ${name} option_fields ${required == 'true' ? "requiredAttr" : ""}">
+                        <select class="form-select input-bn form-control" name="${name}" ${required == 'true' ? "required" : ""}>
+                          ${options}
+                        </select>
+
+                        <label>${label} 
+                          ${required == 'true' ? '<i class="iconify text-danger" data-icon="gg:asterisk"></i>' : ''}
+                        </label>
+                    </div>`;
+        return base;
+      }
+
+      function createInputField(label, name, type, classes, required = false, step) {
+      // Function Return HTML of Input
+      // param : Label, Name, Type, classes, required, step:for number of scroll
+        var base = `<div class="form-floating mb-3 w-100 form-group ${name} option_fields ${required == 'true' ? "requiredAttr" : ""}">
+                      <input 
+                        class="form-control input-bn  ${classes}" 
+                        placeholder="${label}"
+                        name="${name}"
+                        step="${step != '' ? step = "any" : ''}"
+                        type="${type}"
+                      />
+
+                      <label>${label} 
+                          ${required == 'true' ? '<i class="iconify text-danger" data-icon="gg:asterisk"></i>' : ''}
+                        </label>
+                     
+                    </div>`;
+        return base
+      }
+
+      function createTimeField(label, name, required = false, steps = 15) {
+        // Function Return HTML of Time Field
+        var selectOptions = '<option value="" disabled selected>Select Time</option>';
+        var hours, minutes, ampm;
+        for (var i = 420; i <= 1320; i += steps) {
+          hours = Math.floor(i / 60);
+          minutes = i % 60;
+          if (minutes < 10) {
+            minutes = '0' + minutes; // adding leading zero
+          }
+          ampm = hours % 24 < 12 ? 'AM' : 'PM';
+          hours = hours % 12;
+          if (hours === 0) {
+            hours = 12;
+          }
+          selectOptions += `<option value="${hours}:${minutes} ${ampm}">${hours}:${minutes} ${ampm}</option>`;
+        }
+        var base = `<div class="form-floating mb-3 w-100 form-group ${name} option_fields ${required == 'true' ? "requiredAttr" : ""}">
+                      <select class="form-select input-bn form-control" name="${name}">
+                        ${selectOptions}
+                      </select>
+                      <label>
+                        ${label} 
+                        ${required == 'true' ? '<i class="iconify text-danger" data-icon="gg:asterisk"></i>' : ''}
+                      </label>
+                    </div>`;
+
+        return base;
+      }
+
+      var defaultstates = [{ "United States": { "AK": "Alaska", "AL": "Alabama", "AR": "Arkansas", "AS": "American Samoa", "AZ": "Arizona", "CA": "California", "CO": "Colorado", "CT": "Connecticut", "DC": "District of Columbia", "DE": "Delaware", "FL": "Florida", "GA": "Georgia", "GU": "Guam", "HI": "Hawaii", "IA": "Iowa", "ID": "Idaho", "IL": "Illinois", "IN": "Indiana", "KS": "Kansas", "KY": "Kentucky", "LA": "Louisiana", "MA": "Massachusetts", "MD": "Maryland", "ME": "Maine", "MI": "Michigan", "MN": "Minnesota", "MO": "Missouri", "MP": "Northern Mariana Islands", "MS": "Mississippi", "MT": "Montana", "NA": "National", "NC": "North Carolina", "ND": "North Dakota", "NE": "Nebraska", "NH": "New Hampshire", "NJ": "New Jersey", "NM": "New Mexico", "NV": "Nevada", "NY": "New York", "OH": "Ohio", "OK": "Oklahoma", "OR": "Oregon", "PA": "Pennsylvania", "PR": "Puerto Rico", "RI": "Rhode Island", "SC": "South Carolina", "SD": "South Dakota", "TN": "Tennessee", "TX": "Texas", "UT": "Utah", "VA": "Virginia", "VI": "Virgin Islands", "VT": "Vermont", "WA": "Washington", "WI": "Wisconsin", "WV": "West Virginia", "WY": "Wyoming" } }, { "Canada": { "AB": "Alberta", "BC": "British Columbia", "MB": "Manitoba", "NB": "New Brunswick", "NL": "Newfoundland and Labrador", "NT": "Northwest Territories", "NS": "Nova Scotia", "NU": "Nunavut", "ON": "Ontario", "PE": "Prince Edward Island", "QC": "Quebec", "SK": "Saskatchewan", "YT": "Yukon" } }]
+
+      function createStateField(label, name, states = [], required = false) {
+        // Function Return HTML of State from default state list
+        var group = "";
+        for (i in states) {
+          var options = "";
+          var obj = states[i];
+          Object.keys(obj).map(function (m) {
+            Object.keys(obj[m]).map(function (k) {
+              options += `<option value="${k}" selected>${obj[m][k]}</option>`;
+            })
+            group += `<optgroup label="${m}">${options}</optgroup>`;
+          })
+        }
+
+        group += '<option disabled selected value="null">Select State!</option>';
+      
+        var base = `<div class="form-group form-floating mb-3 w-100 ${name} option_fields ${required == 'true' ? "requiredAttr" : ""}">
+                      <select class="form-select input-bn form-control" name="${name}">
+                         ${group}
+                      </select>
+                      <label>${label} 
+                          ${required == 'true' ? '<i class="iconify text-danger" data-icon="gg:asterisk"></i>' : ''}
+                      </label>
+                    </div>`;
+
+        return base;
+      }
+
+      function runJs(js) {
+        // This function runs all the javascript through eval.
+        setTimeout(() => {
+          eval(js)
+        }, 700)
+
+      }
+
+
+    function activateFields(fields = {}) {
+        // Function Create Fields according to selected Stage 
+        console.log(fields);
+        $("#main_box").empty();
+        var blocks;
+        if (fields) {
+          for (sno in fields) {
+            if (fields[sno]["type"] == "select") {
+              blocks = createSelectField(
+                fields[sno]["label"],
+                fields[sno]["field"],
+                fields[sno]["data"].split(","),
+                fields[sno]["required"],
+              );
+              console.log(fields[sno]["condition"]);
+              runJs(fields[sno]["condition"])
+            }
+            else if (fields[sno]["type"] == "time") {
+              blocks = createTimeField(
+                fields[sno]["label"],
+                fields[sno]["field"],
+                fields[sno]["required"],
+                30
+              );
+              runJs(fields[sno]["condition"])
+            }
+            else if (fields[sno]["type"] == "state") {
+              blocks = createStateField(
+                fields[sno]["label"],
+                fields[sno]["field"],
+                defaultstates,
+                fields[sno]["required"]
+              );
+              runJs(fields[sno]["condition"])
+            }
+            else {
+              var dataType;
+              var inpType;
+              var extraClasses;
+              var step = "";
+              if (fields[sno]["type"] == "number") {
+                console.log("Number");
+                dataType = "number";
+                step = "any";
+                classes = "number-currency"
+              }
+              else if (fields[sno]["type"] == "date") {
+                console.log("date");
+                extraClasses = "datePicker"
+                dataType = "date";
+              }
+              else if (fields[sno]["type"] == "tel") {
+                console.log("phone");
+                dataType = "number";
+              }
+              else {
+                console.log("text");
+                dataType = "text";
+              }
+              blocks = createInputField(
+                fields[sno]["label"],
+                fields[sno]["field"],
+                dataType,
+                extraClasses,
+                fields[sno]["required"],
+                step);
+              runJs(fields[sno]["condition"])
+            }
+            $("#main_box").append(blocks)
+          }
+        }
+      }
+
+      function restAllFields() {
+        $(".option_fields").hide();
+        $(".option_fields :input").prop("disabled", true);
+        $(".option_fields > select").prop("disabled", true);
+      }
+
+      $("#stage_select").on("change", function () {
+        restAllFields()
+        var selected_data = jsonInput[$(this).val()];
+        activateFields(fields = selected_data)
+      })
+
+      function removeRequiredFromHidden() {
+        //Summary: Function removes the required from fields that are hidden.  
+        $(".form-group").each((no, atr) => {
+          if ($(atr).is(":hidden")) {
+            $(atr).find("input").find("select").removeAttr("required")
+          }
+          else {
+            if ($(atr).children("sup").length > 0) {
+              $(atr).find("input").find("select").prop("required", "required")
+            }
+          }
+        })
+      }
+
+
+      function onChange(changeClass = "", on = "change", condition = {}, initialHiddenClasses = []) {
+        // Summary: Function Create Jquery function which can trigger on events like change, click etc.
+        // param: changeClass : Class on which the function to trigger, on: Type on which the function trigger
+        // condtion: Accepts dict {} The Key Represent the Class name and 
+        // Value Represent the {display:true/false, classes: This classes will be hidden initially}
+
+        var hiddenClasses = "." + initialHiddenClasses.join(', .')
+        console.log("hiddenClasses", hiddenClasses);
+        $(hiddenClasses).hide();
+
+        condition = JSON.parse(condition);
+        if (changeClass && condition) {
+          $(changeClass).on(on, function () {
+            var $this = $(this).val();
+            if (condition.hasOwnProperty($this)) {
+              var classes = "." + condition[$this]["classes"].join(', .');
+              console.log(condition[$this]["display"]);
+              if (condition[$this]["display"] == true) {
+                $(classes).show();
+              } else $(classes).hide()
+            }
+          })
+        }
+        removeRequiredFromHidden();
+      }
+    })
+  </script>
+  <script>
+    $(document).ready(function () {
+      $("#common_form").submit(function (e) {
+        var RequireField = []
+        // console.log("-------------------------");
+        $(".requiredAttr").map(function (x, y) {
+          $(y).find("label").removeClass("missingField");
+          if ($(y).is(":hidden")) {
+            console.warn("HIDDEN FIELD", $(y).find("label").text());
+          }
+          else {
+            if ($(y).find("select").val() == null && $(y).find("select").val() != undefined) {
+              $(y).find("label").addClass("missingField");
+              RequireField.push($(y).find("label").text());
+            }
+            if (String($(y).find("input").val()).length == 0) {
+              $(y).find("label").addClass("missingField");
+              RequireField.push($(y).find("label").text());
+            }
+          }
+        }
+        )
+        sortedRequireField = RequireField.filter(function (item, pos) {
+          return RequireField.indexOf(item) == pos;
+        })
+
+        if (sortedRequireField.length > 0) {
+          e.preventDefault();
+          var err_message = "";
+          filterReqFieldName = []
+          for (let i of sortedRequireField) {
+            i && filterReqFieldName.push(i);
+          }
+
+          filterReqFieldName.forEach((i, v) => {
+            err_message += `<p><small class="error_message">* ${i} is missing</small></p>`;
+          })
+          $("#pendingFields").empty();
+          $("#pendingFields").append(err_message);
+        }
+        else {
+          $("#btnSubmit").attr("disabled", true);
+        }
+        return true;
+      });
+    });
+  </script>
+  <script>
+
+    function showLoader() {
+        document.getElementById('demo').style.display = "none";
+        document.getElementById('loader').style.display = "block";
+    }
+    var timeout;
+
+    function sleep(delay, url) {
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+        timeout = setTimeout(function () {
+            window.location.href = url;
+        }, delay);
+    }
+
+    function showLoaderOnClick(url) {
+        showLoader();
+        sleep(500, url);
+    }
+    
+</script>
+</body>

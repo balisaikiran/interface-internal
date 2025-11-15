@@ -1,0 +1,260 @@
+{% load static %}
+
+<head>
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link crossorigin="anonymous"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css"
+          integrity="sha512-63+XcK3ZAZFBhAVZ4irKWe9eorFG0qYsy2CaM5Z+F3kUn76ukznN0cp4SArgItSbDFD1RrrWgVMBY9C/2ZoURA=="
+          rel="stylesheet"/>
+    <link crossorigin="anonymous"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css"
+          integrity="sha512-aEe/ZxePawj0+G2R+AaIxgrQuKT68I28qh+wgLrcAJOz3rxCP+TwrK5SPN+E5I+1IQjNtcfvb96HDagwrKRdBw=="
+          rel="stylesheet"/>
+    <link crossorigin="anonymous"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker-standalone.css"
+          integrity="sha512-2e0Kl/wKgOUm/I722SOPMtmphkIjECJFpJrTRRyL8gjJSJIP2VofmEbqyApMaMfFhU727K3voz0e5EgE3Zf2Dg=="
+          rel="stylesheet"/>
+    <link crossorigin="anonymous"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker-standalone.min.css"
+          integrity="sha512-tjNtfoH+ezX5NhKsxuzHc01N4tSBoz15yiML61yoQN/kxWU0ChLIno79qIjqhiuTrQI0h+XPpylj0eZ9pKPQ9g=="
+          rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <style>
+        /* Just makin' it look nice. */
+        body {
+            background: #FFFF;
+            min-height: 270px;
+            max-height: 270px;
+        }
+
+        .conditional {
+            margin: 1em 0 0.5em;
+            border-top: 2px dotted #eee;
+            padding-top: 1em;
+            color: rgba(0, 0, 0, .7);
+            font-size: .9em;
+        }
+
+        .conditional > .conditional {
+            color: rgba(0, 0, 0, .5);
+        }
+
+        #demo {
+            text-align: left;
+            /* padding: 1.5em 3em;*/
+            background: #fff;
+            width: 100%;
+	        height: 100%;
+            margin: 2em auto;
+            border-radius: .5em;
+            font: 18px/22px 'Open Sans', Arial, Verdana, serif;
+        }
+
+        /* label+label {
+            margin-left: 1em;
+        } */
+        label {
+            white-space: pre-wrap;
+        }
+
+        .center-btn {
+            margin-left: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        input + span {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            width: 15px;
+            height: 15px;
+            border: 2px solid #00008B;
+        }
+
+        input[type=radio] + span {
+            border-radius: 50%;
+        }
+
+        input[type=radio]:checked + span {
+            background: rgba(106, 181, 169, 1);
+            background: -moz-radial-gradient(center, ellipse cover, rgba(106, 181, 169, 1) 44%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 46%, rgba(255, 255, 255, 1) 55%);
+            background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(44%, rgba(106, 181, 169, 1)), color-stop(45%, rgba(255, 255, 255, 1)), color-stop(46%, rgba(255, 255, 255, 1)), color-stop(55%, rgba(255, 255, 255, 1)));
+            background: -webkit-radial-gradient(center, ellipse cover, rgba(106, 181, 169, 1) 44%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 46%, rgba(255, 255, 255, 1) 55%);
+            background: -o-radial-gradient(center, ellipse cover, rgba(106, 181, 169, 1) 44%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 46%, rgba(255, 255, 255, 1) 55%);
+            background: -ms-radial-gradient(center, ellipse cover, rgba(106, 181, 169, 1) 44%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 46%, rgba(255, 255, 255, 1) 55%);
+            background: radial-gradient(ellipse at center, rgba(106, 181, 169, 1) 44%, rgba(255, 255, 255, 1) 45%, rgba(255, 255, 255, 1) 46%, rgba(255, 255, 255, 1) 55%);
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6ab5a9', endColorstr='#ffffff', GradientType=1);
+        }
+
+        input[type=checkbox]:checked + span:after {
+            content: "\00d7";
+            font-weight: bold;
+            position: absolute;
+            top: -7px;
+            left: 1px;
+            font-size: 20px;
+            color: #6ab5a8;
+        }
+
+        input[type=radio],
+        input[type=checkbox] {
+            /*hide the radio button*/
+            filter: alpha(opacity=0);
+            -moz-opacity: 0;
+            -khtml-opacity: 0;
+            opacity: 0;
+        }
+
+        select,
+        input[type=text] {
+            border-radius: 5px;
+            padding: 6px 10px;
+            border: 2px solid #3240a8;
+            font-color: #666;
+            font-size: 15px;
+            width: 65%;
+        }
+    </style>
+</head>
+
+<body  scroll="no" style="overflow: hidden">
+<div id="demo">
+    <form method="POST">
+        {% csrf_token %}
+        {% if deal_id %}
+        <input name="deal_id" value="{{deal_id}}">
+        <input hidden name="appt_set_entry_id" value="{{appt_set_entry_id}}">
+        <input hidden name="appt_set_lead_type" value="{{appt_set_lead_type}}">
+        <input hidden name="appt_set_platform" value="{{appt_set_platform}}">
+
+        {% endif %}
+        <div class="container">
+            <div class="row">
+                <a class="btn btn-primary btn-lg float-right" onclick='location.href = "{% url 'list_view' %}?context={{context_data}}&signature={{signature}}"' >Back</a>
+            </div>
+        </div>
+           
+        <input hidden name="domain" value="{{domain}}">
+        <div>
+            <h3 style="text-align: center;">Create an opportunity </h3>
+            <br>
+            <!-- <script>document.getElementById("{{stageName}}").selected = true;</script> -->
+            <div class="form-actions form-group">
+                {% if pipeline_url %}
+                <p>
+                    <a href="{{pipeline_url}}" target="_blank">
+                        <button class="btn btn-primary btn-lg center-btn"
+                                type="button">Pipeline
+                        </button>
+                    </a>
+                </p>
+                {% endif %}
+                <p>
+                    <a href="{{appt_set_url}}" target="_blank">
+                        <button class="btn btn-primary btn-lg center-btn"
+                                type="button">Appointment Set
+                        </button>
+                    </a>
+                </p>
+                <p>
+
+                    <a href="{{agreement_signed_url}}" target="_blank">
+                        <button class="btn btn-primary btn-lg center-btn"
+                                type="button">Agreement Signed
+                        </button>
+                    </a>
+                </p>
+                <p>
+                    <a href="{{pending_url}}" target="_blank">
+                        <button class="btn btn-primary btn-lg center-btn"
+                                type="button">Pending
+                        </button>
+                    </a>
+                </p>
+                <p>
+                    <a href="{{closed_url}}" target="_blank">
+                        <button class="btn btn-primary btn-lg center-btn"
+                                type="button">Closed
+                        </button>
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </form>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="https://eia.followupboss.com/embeddedApps-v1.0.0.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="{% static 'js/conditionize.flexible.jquery.js' %}"></script>
+
+<script>
+    $(function () {
+        $("#Agreement_Signed_Date_1").datepicker();
+        $("#Agreement_Expiration_Date_1").datepicker();
+        $("#Under_Contract_Date_1").datepicker();
+        $("#Forecasted_Close_Date_1").datepicker();
+        $("#Appoitnment_Date_1").datepicker();
+        $("#Appt_Met_Date").datepicker();
+        $("#Settlement_Date_1").datepicker();
+        $("#Under_Contract_Date_2").datepicker();
+        $("#Forecasted_Close_Date_2").datepicker();
+
+    });
+</script>
+
+<script>
+
+    /* * * * * * * * * * * * * * * * * *
+    * Show/hide fields conditionally
+    * * * * * * * * * * * * * * * * * */
+    (function ($) {
+
+        $.fn.conditionize = function (options) {
+
+            var settings = $.extend({
+                hideJS: true
+            }, options);
+
+            $.fn.showOrHide = function (listenTo, listenFor, $section) {
+                if ($(listenTo).is('select, input[type=text]') && $(listenTo).val() == listenFor) {
+                    $section.slideDown();
+                } else if ($(listenTo + ":checked").val() == listenFor) {
+                    $section.slideDown();
+                } else {
+                    $section.slideUp();
+                }
+            }
+
+            return this.each(function () {
+                var listenTo = "[name=" + $(this).data('cond-option') + "]";
+                var listenFor = $(this).data('cond-value');
+                var $section = $(this);
+
+                //Set up event listener
+                $(listenTo).on('change', function () {
+                    $.fn.showOrHide(listenTo, listenFor, $section);
+                });
+                //If setting was chosen, hide everything first...
+                if (settings.hideJS) {
+                    $(this).hide();
+                }
+                //Show based on current value on page load
+                $.fn.showOrHide(listenTo, listenFor, $section);
+            });
+        }
+    }(jQuery));
+
+    $('.conditional').conditionize();
+</script>
+</body>

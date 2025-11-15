@@ -1,0 +1,278 @@
+{% load static %}
+
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang=""> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <title>Data Help</title>
+    <meta content="Data Help" name="description">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+
+    <!-- <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
+    <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png"> -->
+
+    <link href="{% static 'assets/css/normalize.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css" rel="stylesheet">
+    <link href="{% static 'assets/css/pe-icon-7-stroke.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/flag-icon.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/cs-skin-elastic.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/chartist.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/jqvmap.min.css' %}" rel="stylesheet">
+
+    <link href="{% static 'assets/css/weather-resultsicons.css' %}" rel="stylesheet"/>
+    <link href="{% static 'assets/css/fullcalendar.min.css' %}" rel="stylesheet"/>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78898293-3"></script>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '827276528274056');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=827276528274056&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-78898293-3');
+    </script>
+
+
+    <style>
+        .footer {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #weatherWidget .currentDesc {
+            color: #ffffff !important;
+        }
+
+        .traffic-chart {
+            min-height: 335px;
+        }
+
+        #flotPie1 {
+            height: 150px;
+        }
+
+        #flotPie1 td {
+            padding: 3px;
+        }
+
+        #flotPie1 table {
+            top: 20px !important;
+            right: -10px !important;
+        }
+
+        .chart-container {
+            display: table;
+            min-width: 270px;
+            text-align: left;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        #flotLine5 {
+            height: 105px;
+        }
+
+        #flotBarChart {
+            height: 150px;
+        }
+
+        #cellPaiChart {
+            height: 160px;
+        }
+
+    </style>
+    {% block styles %}{% endblock %}
+</head>
+
+<body>
+<!-- Left Panel -->
+<aside class="left-panel" id="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+        <div class="main-menu collapse navbar-collapse" id="main-menu">
+
+            <ul class="nav navbar-nav">
+                <!-- <li class="">
+                    <a href="/edit_template"><i class="menu-icon ti-pencil-alt"></i>Team Info</a>
+                </li> -->
+                <li class="">
+                    <a href="/user/credential_form" class="secrets"><i class="menu-icon ti-lock"></i>Secrets</a>
+                </li>
+                <li class="">
+                    <a href="/user/profile" class="profile"><i class="menu-icon ti-user"></i>Profile</a>
+                </li>
+                <!-- <li class="">
+                    <a href="/user/fub_users"><i class="menu-icon ti-user"></i>FUB User</a>
+                </li> -->
+                {% if smartlist_heatmap_report %}
+                <li class="">
+                    <a href="/user/heatmap"><i class="menu-icon ti-stats-up"></i>FUB Heatmap Reports</a>
+                </li>
+                {% endif %}
+                <!-- {% if planFubTwillio %}
+                <li class="">
+                    <a href="/user/text-templates"><i class="menu-icon ti-user"></i>Text Templates</a>
+                </li>
+                {% endif %} -->
+                <li class="">
+                    <a href="/user/settings" class="settings"><i class="menu-icon ti-settings"></i>Settings</a>
+                </li>
+                <li class="">
+                    <a href="/payments/billing" class="billing"><i class="menu-icon ti-wallet"></i>Billing</a>
+                </li>
+                {% if planFubEmbeddedApp %}
+                <li class="">
+                    <a href="/user/fub_user_list" class="fub_user_list"><i class="menu-icon ti-settings"></i>Fub User List</a>
+                </li>
+                {% endif %}
+                <li class="">
+                    <a href="../../secure/logout" class="logout"><i class="menu-icon ti-arrow-circle-left"></i>Logout</a>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</aside>
+<!-- /#left-panel -->
+<!-- Right Panel -->
+<div class="right-panel" id="right-panel">
+    <!-- Header-->
+    <header class="header" id="header">
+        <div class="top-left">
+            <div class="navbar-header">
+                <!-- <a class="navbar-brand hidden" href="./"><img src="{% static 'images/logo2.png' %}" alt="Logo"></a> -->
+                <a class="menutoggle" id="menuToggle"><i class="fa fa-bars"></i></a>
+                <!-- <a class="navbar-brand" href="./"><img src="{% static 'images/logo.png' %}" alt="Logo"></a> -->
+                <a class="navbar-brand" href="/user/profile"><img class="align-content img-fluid" src="{% static 'images/logo.png'%}" alt=""></a>
+<!--                <h1 style="font-family: 'Quantico'; color:#1d06fb ;font-size: 30px;-->
+<!--    font-weight: 500;letter-spacing: 3px; display: inline; ">DataLabz</h1>-->
+
+            </div>
+        </div>
+        <div class="top-right">
+            <div class="header-menu">
+                <div class="header-left">
+                    <!-- <button class="search-trigger"><i class="fa fa-search"></i></button>
+                    <div class="form-inline">
+                        <form class="search-form">
+                            <input aria-label="Search" class="form-control mr-sm-2" placeholder="Search ..."
+                                   type="text">
+                            <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                        </form>
+                    </div> -->
+
+                </div>
+
+                <div class="user-area dropdown float-right">
+                    <a aria-expanded="false" aria-haspopup="true" class="dropdown-toggle active" data-toggle="dropdown"
+                       href="#">
+                        <img alt="User Avatar" class="user-avatar rounded-circle"
+                             src="{% static 'img/dummy_profile.jpeg' %}">
+                    </a>
+
+                    <div class="user-menu dropdown-menu">
+
+                        <a class="nav-link" href="../../secure/logout"><i class="fa fa-power -off"></i>Logout</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+    <div class="clearfix"></div>
+
+</div>
+
+
+<!-- /#right-panel -->
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+<!--  Chart js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.bundle.min.js"></script>
+
+<!--Chartist Chart-->
+<script src="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartist-plugin-legend@0.6.2/chartist-plugin-legend.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery.flot@0.8.3/jquery.flot.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flot-pie@1.0.0/src/jquery.flot.pie.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flot-spline@0.0.1/js/jquery.flot.spline.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/simpleweather@3.1.0/jquery.simpleWeather.min.js"></script>
+<script src="{% static 'assets/js/init/weather-init.js'%}"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
+<script src="{% static 'assets/js/init/fullcalendar-init.js' %}"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="{% static 'js/intercom.js' %}"></script>
+<!--<script>helpwiseSettings={'widget_id': '60d28479320a2', 'align': 'right'}</script><script src='https://cdn.helpwise.io/assets/js/livechat.js'</script>-->
+<!--Local Stuff-->
+{% if intercom_hmac_hash %}
+<script>
+    window.intercomSettings = {
+      api_base: "https://api-iam.intercom.io",
+      app_id: "y5t1jigg",
+      email: '{{user_email}}', // Email address
+      user_hash: '{{intercom_hmac_hash}}' // HMAC using SHA-256
+    };
+  </script>
+  
+  <script>
+  // We pre-filled your app ID in the widget URL: 'https://widget.intercom.io/widget/y5t1jigg'
+  (function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/y5t1jigg';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(document.readyState==='complete'){l();}else if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+  </script>
+{% endif %}
+{% block script %}{% endblock %}
+
+</body>
+</html>

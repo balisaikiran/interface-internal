@@ -1,0 +1,6 @@
+{
+    "watch": ["src"],
+    "ext": "ts,json",
+    "ignore": ["src/**/*.spec.ts"],
+    "exec": "npm run compile && npx tsx -r dotenv/config ./dist/index.js dotenv_config_path=.dev_env dotenv_config_debug=true src/index.ts"
+  }

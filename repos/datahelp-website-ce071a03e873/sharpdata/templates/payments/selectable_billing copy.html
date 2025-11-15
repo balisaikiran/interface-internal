@@ -1,0 +1,3111 @@
+{% extends 'dashboard/base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+<style>
+  label {
+    color: #4c4c4c !important;
+    text-transform: capitalize !important;
+    font-size: 15px !important;
+    /* transform: translate(15px,7px); */
+    margin-bottom: 2px;
+    /* padding: 1px 3px; */
+  }
+
+  @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .col-container {
+    display: table;
+    width: 100%;
+  }
+
+  .main-col {
+    display: table-cell;
+    padding: 16px;
+  }
+
+  body {
+    background-color: #fafafa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 60px;
+  }
+
+  h1 {
+    letter-spacing: 1px;
+  }
+
+  .pricing-container {
+    display: flex;
+  }
+
+  .pricing {
+    background-color: #fff;
+    border: 1px solid #eee;
+    margin: 10px;
+    text-align: center;
+  }
+
+  .pricing.highlight {
+    border-top: 2px solid #50BC01;
+    box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .pricing h1 {
+    color: #5CAEFE;
+    margin: 30px 0 0;
+  }
+
+  .pricing h4 {
+    margin: 20px 0 0;
+  }
+
+  .pricing small.green {
+    color: #50BC01;
+    margin: 0;
+  }
+
+  .pricing small.green+h1 {
+    margin-top: 10px;
+  }
+
+  .pricing small {
+    color: #777;
+  }
+
+  .pricing ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 40px 0;
+  }
+
+  .pricing ul li {
+    margin: 20px 30px;
+    max-width: 250px;
+  }
+
+  .pricing button {
+    background-color: #5CAEFE;
+    border: 0;
+    border-radius: 2px;
+    color: #fff;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+  }
+
+  @media screen and (max-width: 480px) {
+
+    .social-panel-container.visible {
+      transform: translateX(0px);
+    }
+
+    .floating-btn {
+      right: 10px;
+    }
+  }
+
+  .right-panel {
+    width: inherit;
+  }
+</style>
+
+<link rel="stylesheet" href="{% static 'payments/pricing-style.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class=" d-flex align-content-center flex-wrap">
+  <div class="container" style="width: 100%; max-width: -webkit-fill-available;">
+    <div class="container mt-5 mb-5">
+      <div class="pricing">
+        <div class="container">
+          <section class="content-section bd-bottom" style="width: -webkit-fill-available; padding-bottom: 5%">
+            <div class=" d-flex align-content-center flex-wrap">
+              <div class="container" style="width: 100%; max-width: 100%;">
+                <section class="pricing-top-section py-5">
+                  <div class="container d-flex justify-content-center">
+                    <div class="col-lg-10 d-flex flex-column text-center justify-content-center align-items-center">
+                      <h2 class="price-heading">Select Your Plan</h2>
+                      <!-- <div class="btn btn-primary">Schedule a Demo</div> -->
+                      <h4 class="price-heading-2 mt-3 mb-4">👋 Hey there lets get you started. Select your Package</h4>
+                    </div>
+                  </div>
+
+                  <div class="container-fluid">
+                    <div class="d-flex flex-wrap justify-content-center align-items-start p-5">
+                      <div class="col-xl-3 col-lg-3 col-md-6 col-12 p-lg-3 p-2">
+                        <a data-toggle="collapse" href="#collapseOne">
+                          <div class="card-price mx-auto p-4">
+
+                            <div>
+                              <h5>FUB Only</h5>
+                              <p>Follow-up-boss plan for syncing your sales process</p>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+
+                      <div class="col-xl-3 col-lg-3 col-md-6 col-12 p-lg-3 p-2">
+                        <a data-toggle="collapse" href="#collapseTwo">
+                          <div class="card-price mx-auto p-4">
+                            <div>
+                              <h5>FUB - SISU</h5>
+                              <p>Integrate and sync follow-up-boss CRM with SISU</p>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+
+                      <div class="col-xl-3 col-lg-3 col-md-6 col-12 p-lg-3 p-2">
+                        <a data-toggle="collapse" href="#collapseThree">
+                          <div class="card-price mx-auto p-4">
+
+                            <div>
+                              <h5>FUB - OTC</h5>
+                              <p>Integrate and sync follow-up-boss with Open to close</p>
+                            </div>
+
+                          </div>
+                        </a>
+                      </div>
+
+                      <div class="col-xl-3 col-lg-3 col-md-6 col-12 p-lg-3 p-2">
+                        <a data-toggle="collapse" href="#collapseFive">
+                          <div class="card-price mx-auto p-4">
+
+                            <div>
+                              <h5>FUB-SISU-OTC</h5>
+                              <p>Integrate and sync Follow-up-boss with SISU and OTC</p>
+                            </div>
+
+                          </div>
+                        </a>
+                      </div>
+
+                      <!-- <div class="col-xl-3 col-lg-3 col-md-6 col-12 p-lg-3 p-2">
+                        <a data-toggle="collapse" href="#collapseFour">
+                          <div class="card-price mx-auto p-4">
+
+                            <div>
+                              <h5>OTC only</h5>
+                              <p>Open to Close plan made for syncing your sales process</p>
+                            </div>
+
+                          </div>
+                        </a>
+                      </div> -->
+
+                    </div>
+                  </div>
+                </section>
+                <!--Accordian Main-->
+                <div id="accordion">
+
+<!--Fub-Only Plan-->
+<section id="collapseOne" data-label="fubOnly" class="collapse" data-parent="#accordion">
+  <form action="/payments/generate_hp" method="post">
+    {% csrf_token %}
+    <input name="collapsable" hidden value="FUB_ONLY">
+
+  <!-- ------------switcher and plan title----------- -->
+  <div class="container mt-2 mb-5 text-center">
+
+    <div class=" mb-4 text-center d-mdx-none">
+      <img src="{% static 'payments/images/fub.png' %}" height="60" alt="FUB-sisu">
+      <h5 class="my-3" style="font-size:18px; font-weight:600;">FUB Only INTEGRATION</h5>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-md">
+        <span>
+          Monthly &nbsp;
+        </span>
+        <div class="custom-control custom-switch custom-switch-md d-inline">
+          <input type="checkbox" class="custom-control-input" id="customSwitch1">
+          <label class="custom-control-label" for="customSwitch1"></label>
+        </div>
+        <span>
+          Annually
+        </span>
+        <span style="font-family: 'Dancing Script';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #F3B007;">save %</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md">
+        <span><i class="bi bi-check-circle-fill"></i>
+          Fully Customizable&nbsp;&nbsp;
+        </span>
+        <span><i class="bi bi-check-circle-fill"></i>
+          Cancel anytime
+        </span>
+      </div>
+    </div>
+
+  </div>
+
+
+
+  <!-- ----------table---------- -->
+
+  <div  class="fub-out container mt-5 mb-5">
+
+    <div class="pricing">
+
+      <div class="pricing-table p-0 table-responsive">
+          <!-- Heading -->
+          <table class="table border-0 m-0 table-bordered">
+            <thead>
+              <tr>
+                <th class="w-25 pr-lg-5 text-left">
+                  <h5 class="my-2" style="font-size:16px; font-weight:600;">
+                    <i class="iconify mr-2 mb-1" data-icon="mdi:widgets-outline"></i>Package Features
+                  </h5>
+
+                </th>
+                <th class="highlight bg-primary align-middle w-25">
+                 
+                  Webform Pipeline Plus
+                </th>
+                <th class="bg-primary align-middle w-25">
+                  Webform Pipeline Max
+                </th>
+              </tr>
+            </thead>
+          </table>
+          <!-- Heading -->
+
+          <table class="table m-0 table-bordered">
+
+
+            <tbody class="text-center">
+
+              <tr>
+                <td class="w-25">
+                  <span class="ptable-title">Embeded App</span>
+                </td>
+                <td class="w-25">
+                  <!-- Icon -->
+                  <span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span>
+                </td>
+                <td class="w-25">
+                  <!-- Icon -->
+                  <span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span>
+                </td>
+              </tr>
+
+
+              <tr>
+                <td>Form Builder <p class="badge badge-success">soon</p>
+                </td>
+                
+                <td>
+                  <p class="badge badge-success">soon</p>
+                </td>
+                <td>
+                  <p class="badge badge-success">soon</p>
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  Optional Field Count
+                </td>
+                <td>20 optional fields</td>
+                <td>50 optional fields</td>
+              </tr>
+
+              <tr>
+                <td>
+                  Assign Agents to FUB Leads
+                </td>
+                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  Create/Update FUB Deals
+                </td>
+                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+              </tr>
+
+              <tr>
+                <td>
+                  Create FUB Notes with form entry data
+                </td>
+                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+              </tr>
+
+              <!-- -----forms----- -->
+              <div class="collapse-table">
+                <tr class="collapse-head-cont">
+                  <td class="collapse-head" data-toggle="collapse" href="#formsx">
+                    <div>
+                      Forms 
+                      <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                    </div>
+                  </td>
+                  <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                  <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                </tr>
+                <tbody class="collapse-rows collapse" id="formsx">
+
+                  <tr>
+                    <td>
+                      Appointment Forms
+                    </td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      Disposition Forms
+                    </td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      Transaction forms <br> (Signed, Pending, Closed Stages)
+                    </td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      Signed Forms
+                    </td>
+                    <td><i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on</td>
+                    <td><i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on</td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      Pending Forms
+                    </td>
+                    <td><i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on</td>
+                    <td><i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on</td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      Closed Forms
+                    </td>
+                    <td><i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on</td>
+                    <td><i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on</td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      Assignments
+                    </td>
+                    <td><i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on</span></td>
+                    <td><i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on</td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      Document upload form
+                    </td>
+                    <td><i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on</td>
+                    <td><i class="iconify" data-icon="ant-design:appstore-add-outlined"></i>Add-on</td>
+                  </tr>
+                </tbody>
+              </div>
+
+              <!-- -------- support ------  -->
+              <div class="collapse-table">
+
+                <tr class="collapse-head-cont">
+                  <td class="collapse-head" data-toggle="collapse" href="#support">
+                    <div>
+                      Support
+                      <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                    </div>
+                  </td>
+                  <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                  <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                </tr>
+                <tbody class="collapse-rows collapse" id="support">
+                  <tr>
+                    <td>
+                      Email
+                    </td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Phone / ZOOM
+                    </td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Dedicated CS Account Manager
+                    </td>
+                    <td><span>N/A</td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      Access to Mastermind Group
+                    </td>
+
+                    <td><span>N/A</td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                  </tr>
+                </tbody>
+
+              </div>
+            </tbody>
+          </table>
+      </div>
+
+      <!-- ----------Extra add ons ------------------ -->
+      <div class="accordion mt-3" id="accordionAddOn">
+        <div class="card">
+
+          <div class="card-header d-flex flex-wrap align-items-center justify-content-between" id="headingOne"
+            data-toggle="collapse" data-target="#addOn" aria-expanded="true">
+            <h5 class="mb-0">
+              Extra Add-on: Interface offers you flexible add-ons and integration to suit your need
+            </h5>
+            <span class="iconify ml-auto text-primary" data-icon="akar-icons:circle-chevron-down-fill"></span>
+          </div>
+
+          <div id="addOn" class="fub-out collapse show" aria-labelledby="headingOne" data-parent="#accordionAddOn">
+
+            <div class="pricing-table table-responsive">
+              <table class="table border-top-0 m-0 table-bordered">
+              
+                <tbody class="text-center">
+                  <!-- -----optt----- -->
+                    <div class="collapse-table">
+
+                      <tr class="collapse-head-cont">
+                        <td class="collapse-head w-25" data-toggle="collapse" href="#optt">
+                          <div>
+                            Optional Automation
+                            <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                          </div>
+                        </td>
+                        <td class="w-25"><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                        <td class="w-25"><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      </tr>
+                      <tbody class="collapse-rows collapse" id="optt">
+                        <tr>
+                      <td class="w-25">
+                        <div class="form-check">
+                            Update Contact Stage
+                        </div>
+                      </td>
+                      <td class="w-25"><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td class="w-25"><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">Add Tags</div>
+                      </td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                            FUB Appointment Description Templates
+                        </div>
+                      </td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                            FUB Appointment
+                        </div>
+                      </td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                            FUB Relationship Invite
+                        </div>
+                      </td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                            FUB Populate Background
+                        </div>
+                      </td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                            FUB Pause All Action Plans
+                        </div>
+                      </td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                            FUB Run Action Plan
+                        </div>
+                      </td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                            Email Notification
+                            <i class="iconify text-success ml-1" style="font-size:16px;" data-icon="ic:round-mark-email-read"></i>
+                        </div>
+                      </td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div class="form-check">
+                            Slack Notification
+                            <i class="iconify ml-1" style="font-size:16px;" data-icon="logos:slack-icon"></i>                          
+                        </div>
+                      </td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                      <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                    </tr>
+
+                      </tbody>
+
+                    </div>
+
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="addon_custom_branded_theme" id="fub_addon_custom_branded_theme">
+                          Custom Branded Theme
+                      </div>
+                    </td>
+                    <td>$10 per month</td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="addon_custom_thank_you_message" id="fub_addon_custom_thank_you_message">
+                          Custom Thank You message
+                      </div>
+                    </td>
+                    <td>$10 per month</td>
+                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="addon_additional_option_fields" id="fub_addon_additional_option_fields">
+                          Additional Optional Fields
+                          <select class="custom-select price-input" name="addon_additional_option_fields_select" id="fub_addon_additional_option_fields_select">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                      </div>
+                    </td>
+                    <td>For every 5 fields: Add on $15 a month + Setup Fee: $19</td>
+                    <td>For every 5 fields: Add on $10 a month + Setup Fee: $19</td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="addon_additional_optional_automation" id="addon_additional_optional_automation">
+                          Additional Optional Automation
+                          <select class="custom-select price-input" name="addon_additional_optional_automation_select" id="addon_additional_optional_automation_select">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                          </select>
+                      </div>
+                    </td>
+                    <td>For every 5 Automations: Add on $20 a month + Setup Fee: $99</td>
+                    <td>For every 5 Automations: Add on $15 a month + Setup Fee: $99</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- Price Buttons -->
+              <table class="table border-0 m-0 table-bordered">
+                <tfoot>
+                  <tr class="tableprow">
+                    <td class="w-25">
+                      <div class="row mb-3">
+                        <!-- <div class="col-md">
+                          <span>
+                            Monthly &nbsp;
+                          </span>
+                          <div class="custom-control custom-switch custom-switch-md d-inline">
+                            <input type="checkbox" class="custom-control-input" id="customSwitch2">
+                            <label class="custom-control-label" for="customSwitch2"></label>
+                          </div>
+                          <span>
+                            Annually
+                          </span>
+                          <span style="font-family: 'Dancing Script';
+                        font-style: normal;
+                        font-weight: 700;
+                        font-size: 16px;
+                        line-height: 22px;
+                        text-align: center;
+                        color: #F3B007;">save%</span>
+                        </div> -->
+                      </div>
+                    </td>
+                    <td data-label="Webform Plus" id="wpp" class="highlight bg-primary w-25"> 
+                      $<span class="ptable-price">149</span> /month
+                      <p>$449 0ne time setup</p>
+                      <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="FUB_WEBFORM_PLUS">Subscribe</button>
+                    </td>
+                    <td data-label="Webform Max" id="wpm" class="bg-primary w-25"> 
+                      $<span class="ptable-price">259</span> /month
+                      <p>$799 0ne time setup</p>
+                      <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="FUB_WEBFORM_MAX">Subscribe</button>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </form>
+</section>
+<!--Fub-Only Plan END-->
+
+<!--Fub-SISU Plan-->
+                <section id="collapseTwo" data-label="fubSisu" class="collapse" data-parent="#accordion">
+                  <form action="/payments/generate_hp" method="post">
+                    {% csrf_token %}
+                    <input name="collapsable" hidden value="FUB_SISU">
+
+                  <!-- ------------switcher and plan title----------- -->
+                  <div class="container mt-5 mb-5 text-center">
+
+                    <div class=" mb-4 text-center d-mdx-none">
+                      <img src="{% static 'payments/images/fub-sisu.png' %}" height="60" alt="FUB-sisu">
+                      <h5 class="my-3" style="font-size:18px; font-weight:600;">FUB-SISU INTEGRATION</h5>
+                    </div>
+
+                    <div class="row mb-5">
+                      <div class="col-md">
+                        <span>
+                          Monthly &nbsp;
+                        </span>
+                        <div class="custom-control custom-switch custom-switch-md d-inline">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch1" name="plan_type">
+                          <label class="custom-control-label" for="customSwitch1"></label>
+                        </div>
+                        <span>
+                          Annually
+                        </span>
+                        <span style="font-family: 'Dancing Script';
+                      font-style: normal;
+                      font-weight: 700;
+                      font-size: 18px;
+                      line-height: 22px;
+                      
+                      text-align: center;
+                      
+                      color: #F3B007;">save %</span>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md">
+                        <span><i class="bi bi-check-circle-fill"></i>
+                          Flexible add-ons and set up &nbsp;&nbsp;
+                        </span><span><i class="bi bi-check-circle-fill"></i>
+                          Cancel anytime you want
+                        </span>
+                      </div>
+                    </div>
+
+                  </div>
+
+                  <!-- ----------table---------- -->
+
+                  <div class="container mt-5 mb-5">
+
+                    <div class="pricing">
+                      <div class="container">
+
+                        <div class="pricing-table p-0 table-responsive">
+                          <!-- Heading -->
+                          <table class="table border-0 m-0 table-bordered">
+                            <thead>
+                              <tr>
+                                <th class="w-25 pr-lg-5 text-left">
+                                  <h5 class="my-2" style="font-size:16px; font-weight:600;">
+                                    <i class="iconify mr-2 mb-1" data-icon="mdi:widgets-outline"></i>Package Features
+                                  </h5>
+
+                                </th>
+                                <th class="bg-primary align-middle w-25">
+                                  FUB Embeded App
+                                </th>
+                                <th class="highlight bg-primary align-middle w-25">
+                                  <p class=" thead-pill badge badge-warning rounded-pill px-3 py-1">popular</p>
+                                  Webform Pipeline Plus
+                                </th>
+                                <th class="bg-primary align-middle w-25">
+                                  Webform Pipeline Max
+                                </th>
+                              </tr>
+                            </thead>
+                          </table>
+                          <!-- Heading -->
+
+                          <table class="table m-0 table-bordered">
+
+
+                            <tbody class="text-center">
+
+                              <tr>
+                                <td class="w-25">
+                                  <span class="ptable-title"> FUB- SISU INTEGRATION</span>
+                                </td>
+
+                                <td class="w-25">
+                                  <!-- Icon -->
+                                  <span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span>
+                                </td>
+                                <td class="w-25">
+                                  <!-- Icon -->
+                                  <span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span>
+                                </td>
+                                <td class="w-25">
+                                  <!-- Icon -->
+                                  <span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span>
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td><span class="ptable-title"><i class="fa fa-signal"></i> Create and Update SISU</span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span>
+                                </td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span>
+                                </td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span>
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td><span class="ptable-title"><i class="fa fa-headphones"></i> Custom Fields that Sync with
+                                    SISU</span>
+                                </td>
+                                <td>
+                                  N/A
+                                </td>
+                                <td>
+                                  5 fields complimentary with Sisu Activity Integration
+                                </td>
+                                <td>
+                                  10 fields complimentary with Sisu Activity Integration
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td>Embeded app</td>
+                                <td>N/A</td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>Form Builder <p class="badge badge-success">soon</p>
+                                </td>
+                                <td>
+                                  <p class="badge badge-success">soon</p>
+                                </td>
+                                <td>
+                                  <p class="badge badge-success">soon</p>
+                                </td>
+                                <td>
+                                  <p class="badge badge-success">soon</p>
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Optional Field Count
+                                </td>
+                                <td>N/A</td>
+                                <td>20 optional fields</td>
+                                <td>20 optional fields</td>
+                              </tr>
+
+                              <!-- -----------collapsable features ------------------- -->
+
+                              <!-- -----forms----- -->
+                              <div class="collapse-table">
+
+                                <tr class="collapse-head-cont">
+                                  <td class="collapse-head" data-toggle="collapse" href="#formsx">
+                                    <div>
+                                      Forms
+                                      <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                                    </div>
+                                  </td>
+                                  <td>N/A</td>
+                                  <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                </tr>
+                            <tbody class="collapse-rows collapse" id="formsx">
+
+                              <tr>
+                                <td>
+                                  Appointment
+                                </td>
+                                <td>N/A</td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Disposition
+                                </td>
+                                <td>N/A</td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Transaction
+                                </td>
+                                <td>N/A</td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Signed
+                                </td>
+                                <td>N/A</td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Pending
+                                </td>
+                                <td>N/A</td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Closed
+                                </td>
+                                <td>N/A</td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+
+                            </tbody>
+
+                        </div>
+
+                        <!-- --------activity integration------- -->
+                        <div class="collapse-table">
+
+                          <tr class="collapse-head-cont">
+                            <td class="collapse-head" data-toggle="collapse" href="#activity">
+                              <div>
+                                Activity Integration
+                                <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                              </div>
+                            </td>
+                            <td>N/A</td>
+                            <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                          </tr>
+                          <tbody class="collapse-rows collapse" id="activity">
+                            <tr>
+                              <td>
+                                Assign Agents to FUB Leads
+                              </td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Create/Update FUB Deals
+                              </td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Create FUB Notes with form entry data
+                              </td>
+
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Optional Additional Automation
+                              </td>
+
+                              <td>N/A</td>
+                              <td>Upto 10 automations</td>
+                              <td>Upto 20 automations</td>
+                            </tr>
+                          </tbody>
+
+                        </div>
+
+                        <!-- -------- support ------  -->
+                        <div class="collapse-table">
+
+                          <tr class="collapse-head-cont">
+                            <td class="collapse-head" data-toggle="collapse" href="#support">
+                              <div>
+                                Support
+                                <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                              </div>
+                            </td>
+                            <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                          </tr>
+                          <tbody class="collapse-rows collapse" id="support">
+                            <tr>
+                              <td>
+                                Email
+                              </td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Phone
+                              </td>
+                              <td><span>N/A</td>
+                              <td><span>N/A</td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Dedicated CS Account Manager
+                              </td>
+                              <td><span>N/A</td>
+                              <td><span>N/A</td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Access to Mastermind Group
+                              </td>
+
+                              <td>N/A</td>
+                              <td><span>N/A</td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                          </tbody>
+
+                        </div>
+
+
+                        </tbody>
+
+                        </table>
+
+                      </div>
+
+
+                      <!-- ----------Extra add ons ------------------ -->
+                      <div class="accordion mt-3" id="accordionAddOn">
+                        <div class="card">
+                          <div class="card-header d-flex flex-wrap align-items-center justify-content-between" id="headingOne"
+                            data-toggle="collapse" data-target="#addOn" aria-expanded="true">
+                            <h5 class="mb-0">
+                              Extra Add-on: Interface offers you flexible add-ons and integration to suit your need
+                            </h5>
+                            <span class="iconify ml-auto text-primary" data-icon="akar-icons:circle-chevron-down-fill"></span>
+                          </div>
+
+                          <div id="addOn" class=" collapse show" aria-labelledby="headingOne" data-parent="#accordionAddOn">
+
+                            <div class="pricing-table table-responsive">
+                              <table class="table border-top-0 m-0 table-bordered">
+                                <!-- Heading -->
+                                <tbody class="text-center">
+
+                                  <tr>
+                                    <td>
+                                      Update Contact Stage
+                                    </td>
+                                    <td>N/A</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      Add Tags
+                                    </td>
+                                    <td>N/A</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      FUB Calendar Invite
+                                    </td>
+                                    <td>N/A</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      FUB Relationship Invite
+                                    </td>
+                                    <td>N/A</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      FUB Populate Background
+                                    </td>
+                                    <td>N/A</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      FUB Pause All Action Plans
+                                    </td>
+                                    <td>N/A</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      FUB Run Action Plan
+                                    </td>
+                                    <td>N/A</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_assignment" id="addon_assignment">
+                                          Assignments
+
+                                      </div>
+                                    </td>
+                                    <td>N/A</td>
+                                    <td>Add on $20 a month</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_custom_branded_theme" id="addon_custom_branded_theme">
+                                          Custom Branded Theme
+                                      </div>
+                                    </td>
+                                    <td>N/A</td>
+                                    <td>$10 per month</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_custom_thank_you_message" id="addon_custom_thank_you_message">
+                                          Custom Thank You message
+                                      </div>
+                                    </td>
+                                    <td>N/A</td>
+                                    <td>$10 per month</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_appointment_template" id="addon_appointment_template">
+                                          Appointment Template
+                                          <select class="custom-select price-input" id="addon_appointment_template_select" name="addon_appointment_template_select">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                          </select>
+
+                                      </div>
+                                    </td>
+                                    <td>N/A</td>
+                                    <td>$10 per month a template</td>
+                                    <td>$5 per month a template</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td class="w-25">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_sisu_bi_directional_sync" name="addon_sisu_bi_directional_sync" id="addon_bi_directional_sync">
+                                          <span>
+
+                                            SISU Bi-Directional Sync
+                                            <i class="iconify badge text-black-50 badge-warning ml-1">new</i>
+                                          </span>
+                                      </div>
+                                    </td>
+                                    <td class="w-25">
+                                      Add on $20 a month + Setup Fee: $49
+                                    </td>
+                                    <td class="w-25">
+                                      Add on $20 a month + Setup Fee: $49
+                                    </td>
+                                    <td class="w-25">
+                                      Add on $15 a month + Setup Fee: $49
+                                    </td>
+                                  </tr>
+
+                                  <!-- <tr>
+                                    <td class="w-25">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_otc_bi_directional_sync" name="addon_otc_bi_directional_sync" id="addon_otc_bi_directional_sync">
+                                          <span>
+                                            OTC Bi-Directional Sync
+                                            <i class="iconify badge text-black-50 badge-warning ml-1">new</i>
+                                          </span>
+                                      </div>
+                                    </td>
+                                    <td class="w-25">
+                                      Add on $20 a month + Setup Fee: $49
+                                    </td>
+                                    <td class="w-25">
+                                      Add on $20 a month + Setup Fee: $49
+                                    </td>
+                                    <td class="w-25">
+                                      Add on $15 a month + Setup Fee: $49
+                                    </td>
+                                  </tr> -->
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_document_upload_for_forms" id="addon_document_upload_for_forms">
+                                          Document Uploads for Forms
+                                      </div>
+                                    </td>
+                                    <td>N/A</td>
+                                    <td>Add on $20 a month</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_additional_custom_fields_that_sync_with_sisu" id="addon_additional_custom_fields_that_sync_with_sisu">
+                                          Additional Custom Fields that Sync with Sisu
+                                          <select class="custom-select price-input" name="addon_additional_custom_fields_that_sync_with_sisu_select" id="addon_additional_custom_fields_that_sync_with_sisu_select">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                          </select>
+                                      </div>
+                                    </td>
+                                    <td>N/A</td>
+                                    <td>For every 5 fields $20/month + Setup Fee: $49</td>
+                                    <td>For every 5 fields $10/month + Setup Fee: $49</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_additional_option_fields" id="addon_additional_option_fields">
+                                          Additional Optional Fields
+                                          <select class="custom-select price-input" name="addon_additional_option_fields_select" id="addon_additional_option_fields_select">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                          </select>
+                                      </div>
+                                    </td>
+                                    <td>N/A</td>
+                                    <td>For every 5 fields: Add on $15 a month + Setup Fee: $19</td>
+                                    <td>For every 5 fields: Add on $10 a month + Setup Fee: $19</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_additional_optional_automation" id="addon_additional_optional_automation">
+                                          Additional Optional Automation
+                                          <select class="custom-select price-input" name="addon_additional_optional_automation_select" id="addon_additional_optional_automation_select">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                          </select>
+                                      </div>
+                                    </td>
+                                    <td>N/A</td>
+                                    <td>For every 5 Automations: Add on $20 a month + Setup Fee: $99</td>
+                                    <td>For every 5 Automations: Add on $15 a month + Setup Fee: $99</td>
+                                  </tr>
+
+                                </tbody>
+
+                              </table>
+
+                              <!-- Price Buttons -->
+                              <table class="table border-0 m-0 table-bordered">
+                                <tfoot>
+                                  <tr class="tableprow">
+                                    <td class="w-25">
+                                      <div class="row mb-3">
+                                        <div class="col-md">
+                                          <span>
+                                            Monthly &nbsp;
+                                          </span>
+                                          <div class="custom-control custom-switch custom-switch-md d-inline">
+                                            <input type="checkbox" class="custom-control-input" id="customSwitch2" name="plan_type">
+                                            <label class="custom-control-label" for="customSwitch2"></label>
+                                          </div>
+                                          <span>
+                                            Annually
+                                          </span>
+                                          <span style="font-family: 'Dancing Script';
+                                            font-style: normal;
+                                            font-weight: 700;
+                                            font-size: 16px;
+                                            line-height: 22px;
+                                            text-align: center;
+                                            color: #F3B007;">save%</span>
+                                        </div>
+
+                                      </div>
+                                    </td>
+                                    <td data-label="FUB Embeded App" id="fea" class="bg-primary w-25"> 
+                                      $<span class="ptable-price">59</span> /month
+                                      <p>
+                                        $598 0ne time setup
+                                      </p>
+                                      <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="FUB_EMBEDDED_APP">Subscribe</button>
+                                    </td>
+                                    <td data-label="Webform Plus" id="wpp" class="highlight bg-primary w-25"> 
+                                      $<span class="ptable-price">199</span> /month
+                                      <p>$599 0ne time setup</p>
+                                      <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="FUB_WEBFORM_PLUS">Subscribe</button>
+                                    </td>
+                                    <td data-label="Webform Max" id="wpm" class="bg-primary w-25"> 
+                                      $<span class="ptable-price">299</span> /month
+                                      <p>$999 0ne time setup</p>
+                                      <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="FUB_WEBFORM_MAX">Subscribe</button>
+                                    </td>
+                                  </tr>
+                                </tfoot>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                  </form>
+                </section>
+<!--Fub-SISU Plan END-->
+
+<!--Fub-OTC Plan-->
+                <section id="collapseThree" data-label="fubOtc" class="collapse" data-parent="#accordion">
+                  <form action="/payments/generate_hp" method="post">
+                    {% csrf_token %}
+                    <input name="collapsable" hidden value="FUB_OTC">
+                  <!-- ------------switcher and plan title----------- -->
+                  <div class="container mt-5 mb-5 text-center">
+
+                    <div class=" mb-4 text-center d-mdx-none">
+                      <img src="{% static 'payments/images/fub-otc.png' %}" height="60" alt="FUB-sisu">
+                      <h5 class="my-3" style="font-size:18px; font-weight:600;">FUB - OTC INTEGRATION</h5>
+                    </div>
+
+                    <div class="row mb-5">
+                      <div class="col-md">
+                        <span>Monthly &nbsp;</span>
+                        <div class="custom-control custom-switch custom-switch-md d-inline">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch1" name="plan_type">
+                          <label class="custom-control-label" for="customSwitch1"></label>
+                        </div>
+                        <span>Annually</span>
+                        <span style="font-family: 'Dancing Script'; font-style: normal; font-weight: 700;
+                      font-size: 18px; line-height: 22px; text-align: center; color: #F3B007;">save %</span>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md">
+                        <span><i class="bi bi-check-circle-fill"></i>
+                          Flexible add-ons and set up &nbsp;&nbsp;
+                        </span><span><i class="bi bi-check-circle-fill"></i>
+                          Cancel anytime you want
+                        </span>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+
+                  <!-- ----------table---------- -->
+
+                  <div class="container mt-5 mb-5">
+
+                    <div class="pricing">
+                      <div class="container">
+
+                        <div class="pricing-table p-0 table-responsive">
+                          <!-- Heading -->
+                          <table class="table border-0 m-0 table-bordered">
+                            <thead>
+                              <tr>
+                                <th class="w-25 pr-lg-5 text-left">
+                                  <h5 class="my-2" style="font-size:16px; font-weight:600;">
+                                    <i class="iconify mr-2 mb-1" data-icon="mdi:widgets-outline"></i>Package Features
+                                  </h5>
+                                </th>
+                                <th class="highlight bg-primary align-middle w-25">
+                                  <p class=" thead-pill badge badge-warning rounded-pill px-3 py-1">popular</p>
+                                  Webform Pipeline Plus
+                                </th>
+                                <th class="bg-primary align-middle w-25">
+                                  Webform Pipeline Max
+                                </th>
+                              </tr>
+                            </thead>
+                          </table>
+                          <!-- Heading -->
+
+                          <table class="table m-0 table-bordered">
+
+
+                            <tbody class="text-center">
+
+                              <tr>
+                                <td class="w-25">
+                                  <span class="ptable-title"> FUB - OTC INTEGRATION</span>
+                                </td>
+                                <td class="w-25">
+                                  <!-- Icon -->
+                                  <span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span>
+                                </td>
+                                <td class="w-25">
+                                  <!-- Icon -->
+                                  <span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span>
+                                </td>
+                              </tr>
+
+
+                              <tr>
+                                <td><span class="ptable-title"><i class="fa fa-headphones"></i> Custom Fields that Sync with
+                                    OTC</span>
+                                </td>
+                                <td>
+                                  5 fields complimentary with OTC Activity Integration
+                                </td>
+                                <td>
+                                  10 fields complimentary with OTC Activity Integration
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td>Form Builder <p class="badge badge-success">soon</p>
+                                </td>
+                                <td>
+                                  <p class="badge badge-success">soon</p>
+                                </td>
+                                <td>
+                                  <p class="badge badge-success">soon</p>
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Optional Field Count
+                                </td>
+                                <td>20 optional fields</td>
+                                <td>20 optional fields</td>
+                              </tr>
+
+                              <!-- -----------collapsable features ------------------- -->
+
+                              <!-- -----forms----- -->
+                              <div class="collapse-table">
+
+                                <tr class="collapse-head-cont">
+                                  <td class="collapse-head" data-toggle="collapse" href="#formsx">
+                                    <div>
+                                      Forms
+                                      <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                                    </div>
+                                  </td>
+                                  <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                </tr>
+                            <tbody class="collapse-rows collapse" id="formsx">
+
+                              <tr>
+                                <td>
+                                  Appointment
+                                </td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Disposition
+                                </td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Transaction
+                                </td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Signed
+                                </td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Pending
+                                </td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Closed
+                                </td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+                            </tbody>
+
+                        </div>
+
+                        <!-- --------activity integration------- -->
+                        <div class="collapse-table">
+
+                          <tr class="collapse-head-cont">
+                            <td class="collapse-head" data-toggle="collapse" href="#activity">
+                              <div>
+                                Activity Integration
+                                <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                              </div>
+                            </td>
+                            <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                          </tr>
+                          <tbody class="collapse-rows collapse" id="activity">
+                            <tr>
+                              <td>
+                                Assign Agents to FUB Leads
+                              </td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Create/Update FUB Deals
+                              </td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Create FUB Notes with form entry data
+                              </td>
+
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Optional Additional Automation
+                              </td>
+                              <td>Upto 10 automations</td>
+                              <td>Upto 20 automations</td>
+                            </tr>
+                          </tbody>
+
+                        </div>
+
+                        <!-- -------- support ------  -->
+                        <div class="collapse-table">
+
+                          <tr class="collapse-head-cont">
+                            <td class="collapse-head" data-toggle="collapse" href="#support">
+                              <div>
+                                Support
+                                <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                              </div>
+                            </td>
+                            <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                          </tr>
+                          <tbody class="collapse-rows collapse" id="support">
+                            <tr>
+                              <td>
+                                Email
+                              </td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Phone
+                              </td>
+                              <td><span>N/A</td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Dedicated CS Account Manager
+                              </td>
+                              <td><span>N/A</td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Access to Mastermind Group
+                              </td>
+
+                              <td><span>N/A</td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                          </tbody>
+                        </div>
+                        </tbody>
+                        </table>
+                      </div>
+
+
+                      <!-- ----------Extra add ons ------------------ -->
+                      <div class="accordion mt-3" id="accordionAddOn">
+                        <div class="card">
+                          <div class="card-header d-flex flex-wrap align-items-center justify-content-between" id="headingOne"
+                            data-toggle="collapse" data-target="#addOn" aria-expanded="true">
+                            <h5 class="mb-0">
+                              Extra Add-on: Interface offers you flexible add-ons and integration to suit your need
+                            </h5>
+                            <span class="iconify ml-auto text-primary" data-icon="akar-icons:circle-chevron-down-fill"></span>
+                          </div>
+
+                          <div id="addOn" class=" collapse show" aria-labelledby="headingOne" data-parent="#accordionAddOn">
+
+                            <div class="pricing-table table-responsive">
+                              <table class="table border-top-0 m-0 table-bordered">
+                                <!-- Heading -->
+                                <tbody class="text-center">
+
+                                  <tr>
+                                    <td>
+                                      Update Contact Stage
+                                    </td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      Add Tags
+                                    </td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      FUB Calendar Invite
+                                    </td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      FUB Relationship Invite
+                                    </td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      FUB Populate Background
+                                    </td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      FUB Pause All Action Plans
+                                    </td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      FUB Run Action Plan
+                                    </td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_assignment" id="fubotc_addon_assignment">
+                                          Assignments
+                                      </div>
+                                    </td>
+                                    <td>Add on $20 a month</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_custom_branded_theme" id="fubotc_addon_custom_branded_theme">
+                                          Custom Branded Theme
+                                      </div>
+                                    </td>
+                                    <td>$10 per month</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_custom_thank_you_message" id="fubotc_addon_custom_thank_you_message">
+                                          Custom Thank You message
+                                      </div>
+                                    </td>
+                                    <td>$10 per month</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_appointment_template" id="fubotc_addon_appointment_template">
+                                          Appointment Template
+                                          <select class="custom-select price-input" name="addon_appointment_template_select" id="fubotc_addon_appointment_template_select">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                          </select>
+                                      </div>
+                                    </td>
+                                    <td>$10 per month a template</td>
+                                    <td>$5 per month a template</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td class="w-25">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_otc_bi_directional_sync" id="fubotc_addon_bi_directional_sync">
+                                          <span>
+                                            OTC Bi-Directional Sync
+                                            <i class="iconify badge text-black-50 badge-warning ml-1">new</i>
+                                          </span>
+                                      </div>
+                                    </td>
+                                    <td class="w-25">
+                                      Add on $20 a month + Setup Fee: $99
+                                    </td>
+                                    <td class="w-25">
+                                      Add on $15 a month + Setup Fee: $99
+                                    </td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_document_upload_for_forms" id="fubotc_addon_document_upload_for_forms">
+                                          Document Uploads for Forms
+                                      </div>
+                                    </td>
+                                    <td>Add on $20 a month</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_additional_custom_fields_that_sync_with_otc" id="fubotc_addon_additional_custom_fields_that_sync_with_otc">
+                                          Additional Custom Fields that Sync with OTC
+                                          <select class="custom-select price-input" name="addon_additional_custom_fields_that_sync_with_otc_select" id="fubotc_addon_additional_custom_fields_that_sync_with_otc_select">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                          </select>
+                                      </div>
+                                    </td>
+                                    <td>For every 5 fields $20/month + Setup Fee: $49</td>
+                                    <td>For every 5 fields $10/month + Setup Fee: $49</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="addon_additional_option_fields" id="fubotc_addon_additional_option_fields">
+                                          Additional Optional Fields
+                                          <select class="custom-select price-input" name="addon_additional_option_fields_select" id="fubotc_addon_additional_option_fields_select">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                          </select>
+                                      </div>
+                                    </td>
+                                    <td>For every 5 fields: Add on $15 a month + Setup Fee: $19</td>
+                                    <td>For every 5 fields: Add on $10 a month + Setup Fee: $19</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_additional_optional_automation" id="fubotc_addon_additional_optional_automation">
+                                          Additional Optional Automation
+                                          <select class="custom-select price-input" name="addon_additional_optional_automation_select" id="fubotc_addon_additional_optional_automation_select">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                          </select>
+                                      </div>
+                                    </td>
+                                    <td>For every 5 Automations: Add on $20 a month + Setup Fee: $99</td>
+                                    <td>For every 5 Automations: Add on $15 a month + Setup Fee: $99</td>
+                                  </tr>
+
+                                </tbody>
+
+                              </table>
+
+                              <!-- Price Buttons -->
+                              <table class="table border-0 m-0 table-bordered">
+                                <tfoot>
+                                  <tr class="tableprow">
+                                    <td class="w-25">
+                                      <div class="row mb-3">
+                                        <div class="col-md">
+                                          <span>
+                                            Monthly &nbsp;
+                                          </span>
+                                          <div class="custom-control custom-switch custom-switch-md d-inline">
+                                            <input type="checkbox" class="custom-control-input" id="customSwitch2" name="plan_type">
+                                            <label class="custom-control-label" for="customSwitch2"></label>
+                                          </div>
+                                          <span>
+                                            Annually
+                                          </span>
+                                          <span style="font-family: 'Dancing Script';
+                                          font-style: normal;
+                                          font-weight: 700;
+                                          font-size: 16px;
+                                          line-height: 22px;
+                                          text-align: center;
+                                          color: #F3B007;">save%</span>
+                                        </div>
+
+                                      </div>
+                                    </td>
+                                    
+                                    <td data-label="Webform Plus" class="highlight bg-primary w-25" id="wpp"> $<span
+                                          class="ptable-price">199</span> /month
+                                      <p>$599 0ne time setup</p>
+                                      <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="FUB_WEBFORM_PLUS">Subscribe</button>
+
+                                    </td>
+                                    <td data-label="Webform Max" class="bg-primary w-25" id="wpm"> $<span
+                                          class="ptable-price">299</span> /month
+                                      <p>$999 0ne time setup</p>
+                                      <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="FUB_WEBFORM_MAX">Subscribe</button>
+                                    </td>
+                                  </tr>
+                                </tfoot>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </form></section>
+<!--Fub-OTC Plan END-->
+
+<!--OTC only Plan-->
+                <section id="collapseFour" data-label="otcOnly" class="collapse" data-parent="#accordion">
+                  <form action="/payments/generate_hp" method="post">
+                    {% csrf_token %}
+                    <input name="collapsable" hidden value="OTC_ONLY">
+                  <!-- ------------switcher and plan title----------- -->
+                  <div class="container mt-5 mb-5 text-center">
+
+                    <div class=" mb-4 text-center d-mdx-none">
+                      <img src="{% static 'payments/images/fub-otc.png' %}" height="60" alt="FUB-sisu">
+                      <h5 class="my-3" style="font-size:18px; font-weight:600;">OTC only INTEGRATION</h5>
+                    </div>
+
+                    <div class="row mb-5">
+                      <div class="col-md">
+                        <span>
+                          Monthly &nbsp;
+                        </span>
+                        <div class="custom-control custom-switch custom-switch-md d-inline">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch1" name="plan_type">
+                          <label class="custom-control-label" for="customSwitch1"></label>
+                        </div>
+                        <span>
+                          Annually
+                        </span>
+                        <span style="font-family: 'Dancing Script';
+                      font-style: normal;
+                      font-weight: 700;
+                      font-size: 18px;
+                      line-height: 22px;
+                      
+                      text-align: center;
+                      
+                      color: #F3B007;">save %</span>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md">
+                        <span><i class="bi bi-check-circle-fill"></i>
+                          Flexible add-ons and set up &nbsp;&nbsp;
+                        </span><span><i class="bi bi-check-circle-fill"></i>
+                          Free 14 Days trial for new user &nbsp;&nbsp;
+                        </span><span><i class="bi bi-check-circle-fill"></i>
+                          Cancel anytime you want
+                        </span>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+
+                  <!-- ----------table---------- -->
+
+                  <div class="container mt-5 mb-5">
+
+                    <div class="pricing">
+                      <div class="container">
+
+                        <div class="pricing-table p-0 table-responsive">
+                          <!-- Heading -->
+                          <table class="table border-0 m-0 table-bordered">
+                            <thead>
+                              <tr>
+                                <th class="w-25 pr-lg-5 text-left">
+                                  <h5 class="my-2" style="font-size:16px; font-weight:600;">
+                                    <i class="iconify mr-2 mb-1" data-icon="mdi:widgets-outline"></i>Package Features
+                                  </h5>
+
+                                </th>
+                                <th class="bg-primary align-middle w-25">
+                                  FUB Embeded App
+                                </th>
+                                <th class="highlight bg-primary align-middle w-25">
+                                  <p class=" thead-pill badge badge-warning rounded-pill px-3 py-1">popular</p>
+                                  Webform Pipeline Plus
+                                </th>
+                                <th class="bg-primary align-middle w-25">
+                                  Webform Pipeline Max
+                                </th>
+                              </tr>
+                            </thead>
+                          </table>
+                          <!-- Heading -->
+
+                          <table class="table m-0 table-bordered">
+
+
+                            <tbody class="text-center">
+
+
+                              <tr>
+                                <td class="w-25"><span class="ptable-title "><i class="fa fa-headphones"></i> Custom Fields that Sync
+                                    with
+                                    SISU</span>
+                                </td>
+                                <td class="w-25">
+                                  N/A
+                                </td>
+                                <td class="w-25">
+                                  5 fields complimentary with Sisu Activity Integration
+                                </td>
+                                <td class="w-25">
+                                  10 fields complimentary with Sisu Activity Integration
+                                </td>
+                              </tr>
+
+
+                              <tr>
+                                <td>Form Builder <p class="badge badge-success">soon</p>
+                                </td>
+                                <td>
+                                  <p class="badge badge-success">soon</p>
+                                </td>
+                                <td>
+                                  <p class="badge badge-success">soon</p>
+                                </td>
+                                <td>
+                                  <p class="badge badge-success">soon</p>
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Optional Field Count
+                                </td>
+                                <td>N/A</td>
+                                <td>20 optional fields</td>
+                                <td>20 optional fields</td>
+                              </tr>
+
+                              <!-- --------activity integration------- -->
+                              <tr>
+                                <td>
+                                  Additional Automation
+                                </td>
+
+                                <td>N/A</td>
+                                <td>Upto 5 automations</td>
+                                <td>Upto 10 automations</td>
+                              </tr>
+                              <!-- -----------collapsable features ------------------- -->
+
+                              <!-- -----forms----- -->
+                              <div class="collapse-table">
+
+                                <tr class="collapse-head-cont">
+                                  <td class="collapse-head" data-toggle="collapse" href="#formsx">
+                                    <div>
+                                      Forms
+                                      <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                                    </div>
+                                  </td>
+                                  <td>N/A</td>
+                                  <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                </tr>
+                            <tbody class="collapse-rows collapse" id="formsx">
+
+                              <tr>
+                                <td>
+                                  Transaction
+                                </td>
+                                <td>N/A</td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Signed
+                                </td>
+                                <td>N/A</td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Pending
+                                </td>
+                                <td>N/A</td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Closed
+                                </td>
+                                <td>N/A</td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+
+                            </tbody>
+
+                        </div>
+
+
+
+                        <!-- -------- support ------  -->
+                        <div class="collapse-table">
+
+                          <tr class="collapse-head-cont">
+                            <td class="collapse-head" data-toggle="collapse" href="#support">
+                              <div>
+                                Support
+                                <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                              </div>
+                            </td>
+                            <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                          </tr>
+                          <tbody class="collapse-rows collapse" id="support">
+                            <tr>
+                              <td>
+                                Email
+                              </td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Phone
+                              </td>
+                              <td><span>N/A</td>
+                              <td><span>N/A</td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Dedicated CS Account Manager
+                              </td>
+                              <td><span>N/A</td>
+                              <td><span>N/A</td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Access to Mastermind Group
+                              </td>
+
+                              <td>N/A</td>
+                              <td><span>N/A</td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                          </tbody>
+
+                        </div>
+
+
+                        </tbody>
+
+                        </table>
+
+                      </div>
+
+
+                      <!-- ----------Extra add ons ------------------ -->
+                      <div class="accordion mt-3" id="accordionAddOn">
+                        <div class="card">
+                          <div class="card-header d-flex flex-wrap align-items-center justify-content-between" id="headingOne"
+                            data-toggle="collapse" data-target="#addOn" aria-expanded="true">
+                            <h5 class="mb-0">
+                              Extra Add-on: Interface offers you flexible add-ons and integration to suit your need
+                            </h5>
+                            <span class="iconify ml-auto text-primary" data-icon="akar-icons:circle-chevron-down-fill"></span>
+                          </div>
+
+                          <div id="addOn" class=" collapse show" aria-labelledby="headingOne" data-parent="#accordionAddOn">
+
+                            <div class="pricing-table table-responsive">
+                              <table class="table border-top-0 m-0 table-bordered">
+                                <!-- Heading -->
+                                <tbody class="text-center">
+
+                                  <tr>
+                                    <td>
+                                      Update Contact Stage
+                                    </td>
+                                    <td>N/A</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      Add Tags
+                                    </td>
+                                    <td>N/A</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_custom_branded_theme" id="otconly_addon_custom_branded_theme">
+                                          Custom Branded Theme
+                                      </div>
+                                    </td>
+                                    <td>N/A</td>
+                                    <td>$10 per month</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_custom_thank_you_message" id="otconly_addon_custom_thank_you_message">
+                                          Custom Thank You message
+                                      </div>
+                                    </td>
+                                    <td>N/A</td>
+                                    <td>$10 per month</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_document_upload_for_forms" id="otconly_addon_document_upload_for_forms">
+                                          Document Uploads for Forms
+                                      </div>
+                                    </td>
+                                    <td>N/A</td>
+                                    <td>Add on $20 a month</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_additional_custom_fields_that_sync_with_otc" id="otconly_addon_additional_custom_fields_that_sync_with_sisu">
+                                          Additional Custom Fields that Sync with OTC
+                                          <select class="custom-select price-input" name="addon_additional_custom_fields_that_sync_with_otc_select" id="otconly_addon_additional_custom_fields_that_sync_with_sisu_select">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                          </select>
+                                      </div>
+                                    </td>
+                                    <td>N/A</td>
+                                    <td>For every 5 fields $20/month + Setup Fee: $49</td>
+                                    <td>For every 5 fields $10/month + Setup Fee: $49</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_additional_option_fields" id="otconly_addon_additional_option_fields">
+                                          Additional Optional Fields
+                                          <select class="custom-select price-input" name="addon_additional_option_fields_select" id="otconly_addon_additional_option_fields_select">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                          </select>
+                                      </div>
+                                    </td>
+                                    <td>N/A</td>
+                                    <td>For every 5 fields: Add on $15 a month + Setup Fee: $19</td>
+                                    <td>For every 5 fields: Add on $10 a month + Setup Fee: $19</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_additional_optional_automation" id="otconly_addon_additional_optional_automation">
+                                          Additional Optional Automation
+                                          <select class="custom-select price-input" name="addon_additional_optional_automation_select" id="otconly_addon_additional_option_fields_select">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                          </select>
+                                      </div>
+                                    </td>
+                                    <td>N/A</td>
+                                    <td>For every 5 Automations: Add on $20 a month + Setup Fee: $99</td>
+                                    <td>For every 5 Automations: Add on $15 a month + Setup Fee: $99</td>
+                                  </tr>
+
+                                </tbody>
+
+                              </table>
+
+                              <!-- Price Buttons -->
+                              <table class="table border-0 m-0 table-bordered">
+                                <tfoot>
+                                  <tr class="tableprow">
+                                    <td class="w-25">
+                                      <div class="row mb-3">
+                                        <div class="col-md">
+                                          <span>
+                                            Monthly &nbsp;
+                                          </span>
+                                          <div class="custom-control custom-switch custom-switch-md d-inline">
+                                            <input type="checkbox" class="custom-control-input" id="customSwitch2" name="plan_type">
+                                            <label class="custom-control-label" for="customSwitch2"></label>
+                                          </div>
+                                          <span>
+                                            Annually
+                                          </span>
+                                          <span style="font-family: 'Dancing Script';
+                                          font-style: normal;
+                                          font-weight: 700;
+                                          font-size: 16px;
+                                          line-height: 22px;
+                                          text-align: center;
+                                          color: #F3B007;">save%</span>
+                                        </div>
+
+                                      </div>
+                                    </td>
+                                    <td data-label="FUB Embeded App" class="bg-primary w-25" id="fea"> 
+                                      $<span class="ptable-price">59</span> /month
+                                      <p>
+                                        $598 0ne time setup
+                                      </p>
+                                      <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="OTC_WEBFORM_PLUS">Subscribe</button>
+                                    </td>
+                                    <td data-label="Webform Plus" class="highlight bg-primary w-25" id="wpp"> $<span
+                                          class="ptable-price">199</span> /month
+                                      <p>
+                                        $599 0ne time setup
+                                      </p>
+                                      <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="OTC_WEBFORM_PLUS">Subscribe</button>
+
+                                    </td>
+                                    <td data-label="Webform Max" class="bg-primary w-25" id="wpm"> $<span
+                                          class="ptable-price">299</span> /month
+                                      <p>
+                                        $999 0ne time setup
+                                      </p>
+                                      <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="OTC_WEBFORM_MAX">Subscribe</button>
+                                    </td>
+                                  </tr>
+                                </tfoot>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </form></section>
+<!--OTC only Plan END-->
+
+<!--FUB-SISU-OTC Plan-->
+                <section id="collapseFive" data-label="fubSisuOtc" class="collapse" data-parent="#accordion">
+                  <form action="/payments/generate_hp" method="post">
+                    {% csrf_token %}
+                    <input name="collapsable" hidden value="FUB_SISU_OTC">
+                  <!-- ------------switcher and plan title----------- -->
+                  <div class="container mt-5 mb-5 text-center">
+
+                    <div class=" mb-4 text-center d-mdx-none">
+                      <img src="{% static 'payments/images/fub-sisu-otc.png' %}" height="60" alt="FUB-sisu">
+                      <h5 class="my-3" style="font-size:18px; font-weight:600;">FUB-SISU-OTC INTEGRATION</h5>
+                    </div>
+
+                    <div class="row mb-5">
+                      <div class="col-md">
+                        <span>
+                          Monthly &nbsp;
+                        </span>
+                        <div class="custom-control custom-switch custom-switch-md d-inline">
+                          <input type="checkbox" class="custom-control-input" id="customSwitch1" name="plan_type">
+                          <label class="custom-control-label" for="customSwitch1"></label>
+                        </div>
+                        <span>
+                          Annually
+                        </span>
+                        <span style="font-family: 'Dancing Script';
+                      font-style: normal;
+                      font-weight: 700;
+                      font-size: 18px;
+                      line-height: 22px;
+                      
+                      text-align: center;
+                      
+                      color: #F3B007;">save %</span>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md">
+                        <span><i class="bi bi-check-circle-fill"></i>
+                          Flexible add-ons and set up &nbsp;&nbsp;
+                        </span><span><i class="bi bi-check-circle-fill"></i>
+                          Cancel anytime you want
+                        </span>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+
+                  <!-- ----------table---------- -->
+
+                  <div class="container mt-5 mb-5">
+
+                    <div class="pricing">
+                      <div class="container">
+
+                        <div class="pricing-table p-0 table-responsive">
+                          <!-- Heading -->
+                          <table class="table border-0 m-0 table-bordered">
+                            <thead>
+                              <tr>
+                                <th class="w-25 pr-lg-5 text-left">
+                                  <h5 class="my-2" style="font-size:16px; font-weight:600;">
+                                    <i class="iconify mr-2 mb-1" data-icon="mdi:widgets-outline"></i>Package Features
+                                  </h5>
+
+                                </th>
+                                <th class="highlight bg-primary align-middle w-25">
+                                  <p class=" thead-pill badge badge-warning rounded-pill px-3 py-1">popular</p>
+                                  Webform Pipeline Plus
+                                </th>
+                                <th class="bg-primary align-middle w-25">
+                                  Webform Pipeline Max
+                                </th>
+                              </tr>
+                            </thead>
+                          </table>
+                          <!-- Heading -->
+
+                          <table class="table m-0 table-bordered">
+
+
+                            <tbody class="text-center">
+
+                              <tr>
+                                <td class="w-25">
+                                  <span class="ptable-title"> FUB- SISU-OTC INTEGRATION</span>
+                                </td>
+                                <td class="w-25">
+                                  <!-- Icon -->
+                                  <span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span>
+                                </td>
+                                <td class="w-25">
+                                  <!-- Icon -->
+                                  <span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span>
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td><span class="ptable-title"><i class="fa fa-signal"></i> Create and Update SISU</span></td>
+                                
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span>
+                                </td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span>
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td><span class="ptable-title"><i class="fa fa-headphones"></i> Custom Fields that Sync with
+                                    SISU & OTC</span>
+                                </td>
+                          
+                                <td>
+                                  5 fields complimentary with Sisu & OTC Activity Integration
+                                </td>
+                                <td>
+                                  10 fields complimentary with Sisu & OTC Activity Integration
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td>Embeded app</td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>Form Builder <p class="badge badge-success">soon</p>
+                                </td>
+                               
+                                <td>
+                                  <p class="badge badge-success">soon</p>
+                                </td>
+                                <td>
+                                  <p class="badge badge-success">soon</p>
+                                </td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Optional Field Count
+                                </td>
+                                <td>20 optional fields</td>
+                                <td>20 optional fields</td>
+                              </tr>
+
+                              <!-- -----------collapsable features ------------------- -->
+
+                              <!-- -----forms----- -->
+                              <div class="collapse-table">
+
+                                <tr class="collapse-head-cont">
+                                  <td class="collapse-head" data-toggle="collapse" href="#formsx">
+                                    <div>
+                                      Forms
+                                      <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                                    </div>
+                                  </td>
+                                  <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                </tr>
+                            <tbody class="collapse-rows collapse" id="formsx">
+
+                              <tr>
+                                <td>
+                                  Appointment
+                                </td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Disposition
+                                </td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Transaction
+                                </td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Signed
+                                </td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Pending
+                                </td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+                              <tr>
+                                <td>
+                                  Closed
+                                </td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              </tr>
+
+
+                            </tbody>
+
+                        </div>
+
+                        <!-- --------activity integration------- -->
+                        <div class="collapse-table">
+
+                          <tr class="collapse-head-cont">
+                            <td class="collapse-head" data-toggle="collapse" href="#activity">
+                              <div>
+                                Activity Integration
+                                <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                              </div>
+                            </td>
+                            <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                          </tr>
+                          <tbody class="collapse-rows collapse" id="activity">
+                            <tr>
+                              <td>
+                                Assign Agents to FUB Leads
+                              </td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Create/Update FUB Deals
+                              </td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Create FUB Notes with form entry data
+                              </td>
+
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Optional Additional Automation
+                              </td>
+
+                              <td>Upto 10 automations</td>
+                              <td>Upto 20 automations</td>
+                            </tr>
+                          </tbody>
+
+                        </div>
+
+                        <!-- -------- support ------  -->
+                        <div class="collapse-table">
+
+                          <tr class="collapse-head-cont">
+                            <td class="collapse-head" data-toggle="collapse" href="#support">
+                              <div>
+                                Support
+                                <i class="iconify" data-icon="bxs:chevron-down-circle"></i>
+                              </div>
+                            </td>
+                            <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                          </tr>
+                          <tbody class="collapse-rows collapse" id="support">
+                            <tr>
+                              <td>
+                                Email
+                              </td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Phone
+                              </td>
+                              <td><span>N/A</td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Dedicated CS Account Manager
+                              </td>
+                              <td><span>N/A</td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                            <tr>
+                              <td>
+                                Access to Mastermind Group
+                              </td>
+
+                              <td><span>N/A</td>
+                              <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                            </tr>
+                          </tbody>
+
+                        </div>
+
+
+                        </tbody>
+
+                        </table>
+
+                      </div>
+
+
+                      <!-- ----------Extra add ons ------------------ -->
+                      <div class="accordion mt-3" id="accordionAddOn">
+                        <div class="card">
+                          <div class="card-header d-flex flex-wrap align-items-center justify-content-between" id="headingOne"
+                            data-toggle="collapse" data-target="#addOn" aria-expanded="true">
+                            <h5 class="mb-0">
+                              Extra Add-on: Interface offers you flexible add-ons and integration to suit your need
+                            </h5>
+                            <span class="iconify ml-auto text-primary" data-icon="akar-icons:circle-chevron-down-fill"></span>
+                          </div>
+
+                          <div id="addOn" class=" collapse show" aria-labelledby="headingOne" data-parent="#accordionAddOn">
+
+                            <div class="pricing-table table-responsive">
+                              <table class="table border-top-0 m-0 table-bordered">
+                                <!-- Heading -->
+                                <tbody class="text-center">
+
+                                  <tr>
+                                    <td>
+                                      Update Contact Stage
+                                    </td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      Add Tags
+                                    </td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      FUB Calendar Invite
+                                    </td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      FUB Relationship Invite
+                                    </td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      FUB Populate Background
+                                    </td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      FUB Pause All Action Plans
+                                    </td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      FUB Run Action Plan
+                                    </td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_assignment" id="fubsisuotc_addon_assignment">
+                                          Assignments
+                                      </div>
+                                    </td>
+                                    <td>Add on $20 a month</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_custom_branded_theme" id="fubsisuotc_addon_custom_branded_theme">
+                                          Custom Branded Theme
+                                      </div>
+                                    </td>
+                                    <td>$10 per month</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_custom_thank_you_message" id="fubsisuotc_addon_custom_thank_you_message">
+                                          Custom Thank You message
+                                      </div>
+                                    </td>
+                                    <td>$10 per month</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_appointment_template" id="fubsisuotc_addon_appointment_template">
+                                          Appointment Template
+                                          <select class="custom-select price-input" name="addon_appointment_template_select" id="fubsisuotc_addon_appointment_template_select">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                          </select>
+
+                                      </div>
+                                    </td>
+                                    <td>$10 per month a template</td>
+                                    <td>$5 per month a template</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td class="w-25">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_otc_bi_directional_sync" id="fubsisuotc_addon_bi_directional_sync">
+                                          <span>
+                                           OTC Bi-Directional Sync
+                                            <i class="iconify badge text-black-50 badge-warning ml-1">new</i>
+                                          </span>
+                                      </div>
+                                    </td>
+                                    <td class="w-25">
+                                      Add on $20 a month + Setup Fee: $99
+                                    </td>
+                                    <td class="w-25">
+                                      Add on $15 a month + Setup Fee: $99
+                                    </td>
+                                  </tr>
+
+                                  <tr>
+                                    <td class="w-25">
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_sisu_bi_directional_sync" id="fubsisuotc_sisu_addon_bi_directional_sync">
+                                          <span>
+                                           SISU Bi-Directional Sync
+                                            <i class="iconify badge text-black-50 badge-warning ml-1">new</i>
+                                          </span>
+                                      </div>
+                                    </td>
+                                    <td class="w-25">
+                                      Add on $20 a month + Setup Fee: $49
+                                    </td>
+                                    <td class="w-25">
+                                      Add on $15 a month + Setup Fee: $49
+                                    </td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_document_upload_for_forms" id="fubsisuotc_addon_document_upload_for_forms">
+                                          Document Uploads for Forms
+                                      </div>
+                                    </td>
+                                    <td>Add on $20 a month</td>
+                                    <td><span><i class=" bi bi-check " style="color: #F3B007; font-size: 21px;"></i></span></td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_additional_custom_fields_that_sync_with_sisu" id="fubsisuotc_addon_additional_custom_fields_that_sync_with_sisu">
+                                          Additional Custom Fields that Sync with Sisu
+                                          <select class="custom-select price-input" name="addon_additional_custom_fields_that_sync_with_sisu_select" id="fubsisuotc_addon_additional_custom_fields_that_sync_with_sisu_select">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                          </select>
+                                      </div>
+                                    </td>
+                                    <td>For every 5 fields $20/month + Setup Fee: $49</td>
+                                    <td>For every 5 fields $10/month + Setup Fee: $49</td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_additional_custom_fields_that_sync_with_otc" id="fubsisuotc_addon_additional_custom_fields_that_sync_with_otc">
+                                          Additional Custom Fields that Sync with OTC
+                                          <select class="custom-select price-input" name="addon_additional_custom_fields_that_sync_with_otc_select" id="fubsisuotc_addon_additional_custom_fields_that_sync_with_otc_select">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                          </select>
+                                      </div>
+                                    </td>
+                                    <td>For every 5 fields $20/month + Setup Fee: $49</td>
+                                    <td>For every 5 fields $10/month + Setup Fee: $49</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_additional_option_fields" id="fubsisuotc_addon_additional_option_fields">
+                                          Additional Optional Fields
+                                          <select class="custom-select price-input" name="addon_additional_option_fields_select" id="fubsisuotc_addon_additional_option_fields_select">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                          </select>
+                                      </div>
+                                    </td>
+                                    <td>For every 5 fields: Add on $15 a month + Setup Fee: $19</td>
+                                    <td>For every 5 fields: Add on $10 a month + Setup Fee: $19</td>
+                                  </tr>
+
+                                  <tr>
+                                    <td>
+                                      <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" name="addon_additional_optional_automation" id="fubsisuotc_addon_additional_optional_automation">
+                                          Additional Optional Automation
+                                          <select class="custom-select price-input" name="addon_additional_optional_automation_select" id="fubsisuotc_addon_additional_option_fields_select">
+                                            <option value="1" selected>1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                          </select>
+                                      </div>
+                                    </td>
+                                    <td>For every 5 Automations: Add on $20 a month + Setup Fee: $99</td>
+                                    <td>For every 5 Automations: Add on $15 a month + Setup Fee: $99</td>
+                                  </tr>
+
+                                </tbody>
+
+                              </table>
+
+                              <!-- Price Buttons -->
+                              <table class="table border-0 m-0 table-bordered">
+                                <tfoot>
+                                  <tr class="tableprow">
+                                    <td class="w-25">
+                                      <div class="row mb-3">
+                                        <div class="col-md">
+                                          <span>
+                                            Monthly &nbsp;
+                                          </span>
+                                          <div class="custom-control custom-switch custom-switch-md d-inline">
+                                            <input type="checkbox" class="custom-control-input" id="customSwitch2" name="plan_type">
+                                            <label class="custom-control-label" for="customSwitch2"></label>
+                                          </div>
+                                          <span>
+                                            Annually
+                                          </span>
+                                          <span style="font-family: 'Dancing Script';
+                                          font-style: normal;
+                                          font-weight: 700;
+                                          font-size: 16px;
+                                          line-height: 22px;
+                                          text-align: center;
+                                          color: #F3B007;">save%</span>
+                                        </div>
+
+                                      </div>
+                                    </td>
+                                    <td data-label="Webform Plus" class="highlight bg-primary w-25" id="wpp"> $<span
+                                          class="ptable-price">199</span> /month
+                                      <p>
+                                        $599 0ne time setup
+                                      </p>
+                                      <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="FUB_WEBFORM_PLUS">Subscribe</button>
+                                    </td>
+                                    <td data-label="Webform Max" class="bg-primary w-25" id="wpm"> $<span
+                                          class="ptable-price">299</span> /month
+                                      <p>
+                                        $999 0ne time setup
+                                      </p>
+                                      <button class="btn btn-primary-outline tfoot-btn text-white rounded-pill shadow-lg w-100 mb-1" name="plan_id" type="submit" value="FUB_WEBFORM_MAX">Subscribe</button>
+                                    </td>
+                                  </tr>
+                                </tfoot>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
+                </form></section>
+<!--FUB-SISU-OTC Plan END-->
+
+  </div>
+  <!--Accordian Main end-->
+
+</div>
+</div>
+</section>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+<script crossorigin="anonymous" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script data-cb-site="{{website_name}}" src="https://js.chargebee.com/v2/chargebee.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+<script src="{% static 'assets/js/main.js'%}"></script>
+
+  {% if is_error == '1' %}
+  swal({
+    title: '{{message_title}}',
+    text: '{{message}}',
+    icon: 'error',
+    confirmButtonText: 'Ok'
+  })
+  {% endif %}
+</script>
+
+
+<script>
+  $(document).ready(function () {
+    /* Initialize a Chargebee instance after mounting the root component. */
+
+    {% if has_payment %}
+    var chargebeeInstance = Chargebee.init({
+      site: "{{chargebee_website}}"
+    });
+    // You can access the above created instance anywhere using the following code
+    var chargebeeInstance = Chargebee.getInstance();
+
+    chargebeeInstance.openCheckout({
+            hostedPage: function () {
+                // We will discuss on how to implement this end point in the next step.
+                return $.ajax({
+                    url: '/payments/get_hosted_page',
+                    method: 'GET',
+                    data: {}
+                });
+            },
+            success: function (hostedPageId) {
+                // success callback
+                console.log("page is;", hostedPageId)
+            }
+        });
+    {% endif %}
+
+  {% if payment_state == 'succeeded' and plan_id == "fub-sisu-activity-integration" %}
+  swal("Subscription Successfull!!", "Your subscription will be activated shortly. Thank you!", "success")
+  {% elif payment_state == 'succeeded' and plan_id == "fub-sisu-embedded-app" %}
+  swal("Subscription Successfull!!", "Your subscription will be activated shortly. Thank you!", "success")
+  {% elif payment_state == 'succeeded' %}
+  swal("Subscription Successful!!", "Your subscription will be activated shortly. Thank you!", "success")
+  {% elif payment_state == 'failed' %}
+  swal("Subscription Failed", "Sorry we could not process your subscription request, Please contact support for further details", "error")
+  {% endif %}
+  
+  });
+
+</script>
+
+
+{% endblock %}

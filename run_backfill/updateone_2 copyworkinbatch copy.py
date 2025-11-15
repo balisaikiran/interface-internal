@@ -1,0 +1,97 @@
+import requests
+from requests.auth import HTTPBasicAuth
+
+API_KEY = 'fka_1efHhLHOvvrDo79BhaeAm2vsv0Ddy2gxIv'
+
+def get_contacts(next_link=None):
+    url = next_link if next_link else 'https://api.followupboss.com/v1/people?sort=id'
+    params = {'limit': 100} if not next_link else None
+    auth = HTTPBasicAuth(API_KEY, '')
+    headers = {
+        'Content-Type': 'application/json'
+    }
+    response = requests.get(url, headers=headers, auth=auth, params=params)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f"Error: {response.status_code}, {response.text}")
+        return None
+
+def update_contact(contact_id, update_data):
+    url = f'https://api.followupboss.com/v1/people/{contact_id}'
+    auth = HTTPBasicAuth(API_KEY, '')
+    headers = {
+        'Content-Type': 'application/json'
+    }
+    response = requests.put(url, headers=headers, auth=auth, json=update_data)
+    if response.status_code == 200:
+        return response.json()
+    else:
+        print(f"Error: {response.status_code}, {response.text}")
+        return None
+
+def populate_custom_fields_for_contacts():
+    next_link = None
+    while True:
+        data = get_contacts(next_link)
+        if not data or 'people' not in data:
+            break
+        
+        contacts = data['people']
+        for contact in contacts:
+            contact_id = contact['id']
+            custom_fields = contact.get('custom', {})
+
+            # Check if the custom fields are empty
+            if not custom_fields.get('customBookingCallFeedbackForm') and not custom_fields.get('customShowingsFeedbackForm'):
+                update_data = {
+                    'customBookingCallFeedbackForm': f'https://datahelp.wufoo.com/forms/z2c3m8t1rz47gt&field9={contact_id}',
+                    'customShowingsFeedbackForm': f'https://datahelp.wufoo.com/forms/zb41peu1vmhyzd&field19={contact_id}'
+                }
+                updated_contact = update_contact(contact_id, update_data)
+                if updated_contact:
+                    print(f"Successfully updated contact ID: {contact_id}")
+                else:
+                    print(f"Failed to update contact ID: {contact_id}")
+
+        # Get the nextLink for the next batch of contacts
+        next_link = data.get('nextLink')
+        if not next_link:
+            break
+
+# Run the update process
+populate_custom_fields_for_contacts()
+
+# def get_contacts_with_empty_custom_fields():
+#     url = 'https://api.followupboss.com/v1/people?sort=id'
+#     params = {
+#         'limit': 100,  # Adjust batch size as needed
+#         'fields': 'id,custom.customBookingCallFeedbackForm,custom.customShowingsFeedbackForm'
+#     }
+#     auth = HTTPBasicAuth(API_KEY, '')
+#     headers = {
+#         'Content-Type': 'application/json'
+#     }
+#     contact_ids = []
+
+#     while url:
+#         response = requests.get(url, headers=headers, auth=auth, params=params)
+#         if response.status_code == 200:
+#             data = response.json()
+#             if 'people' in data:
+#                 for contact in data['people']:
+#                     custom = contact.get('custom', {})
+#                     if not custom.get('customBookingCallFeedbackForm') and not custom.get('customShowingsFeedbackForm'):
+#                         contact_ids.append(contact['id'])
+            
+#             # Check for nextLink for the next batch of contacts
+#             url = data.get('nextLink')
+#         else:
+#             print(f"Error: {response.status_code}, {response.text}")
+#             break
+
+#     return contact_ids
+
+# # Get all contact IDs with empty custom fields
+# contact_ids_empty_custom_fields = get_contacts_with_empty_custom_fields()
+# print("Contact IDs with empty custom fields:", contact_ids_empty_custom_fields)

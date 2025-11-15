@@ -1,0 +1,250 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content=" sharpdata login page" name="description">
+
+    <title>DataLabz - Login</title>
+    
+    <link href="https://i.imgur.com/QRAUqs9.png" rel="apple-touch-icon">
+    <link href="https://i.imgur.com/QRAUqs9.png" rel="shortcut icon">
+
+
+    <!-- Fonts CDN -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" rel="stylesheet">
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+
+    <!-- assets css CDN -->
+    <!-- <link href='assets/css/style.css' rel='stylesheet'> -->
+    <link href="{% static 'css/styles.css'%}" rel="stylesheet">
+
+    <!-- -------google analytics--------- -->
+    <script async defer src="https://apis.google.com/js/platform.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-78898293-3"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-78898293-3');
+    </script>
+    <script>
+        var linkedinLink = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=813nyuszjrr3o8&redirect_uri=http://localhost:8080/secure/verify_linkedin&state=fooobar&scope=r_liteprofile%20r_emailaddress%20w_member_social"
+    </script>
+
+
+    <!-- tapfiliate Code -->
+    <script src="https://script.tapfiliate.com/tapfiliate.js" type="text/javascript" async></script>
+    <script type="text/javascript">
+    (function(t,a,p){t.TapfiliateObject=a;t[a]=t[a]||function(){ (t[a].q=t[a].q||[]).push(arguments)}})(window,'tap');
+
+    tap('create', '37727-1b0329', { integration: "javascript" });
+    tap('detect');
+    </script>
+    <!-- tapfiliate Code  Ends-->
+
+</head>
+
+
+<body class="bg-dark">
+
+
+    <section class="container-md p-0 d-flex justify-content-center mt-md-3 mb-md-5 pb-md-5">
+
+        <div class="mt-md-5 col-xl-11 auth-container shadow-lg d-flex flex-wrap">
+
+
+            <div class="col-lg-6 col-12 pt-5 pb-5 px-4 px-md-5  text-center" style="background:#032241;">
+                <div> 
+                    <img class="img-fluid" src="{% static 'images/logoh.png'%}" width="200" alt="">
+                </div>
+               
+                <p class=" d-none d-lg-block mt-3 mt-lg-5 text-white-50">Let's get you started; data superpowers to optimise your work process.</p>
+                
+                <div> 
+                    <img class="img-fluid d-none d-lg-block" src="https://i0.wp.com/interface.re/wp-content/uploads/2022/09/Group-16970.png?w=955&ssl=1" alt="">
+                </div>
+            </div>
+    
+
+            <div class="col-lg-6 py-lg-5 pb-5 pt-5 px-4 px-md-5 col-12 auth-form" style="background:#fff;">
+
+                <form id="regForm" class="mx-xl-5 my-xl-3" action="{% url 'login_user' %}" method="POST">
+                    {% csrf_token %}
+
+                    <h5>Sign In</h5>
+                    <br>
+                    <h5>Welcome to interface portal</h5>
+                    <p>Input your credentials to login</p>
+        
+        
+            
+                    <div class="mt-4">
+        
+                        <!-- --------username------------ -->
+                        <div class="mb-4">
+                            <div class="form-floating w-100 form-group">
+                                <input
+                                    placeholder="Email"
+                                    class="form-control input-bn"
+                                    type="text"
+                                    id="user_email"
+                                    name="user_email"
+                                    required=""
+                                    value="{{email}}"
+                                    type="text"
+                                  />
+                                <label>
+                                    <span class="d-flex align-items-center">
+                                        <i class="iconify me-1 mr-1 fs-5" data-icon="carbon:email" ></i>
+                                        <span>Email address</span>
+                                    </span>
+                                </label>
+                            </div>
+                           
+                        </div>
+            
+                        <!-- --------password------------ -->
+                        <div class="mb-4">
+                            <div class="form-floating w-100 form-group">
+                                <input
+                                    placeholder="Password"
+                                    class="form-control input-bn"
+                                    type="password"
+                                    id="user_password" 
+                                    name="user_password"
+                                    required
+                                  />
+                                  
+                                <label>
+                                    <span class="d-flex align-items-center">
+                                        <i class="iconify me-1 mr-1 fs-5" data-icon="bi:shield-lock" ></i>
+                                        <span> Password</span>
+                                    </span>
+                                </label>
+                            </div>
+                            
+                        </div>
+
+                    </div>
+            
+                    <!-- --------Sign In------------ -->
+                    <div class="text-center">
+                        <button type="submit" id="user_login" class="submit btn w-100 btn-primary mb-3 me-2">
+                            Proceed
+                        </button>
+                        <a href="{% url 'send_confirmation_code' %}" class="text-decoration-underline text-center w-100">Forgot Password?</a>
+                    </div>
+            
+                    <!-- --------register------------ -->
+                    <div>
+                        
+                        <a class="btn w-100 mt-5 btn-primary-outline to_register submit" href="/secure/create_user">
+                            <i class="iconify" data-icon="iconoir:add-user"></i>
+                            New to Interface? Sign Up
+                        </a>
+                    </div>
+            
+                </form>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+
+
+    
+<!-- Jquery and vendors -->
+<script crossorigin="anonymous"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"></script>
+
+<!-- Iconify and FA icons -->
+<script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/js/all.min.js"></script>
+
+<!-- other vendors -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
+<script src="{% static 'assets/js/main.js'%}"></script>
+
+
+
+
+<script>
+    var linkedinLink = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=813nyuszjrr3o8&redirect_uri=http://localhost:8080/secure/verify_linkedin&state=fooobar&scope=r_liteprofile%20r_emailaddress%20w_member_social"
+
+
+    function onSignIn(googleUser) {
+        var id_token = googleUser.getAuthResponse().id_token;
+        var profile = googleUser.getBasicProfile();
+        console.log("Id token: ", id_token);
+        location.replace("/secure/verify_google?idtoken=" + id_token);
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+    }
+
+
+    {% if is_error == '1' %}
+
+    swal({
+        title: '{{message_title}}',
+        text: '{{message}}',
+        icon: 'error',
+        button: {
+            text: "ok",
+            className: "btnx",
+        },
+    })
+
+    {% endif %}
+
+    var verified = new URL(location.href).searchParams.get("verified");
+        if(verified == "true"){
+            swal({
+            title: 'Verified',
+            text: 'Your Email is Successfully Verified',
+            icon: 'success',
+            confirmButtonText: 'Ok',
+            button: {
+                text: "ok",
+                className: "btnx",
+            },
+        }) 
+    }
+
+
+</script>
+
+
+</body>
+</html>

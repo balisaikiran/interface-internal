@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" />
+  
+    <!-- jquery-ui -->
+    <link href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+    <!-- Fonts CDN -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <!-- Bootstrap CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+
+</head>
+
+<body class="bg-white">
+    <style>
+        .tag{
+            width:25px;
+            position: absolute;
+            margin-left: -10px;
+        }
+        * {
+            box-sizing: border-radius;
+            font-family: "poppins" !important;
+        }
+
+        body {
+            font-size: 13px;
+            font-family: "poppins" !important;
+            /*min-height: 400px;
+             /* Added as bugfix */
+            overflow-x: hidden;
+	        overflow-y: visible;
+        }
+
+        .add-on:hover {
+            transform: scale(1.2);
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: ease-out 0.2s;
+        }
+
+        :root {
+            --background-color: #eeeef5;
+            --primary: #065697;
+            --primary-hover: #065697;
+        }
+
+        .shadow-add {
+            box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .hrx {
+            opacity: 0.1;
+            margin-bottom: 9px;
+            margin-top: 9px;
+        }
+
+        .card-chip:hover {
+            box-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, .05) !important;
+            transition: ease-out 0.1s;
+        }
+
+        .card-chip {
+            cursor: pointer;
+            border-width: 0.3px !important;
+            border: 1px #E1DFDF solid !important;
+            border-radius: 15px !important;
+            /* overflow: hidden; */
+            /* margin-left: 1.5rem; */
+        }
+        .brdf{
+            border-radius: 15px 15px 0px 0px;
+        }
+
+        .bd {
+            border: solid red 1px !important;
+        }
+
+        a {
+            cursor: pointer;
+        }
+
+        a:hover {
+            color: inherit;
+        }
+
+        .bg-color-1 {
+            background: #F5f5f5;
+        }
+
+        .pointer {
+            cursor: pointer;
+        }
+
+        img {
+            object-fit: cover;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            font-size: 14px;
+            border-color: var(--primary);
+            color: #fff;
+            outline: none !important;
+        }
+
+        .btn-primary:hover,
+        .btn-primary:focus,
+        .btn-primary:active {
+            background-color: transparent;
+            border-color: var(--primary-hover);
+            color: #065697;
+            outline: 0px !important;
+        }
+
+        .btn-primary-outline {
+            background-color: transparent;
+            border-color: var(--primary);
+            color: var(--primary);
+            outline: 0px !important;
+        }
+
+        .btn-primary-outline:hover,
+        .btn-primary-outline:focus,
+        .btn-primary-outline:active {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            color: #ffffff;
+            outline: 0px !important;
+        }
+
+        .text-primary {
+            color: var(--primary) !important;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        a:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+        a:hover .m-0.fs-6{
+          text-decoration: underline;
+        }
+
+        .iconify {
+            width: 20px;
+        }
+        select{
+            border: 0;
+            background-color: #F5f5f5;
+        }
+
+        .terminate-button{
+            background-color: white; 
+            color: red;
+            border: none;
+            font-size: small;
+            float: right;
+        }
+
+        canvas {
+            display: block;
+            /*vertical-align: bottom; */
+          }
+      
+          /* ---- tsparticles container ---- */
+        #tsparticles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+          }
+
+          .confetti-div {
+            overflow-y: auto;
+            /* min-height: 575px; */
+         }
+
+         .terminate-div{
+          width: 100%;
+         }
+
+         .create-btn a{
+          color: white;
+         }
+
+         :disabled{
+         background: #9EBDD5 !important;
+         border: none;
+      }
+    </style>
+    <!-- <div class="confetti-div"> -->
+
+    <div id="loader" style="display: none;">
+        {% include "common_form/loader.html" %}    
+    </div>
+    <section class="container p-0 px-2 pe-3 py-4 bg-white mx-auto my-auto" id="container">
+        <div class="w-100" id="workoutListMainDiv">
+          {% if chatgpt_integration %}
+          <a onclick="showLoaderOnClick('/chat/list_conversations?context={{context_data}}&signature={{signature}}')">
+            <div class=" d-flex flex-wrap justify-content-between align-items-center custom-card-borderx bg-color-1 border text-wrap w-100 mb-4 px-3 py-2" style="border-radius:15px;">
+              <div class="d-flex align-items-center">
+                <img src="https://interface.re/wp-content/uploads/2023/04/gpt.png" width="20">
+                <b class="ps-1 fw-bold">Try New ChatGPT</b>
+              </div>
+              
+              <i class="iconify text-muted" data-icon="mdi:info"></i>
+            </div>
+          </a>
+            {% endif %}
+
+
+            <div class=" mb-4 d-flex justify-content-between align-items-center create-btn">
+                <h5 style="font-size:1rem; font-weight: bold;" class="p-0 m-0 fw-bold">Opportunities
+                    <b>({{oppurtunity_list|length}})</b></h5>
+                <hr class="hr col">
+                {% if form_type == 'wufoo_link' %}
+                <a onclick="showLoaderOnClick('wufoo_form?context={{context_data}}&signature={{signature}}&number_of_seller_opp={{number_of_seller_opp}}&number_of_buyer_opp={{number_of_buyer_opp}}&existing_opp_link_seller={{existing_opp_link_seller}}&existing_opp_link_buyer={{existing_opp_link_buyer}}')"
+                    class="btn btn-lg btn-primary d-flex align-items-center justify-content-center shadow-add p-0 rounded-circle shadow-lg"
+                    style="width: 25px !important; height: 25px !important;">
+                    <i class="fs-5 iconify" data-icon="mdi:plus"></i>
+                </a>
+                {% elif form_type == 'one_click' %}
+                <a onclick="showLoaderOnClick('one_click_emb_app?context={{context_data}}&signature={{signature}}')"
+                    class="btn btn-lg btn-primary d-flex align-items-center justify-content-center shadow-add p-0 rounded-circle shadow-lg"
+                    style="width: 25px !important; height: 25px !important;">
+                    <i class="fs-5 iconify" data-icon="mdi:plus"></i>
+                </a>
+                {% else %}
+                <a onclick="showLoaderOnClick('form?context={{context_data}}&signature={{signature}}')"
+                    class="btn btn-lg btn-primary d-flex align-items-center justify-content-center shadow-add p-0 rounded-circle shadow-lg"
+                    style="width: 25px !important; height: 25px !important;">
+                    <i class="fs-5 iconify" data-icon="mdi:plus"></i>
+                </a>
+                {% endif %}
+            </div>
+
+            <div class="d-flex mb-4 flex-column justify-content-center align-items-center">
+                {% for op in oppurtunity_list %}
+                {% if not op.notshow %}
+                <div class="mb-4 card-chip custom-card-borderx
+                rounded rounded-3 w-100 bg-white">
+                {% if is_tagsSystem and op.is_tagged %}
+                     <!-- tag icon iamge -------------- -->
+                     <img style="z-index: 1;" src="{% static 'img/tags.png' %}" class="tag"> 
+                      <!-- tag icon iamge -------------- -->
+                    {% endif %}
+                    {% if form_type == 'wufoo_link' %}
+                    {% if op.opp_stage == 'Closed' or op.opp_stage == 'Terminated' %}
+                    <a class="d-flex flex-column w-100 pb-0 px-03 justify-content-center">{% else %}
+                        <a href="#" class="d-flex flex-column w-100 pb-0 justify-content-center update-form-link"
+                            onclick="showLoaderOnClick('/common_form/update_wufoo_form?stage={{op.opp_stage}}&opp_key={{op.teamFubDealId}}&deal_id={{op.fub_deal_id}}&team_id={{team_id}}&update_form=1&context={{context_data}}&signature={{signature}}')">
+                            {% endif %}
+                            {% else %}
+                            {% if op.opp_stage == 'Closed' or op.opp_stage == 'Terminated' %}
+                            <a class="d-flex flex-column w-100 pb-0 px-03 justify-content-center">
+                                {% else %}
+                                <a href="#" class="d-flex flex-column w-100 pb-0 justify-content-center update-form-link"
+                                onclick="showLoaderOnClick('/common_form/update_form?stage={{op.opp_stage}}&opp_key={{op.teamFubDealId}}&deal_id={{op.fub_deal_id}}&team_id={{team_id}}&update_form=1&context={{context_data}}&signature={{signature}}')">
+                                {% endif %}
+                                {% endif %}
+                                    {% if form_type == 'one_click' %}
+                                    <div class="dropdown bg-color-1 text-wrap w-100 px-3 py-3 brdf">
+                                        <a id="opp_stage" class="fs-6 small m-0 fw-bold opp_stage" href="#" role="button" {% if op.opp_stage != "Closed" and op.opp_stage != "Terminated" %}data-bs-toggle="dropdown"{% endif %} name="opp_stage">{{op.opp_stage}} {% if op.opp_stage != "Closed" and op.opp_stage != "Terminated" %}<i class="fs-5 iconify" data-icon="mdi:menu-down"></i>{% endif %}</a>
+              
+                                        <ul class="dropdown-menu shadow-lg p-3" style="min-width:250px;">
+                                            <form method="POST" class="mb-0 form-group" action="{% url 'one_click_emb_app' %}?context={{context_data}}&signature={{signature}}">
+                                                <div class="d-flex">
+                                                    <div class="form-actions col form-group text-center p-0" id="single_click">
+                                                        <input type="text" name="fub_person_id" value="{{op.fub_person_id}}" hidden>
+                                                        <input type="text" name="team_id" value="{{team_id}}" hidden>
+                                                        <input type="text" name="opp_key" value="{{op.teamFubDealId}}" hidden>
+                                                        <input type="text" name="opp_type" value="{{op.opp_type}}" hidden>
+                                                        <input type="text" name="opp_request_type" value="update_new_opportunity" hidden>
+                                                        <div class="smb-4 terminate-div">
+
+                                                            <input class="opp_date" type="date" id="opp_date" name="opp_date" {% if is_one_click_date %} {% else %} hidden {% endif %}>
+                                                            <button class="terminate-button" type="submit" id="terminate" name="new_opp_stage" value="Terminated" onclick="showLoaderOnClick('success?success=1&context={{context_data}}&signature={{signature}}')">Terminate<i class="iconify" data-icon="ri:indeterminate-circle-line"> </i>
+                                                            </button>
+                                                      
+                                                          </div>
+                                                          <hr>
+                                                        <p>
+                                                                <button class="btn btn-primary col-11 center-btn" type="submit" id="appointment_set" name="new_opp_stage" value="Appointment Set" onclick="showLoaderOnClick('success?success=1&context={{context_data}}&signature={{signature}}')" {% if op.opp_stage != "Pipeline" %}disabled{% endif %}>Appointment Set
+                                                                </button>
+                                                        </p>
+                                                        <p>
+                                                            <button class="btn btn-primary col-10 center-btn" type="submit" id="appointment_met" name="new_opp_stage" value="Appointment Met" onclick="showLoaderOnClick('success?success=1&context={{context_data}}&signature={{signature}}')"
+                                                             {% if op.opp_stage != "Pipeline" and op.opp_stage != "Appointment Set" %}disabled{% endif %}>Appointment Met
+                                                            </button>
+                                                        </p>
+                                                        <p>
+                                                                <button class="btn btn-primary col-9 center-btn" type="submit" id="agreement_signed" name="new_opp_stage" value="Agreement Signed" onclick="showLoaderOnClick('success?success=1&context={{context_data}}&signature={{signature}}')"
+                                                                {% if op.opp_stage == "Pending" or op.opp_stage == "Agreement Signed" %}disabled{% endif %}>Agreement Signed
+                                                                </button>
+                                                        </p>
+                                                        <p>
+                                                                <button class="btn btn-primary col-8 center-btn" type="submit" id="pending" name="new_opp_stage" value="Pending" onclick="showLoaderOnClick('success?success=1&context={{context_data}}&signature={{signature}}')" {% if op.opp_stage == "Pending" %}disabled{% endif %}>Pending
+                                                                </button>
+                                                        </p>
+                                                        <p>
+                                                                <button class="btn btn-primary col-6 center-btn closed-button" type="submit" id="closed" name="new_opp_stage" value="Closed">Closed
+                                                                </button>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </ul>
+                                    </div>
+                                    {% else %}
+                                    <div class="d-flex flex-wrap brdf bg-color-1 text-wrap w-100 px-3 py-3 border-bottom align-items-center justify-content-between">
+                                        <b class="fs-6 m-0 fw-bold small">{{op.opp_stage}}</b>
+                                        {% if op.opp_forecasted_close_date %}
+                                        <p class="d-flex align-items-center m-0 p-0"><i class="iconify me-1"
+                                                data-icon="fontisto:date"></i>
+                                            {{op.opp_forecasted_close_date}}
+                                        </p>
+                                        {% endif %}
+                                    </div>
+                                    {% endif %}
+                               
+
+                                    <div class="d-flex flex-column pt-3 pb-2 px-3 text-wrap w-100 justify-content-between">
+                                        <div class="d-flex mb-3 flex-wrap w-100">
+                                            <b class="fw-bold pe-2">{{op.opp_last_name}}{% if op.opp_address %}: </b><span class="">{{op.opp_address}}</span>{% else %}</b>{% endif %}
+                                        </div>
+
+                                        <div class="d-flex w-100 flex-wrap text-wrap justify-content-between">
+                                            <span class=""> {% if op.opp_stage == 'Appointment Set' or op.opp_stage == 'Pipeline' %}
+                                                {% if op.appt_set_lead_type %}
+                                                {{op.appt_set_lead_type}}
+                                                {% else %}
+                                                {{op.opp_type}}
+                                                {% endif %}
+                                                {% else %}
+                                                {{op.opp_type}}
+                                                {% endif %}
+                                            </span>
+                                            <p class="m-0 p-0"><i class="iconify"
+                                                    data-icon="material-symbols:real-estate-agent-outline"></i>
+                                                <b>ISA:</b> {% if op.opp_isa %} {{op.opp_isa}} {% else %} N/A {% endif %}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <hr class="hrx w-100">
+
+                                    <div class="sub-links d-flex pb-2 w-100 px-3 justify-content-between align-items-center">
+                                        <h5 class="fw-bold fs-6 mb-2">{% if op.opp_price %}$ {{op.opp_price}}{% endif %} </h5>
+                                        <span class="link-span">
+                                            {% if op.otc_property_id and op.opp_stage != 'Terminated' %}
+                                            <!-- <a href="https://app.opentoclose.com/#projects/dashboard?type=properties" target="_blank" -->
+                                                <img onclick="window.open('https://app.opentoclose.com/#projects/dashboard?type=properties', '_blank')" class="add-on bg-white p-1 mx-2 rounded border mb-2" height="30"
+                                                src="https://opentoclose.com/images/logo_purple.png">
+                                                <!-- </a> -->
+                                                {% endif %}
+                                                {% if op.sisu_client_id and op.opp_stage != 'Terminated' %}
+                                                <!--a href="https://my.sisu.co/transactions/edit/{{op.sisu_client_id}}" target="_blank"-->
+                                                <img onclick="window.open('https://my.sisu.co/transactions/edit/{{op.sisu_client_id}}', '_blank')" class="add-on rounded bg-white border mb-2" height="30"
+                                                src="{% static 'img/sisu.png' %}" alt="Sisu Transaction">
+                                                <!-- </a> -->
+                                                {% endif %}
+                                </span>
+                                </div>
+                                </a>
+                </div>
+                {% endif %}
+                {% empty %}
+                <div class="d-flex mb-4 mt-4 flex-column justify-content-center align-items-center">
+                    <img
+                        src="{% static 'img/empty-state.png' %}">
+                    <h5 class="fs-6 my-3 fw-bold">No Opportunities Found</h5>
+                    <b class="pointer text-decoration-underline text-primary">
+                        {% if form_type == 'wufoo_link' %}
+                        <a onclick="showLoaderOnClick('wufoo_form?context={{context_data}}&signature={{signature}}')">Add
+                            New+</b></a>
+                    {% elif form_type == 'one_click' %}
+                    <a onclick="showLoaderOnClick('one_click_emb_app?context={{context_data}}&signature={{signature}}')">Add
+                        New+</b></a>
+                    {% else %}
+                    <a onclick="showLoaderOnClick('form?context={{context_data}}&signature={{signature}}')">Add
+                        New+</b></a>
+                    {% endif %}
+                    
+                </div>
+
+            </div>
+            {% endfor %}
+
+            <hr class="hr col-12">
+
+            <div class="mt-4 mb-4 d-flex flex-column justify-content-center align-items-center">
+            <img src="https://datalabz.re/static/images/interface_logo.png" width="180">
+            <a href="https://knowledge.interface.re/fub-embedded-app-documentation" target="_blank"
+              class="text-decoration-underline text-dark mt-2">Learn more about InterFace</a>
+            </div>
+
+    
+    </section>
+<!-- </div> -->
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <!-- Iconify icons -->
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
+    <!-- Bootstrap JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <!-- follow-up-boss -->
+    <script src="https://eia.followupboss.com/embeddedApps-v1.0.0.js" type="text/javascript"></script>
+
+    <script>
+
+        function showLoader() {
+            document.getElementById('container').style.display = "none";
+            document.getElementById('loader').style.display = "block";
+
+        }
+
+        var timeout;
+
+        function sleep(delay, url) {
+            if (timeout) {
+                clearTimeout(timeout);
+            }
+            timeout = setTimeout(function () {
+                window.location.href = url;
+            }, delay);
+        }
+
+        function showLoaderOnClick(url) {
+            showLoader();
+            console.log("sleep for 0.5 second");
+            sleep(500, url);
+            console.log(url);
+
+        }
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  
+    <script>
+        var date = new Date();
+
+        var day = ("0" + date.getDate()).slice(-2);
+        var month = ("0" + (date.getMonth() + 1)).slice(-2);
+
+        var today = date.getFullYear() + "-" + (month) + "-" + (day);
+
+        $('.opp_date').val(today);
+    </script>
+
+    <script> 
+      // to prevent all children from triggering the parent event
+      $('.update-form-link > .sub-links > .link-span').click(
+      function(e) {
+          e.stopPropagation();
+        }
+      );
+    </script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/tsparticles@1.30.3/tsparticles.min.js"></script> -->
+  <!-- <script>
+    $(".closed-button").click(function () {
+    $(".confetti-div").attr('id', 'tsparticles');
+    $("body").attr('id', 'tsparticles');
+    tsParticles.load("tsparticles", {
+      "emitters": [
+        {
+          "position": {
+            "x": 0,
+            "y": 30
+          },
+          "rate": {
+            "quantity": 50,
+            "delay": -15
+          },
+          "particles": {
+            "move": {
+              "direction": "top-right",
+              "outModes": {
+                "top": "none",
+                "left": "none",
+                "default": "destroy"
+              }
+            }
+          }
+        },
+        {
+          "position": {
+            "x": 100,
+            "y": 90
+          },
+          "rate": {
+            "quantity": 50,
+            "delay": -15
+          },
+          "particles": {
+            "move": {
+              "direction": "top-left",
+              "outModes": {
+                "top": "none",
+                "right": "none",
+                "default": "destroy"
+              }
+            }
+          }
+        }
+      ],
+      "particles": {
+        "color": {
+          "value": ["#11FeFF",
+            "#FFd700",
+            "#78ff44",
+            "#ff718d",
+            "#a864fd",
+          ]
+        },
+        "move": {
+          "decay": 0.05,
+          "direction": "top",
+          "enable": true,
+          "gravity": {
+            "enable": true
+          },
+          "outModes": {
+            "top": "none",
+            "default": "destroy"
+          },
+          "speed": {
+            "min": 30,
+            "max": 80
+          }
+        },
+        "number": {
+          "value": 0
+        },
+        "opacity": {
+          "value": 1
+        },
+        "rotate": {
+          "value": {
+            "min": 0,
+            "max": 360
+          },
+          "direction": "random",
+          "animation": {
+            "enable": true,
+            "speed": 30
+          }
+        },
+        "tilt": {
+          "direction": "random",
+          "enable": true,
+          "value": {
+            "min": 0,
+            "max": 360
+          },
+          "animation": {
+            "enable": true,
+            "speed": 30
+          }
+        },
+        "size": {
+          "value": {
+            "min": 1,
+            "max": 2
+          },
+          "animation": {
+            "enable": true,
+            "startValue": "min",
+            "count": 1,
+            "speed": 16,
+            "sync": true
+          }
+        },
+        "roll": {
+          "darken": {
+            "enable": true,
+            "value": 25
+          },
+          "enable": true,
+          "speed": {
+            "min": 5,
+            "max": 15
+          }
+        },
+        "wobble": {
+          "distance": 30,
+          "enable": true,
+          "speed": {
+            "min": -7,
+            "max": 7
+          }
+        },
+        "shape": {
+          "type": [
+            "circle",
+            "square",
+            "triangle",
+            "polygon",
+            "image"
+          ],
+          "options": {
+            "polygon": [
+              {
+                "sides": 5
+              },
+              {
+                "sides": 6
+              }
+            ],
+            "image": [
+              {
+                "src": "https://cdn-icons-png.flaticon.com/512/3344/3344853.png",
+                "width": 32,
+                "height": 32,
+                "particles": {
+                  "size": {
+                    "value": 16
+                  }
+                }
+              },
+              {
+                "src": "https://cdn-icons-png.flaticon.com/512/3344/3344853.png",
+                "width": 32,
+                "height": 32,
+                "particles": {
+                  "size": {
+                    "value": 16
+                  }
+                }
+              },
+              {
+                "src": "https://cdn-icons-png.flaticon.com/512/3344/3344853.png",
+                "width": 32,
+                "height": 32,
+                "particles": {
+                  "size": {
+                    "value": 16
+                  }
+                }
+              },
+              {
+                "src": "https://cdn-icons-png.flaticon.com/512/3344/3344853.png",
+                "width": 32,
+                "height": 32,
+                "particles": {
+                  "size": {
+                    "value": 16
+                  }
+                }
+              },
+            ]
+          }
+        },
+      }
+    });
+})
+  </script> -->
+</body>

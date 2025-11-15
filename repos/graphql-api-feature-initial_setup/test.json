@@ -1,0 +1,1501 @@
+{
+    "FieldRules": [
+        {
+            "RuleId": 106167,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "241",
+                "FieldTypes": {
+                    "239": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 163161,
+                    "FieldName": "239",
+                    "Filter": "is",
+                    "Value": "Update_Existing_Transaction",
+                    "ReportId": 641,
+                    "RuleId": 106167
+                }
+            ]
+        },
+        {
+            "RuleId": 106168,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "228",
+                "FieldTypes": {
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163162,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106168
+                }
+            ]
+        },
+        {
+            "RuleId": 106169,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "229",
+                "FieldTypes": {
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163163,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106169
+                }
+            ]
+        },
+        {
+            "RuleId": 106170,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "230",
+                "FieldTypes": {
+                    "220": "select",
+                    "777": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163164,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Pending",
+                    "ReportId": 641,
+                    "RuleId": 106170
+                },
+                {
+                    "ConditionId": 163165,
+                    "FieldName": "777",
+                    "Filter": "is not",
+                    "Value": "Pending Cancelled",
+                    "ReportId": 641,
+                    "RuleId": 106170
+                }
+            ]
+        },
+        {
+            "RuleId": 106171,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "231",
+                "FieldTypes": {
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163166,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Closed",
+                    "ReportId": 641,
+                    "RuleId": 106171
+                }
+            ]
+        },
+        {
+            "RuleId": 106172,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "244",
+                "FieldTypes": {
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 163167,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106172
+                },
+                {
+                    "ConditionId": 163168,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Pending",
+                    "ReportId": 641,
+                    "RuleId": 106172
+                }
+            ]
+        },
+        {
+            "RuleId": 106173,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "251",
+                "FieldTypes": {
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 163169,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106173
+                },
+                {
+                    "ConditionId": 163170,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Pending",
+                    "ReportId": 641,
+                    "RuleId": 106173
+                },
+                {
+                    "ConditionId": 163171,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Closed",
+                    "ReportId": 641,
+                    "RuleId": 106173
+                }
+            ]
+        },
+        {
+            "RuleId": 106174,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "227",
+                "FieldTypes": {
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 163172,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Pending",
+                    "ReportId": 641,
+                    "RuleId": 106174
+                },
+                {
+                    "ConditionId": 163173,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Closed",
+                    "ReportId": 641,
+                    "RuleId": 106174
+                }
+            ]
+        },
+        {
+            "RuleId": 106175,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "252",
+                "FieldTypes": {
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 163174,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106175
+                },
+                {
+                    "ConditionId": 163175,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Pending",
+                    "ReportId": 641,
+                    "RuleId": 106175
+                },
+                {
+                    "ConditionId": 163176,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Closed",
+                    "ReportId": 641,
+                    "RuleId": 106175
+                }
+            ]
+        },
+        {
+            "RuleId": 106176,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "221",
+                "FieldTypes": {
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 163177,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106176
+                },
+                {
+                    "ConditionId": 163178,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Pending",
+                    "ReportId": 641,
+                    "RuleId": 106176
+                },
+                {
+                    "ConditionId": 163179,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Closed",
+                    "ReportId": 641,
+                    "RuleId": 106176
+                }
+            ]
+        },
+        {
+            "RuleId": 106177,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "780",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163180,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106177
+                },
+                {
+                    "ConditionId": 163181,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106177
+                }
+            ]
+        },
+        {
+            "RuleId": 106178,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "256",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163182,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106178
+                }
+            ]
+        },
+        {
+            "RuleId": 106179,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "499",
+                "FieldTypes": {
+                    "498": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 163183,
+                    "FieldName": "498",
+                    "Filter": "is",
+                    "Value": "Yes",
+                    "ReportId": 641,
+                    "RuleId": 106179
+                }
+            ]
+        },
+        {
+            "RuleId": 106180,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "267",
+                "FieldTypes": {
+                    "212": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 163184,
+                    "FieldName": "212",
+                    "Filter": "is",
+                    "Value": "Yes",
+                    "ReportId": 641,
+                    "RuleId": 106180
+                }
+            ]
+        },
+        {
+            "RuleId": 106181,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "235",
+                "FieldTypes": {
+                    "212": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 163185,
+                    "FieldName": "212",
+                    "Filter": "is",
+                    "Value": "Yes",
+                    "ReportId": 641,
+                    "RuleId": 106181
+                }
+            ]
+        },
+        {
+            "RuleId": 106182,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "269",
+                "FieldTypes": {
+                    "212": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 163186,
+                    "FieldName": "212",
+                    "Filter": "is",
+                    "Value": "Yes",
+                    "ReportId": 641,
+                    "RuleId": 106182
+                }
+            ]
+        },
+        {
+            "RuleId": 106183,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "395",
+                "FieldTypes": {
+                    "274": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 163187,
+                    "FieldName": "274",
+                    "Filter": "is",
+                    "Value": "Other",
+                    "ReportId": 641,
+                    "RuleId": 106183
+                }
+            ]
+        },
+        {
+            "RuleId": 106184,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "276",
+                "FieldTypes": {
+                    "274": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 163188,
+                    "FieldName": "274",
+                    "Filter": "is",
+                    "Value": "Other",
+                    "ReportId": 641,
+                    "RuleId": 106184
+                }
+            ]
+        },
+        {
+            "RuleId": 106185,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "388",
+                "FieldTypes": {
+                    "742": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 163189,
+                    "FieldName": "742",
+                    "Filter": "contains",
+                    "Value": "Loan",
+                    "ReportId": 641,
+                    "RuleId": 106185
+                },
+                {
+                    "ConditionId": 163190,
+                    "FieldName": "742",
+                    "Filter": "is",
+                    "Value": "Conventional",
+                    "ReportId": 641,
+                    "RuleId": 106185
+                }
+            ]
+        },
+        {
+            "RuleId": 106186,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "389",
+                "FieldTypes": {
+                    "388": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 163191,
+                    "FieldName": "388",
+                    "Filter": "is",
+                    "Value": "Other",
+                    "ReportId": 641,
+                    "RuleId": 106186
+                }
+            ]
+        },
+        {
+            "RuleId": 106187,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "390",
+                "FieldTypes": {
+                    "388": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 163192,
+                    "FieldName": "388",
+                    "Filter": "is",
+                    "Value": "Other",
+                    "ReportId": 641,
+                    "RuleId": 106187
+                }
+            ]
+        },
+        {
+            "RuleId": 106188,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "392",
+                "FieldTypes": {
+                    "388": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 163193,
+                    "FieldName": "388",
+                    "Filter": "is",
+                    "Value": "Other",
+                    "ReportId": 641,
+                    "RuleId": 106188
+                }
+            ]
+        },
+        {
+            "RuleId": 106189,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "391",
+                "FieldTypes": {
+                    "388": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 163194,
+                    "FieldName": "388",
+                    "Filter": "is",
+                    "Value": "Other",
+                    "ReportId": 641,
+                    "RuleId": 106189
+                }
+            ]
+        },
+        {
+            "RuleId": 106190,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "258",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163195,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106190
+                },
+                {
+                    "ConditionId": 163196,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106190
+                }
+            ]
+        },
+        {
+            "RuleId": 106191,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "802",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163197,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106191
+                },
+                {
+                    "ConditionId": 163198,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106191
+                }
+            ]
+        },
+        {
+            "RuleId": 106192,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "902",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163199,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106192
+                },
+                {
+                    "ConditionId": 163200,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106192
+                }
+            ]
+        },
+        {
+            "RuleId": 106193,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "903",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163201,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106193
+                },
+                {
+                    "ConditionId": 163202,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106193
+                }
+            ]
+        },
+        {
+            "RuleId": 106194,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "905",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163203,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106194
+                },
+                {
+                    "ConditionId": 163204,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106194
+                }
+            ]
+        },
+        {
+            "RuleId": 106195,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "906",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163205,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106195
+                },
+                {
+                    "ConditionId": 163206,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106195
+                }
+            ]
+        },
+        {
+            "RuleId": 106196,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "907",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163207,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106196
+                },
+                {
+                    "ConditionId": 163208,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106196
+                }
+            ]
+        },
+        {
+            "RuleId": 106197,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "908",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163209,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106197
+                },
+                {
+                    "ConditionId": 163210,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106197
+                }
+            ]
+        },
+        {
+            "RuleId": 106198,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "909",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163211,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106198
+                },
+                {
+                    "ConditionId": 163212,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106198
+                }
+            ]
+        },
+        {
+            "RuleId": 106199,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "911",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163213,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106199
+                },
+                {
+                    "ConditionId": 163214,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106199
+                }
+            ]
+        },
+        {
+            "RuleId": 106200,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "912",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163215,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106200
+                },
+                {
+                    "ConditionId": 163216,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106200
+                }
+            ]
+        },
+        {
+            "RuleId": 106201,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "1013",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163217,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106201
+                },
+                {
+                    "ConditionId": 163218,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106201
+                }
+            ]
+        },
+        {
+            "RuleId": 106202,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "1014",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163219,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106202
+                },
+                {
+                    "ConditionId": 163220,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106202
+                }
+            ]
+        },
+        {
+            "RuleId": 106203,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "1015",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163221,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106203
+                },
+                {
+                    "ConditionId": 163222,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106203
+                }
+            ]
+        },
+        {
+            "RuleId": 106204,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "1016",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163223,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106204
+                },
+                {
+                    "ConditionId": 163224,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106204
+                }
+            ]
+        },
+        {
+            "RuleId": 106205,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "1017",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163225,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106205
+                },
+                {
+                    "ConditionId": 163226,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106205
+                }
+            ]
+        },
+        {
+            "RuleId": 106206,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "1018",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163227,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106206
+                },
+                {
+                    "ConditionId": 163228,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106206
+                }
+            ]
+        },
+        {
+            "RuleId": 106207,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "1118",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163229,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106207
+                },
+                {
+                    "ConditionId": 163230,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106207
+                }
+            ]
+        },
+        {
+            "RuleId": 106208,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "1121",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163231,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106208
+                },
+                {
+                    "ConditionId": 163232,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106208
+                }
+            ]
+        },
+        {
+            "RuleId": 106209,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "1122",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163233,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106209
+                },
+                {
+                    "ConditionId": 163234,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106209
+                }
+            ]
+        },
+        {
+            "RuleId": 106210,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "1120",
+                "FieldTypes": {
+                    "219": "select",
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163235,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106210
+                },
+                {
+                    "ConditionId": 163236,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 106210
+                }
+            ]
+        },
+        {
+            "RuleId": 106211,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "777",
+                "FieldTypes": {
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163237,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Pending",
+                    "ReportId": 641,
+                    "RuleId": 106211
+                }
+            ]
+        },
+        {
+            "RuleId": 106212,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "779",
+                "FieldTypes": {
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163238,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 106212
+                }
+            ]
+        },
+        {
+            "RuleId": 106213,
+            "Type": "Show",
+            "Setting": {
+                "FieldName": "1339",
+                "FieldTypes": {
+                    "220": "select"
+                }
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 163239,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Terminated",
+                    "ReportId": 641,
+                    "RuleId": 106213
+                }
+            ]
+        }
+    ],
+    "PageRules": [
+        {
+            "RuleId": 73610,
+            "Type": "SkipToPage",
+            "Setting": {
+                "Page": "ConfirmationPage"
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 112490,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 73610
+                },
+                {
+                    "ConditionId": 112491,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Buyer",
+                    "ReportId": 641,
+                    "RuleId": 73610
+                }
+            ]
+        },
+        {
+            "RuleId": 73611,
+            "Type": "SkipToPage",
+            "Setting": {
+                "Page": "2"
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 112492,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Agreement_Signed",
+                    "ReportId": 641,
+                    "RuleId": 73611
+                },
+                {
+                    "ConditionId": 112493,
+                    "FieldName": "219",
+                    "Filter": "is",
+                    "Value": "Seller",
+                    "ReportId": 641,
+                    "RuleId": 73611
+                }
+            ]
+        },
+        {
+            "RuleId": 73612,
+            "Type": "SkipToPage",
+            "Setting": {
+                "Page": "ConfirmationPage"
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 112494,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Closed",
+                    "ReportId": 641,
+                    "RuleId": 73612
+                },
+                {
+                    "ConditionId": 112495,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Terminated",
+                    "ReportId": 641,
+                    "RuleId": 73612
+                },
+                {
+                    "ConditionId": 112496,
+                    "FieldName": "777",
+                    "Filter": "is",
+                    "Value": "Pending Cancelled",
+                    "ReportId": 641,
+                    "RuleId": 73612
+                }
+            ]
+        },
+        {
+            "RuleId": 73613,
+            "Type": "SkipToPage",
+            "Setting": {
+                "Page": "3"
+            },
+            "FormId": 641,
+            "MatchType": "all",
+            "Conditions": [
+                {
+                    "ConditionId": 112497,
+                    "FieldName": "220",
+                    "Filter": "is",
+                    "Value": "Pending",
+                    "ReportId": 641,
+                    "RuleId": 73613
+                },
+                {
+                    "ConditionId": 112498,
+                    "FieldName": "777",
+                    "Filter": "is not",
+                    "Value": "Pending Cancelled",
+                    "ReportId": 641,
+                    "RuleId": 73613
+                }
+            ]
+        },
+        {
+            "RuleId": 73614,
+            "Type": "SkipToPage",
+            "Setting": {
+                "Page": "ConfirmationPage"
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 112499,
+                    "FieldName": "1229",
+                    "Filter": "is not",
+                    "Value": "",
+                    "ReportId": 641,
+                    "RuleId": 73614
+                }
+            ]
+        }
+    ],
+    "FormRules": [
+        {
+            "RuleId": 62523,
+            "Type": "SendEmail",
+            "Setting": {
+                "Type": "SendConfirmationEmail",
+                "EmailField": "254",
+                "Name": "",
+                "Subject": "{entry:Field192} Transaction",
+                "Message": "",
+                "ReplyTo": "",
+                "IncludeEntry": "1"
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 96364,
+                    "FieldName": "254",
+                    "Filter": "contains",
+                    "Value": "z",
+                    "ReportId": 641,
+                    "RuleId": 62523
+                }
+            ]
+        },
+        {
+            "RuleId": 62524,
+            "Type": "Redirect",
+            "Setting": {
+                "Redirect": "https:\/\/datahelp.wufoo.com\/forms\/formHash\/def\/field192={entry:Field192}&field219={entry:Field219}&field220={entry:Field220}&field8={entry:Field8}"
+            },
+            "FormId": 641,
+            "MatchType": "any",
+            "Conditions": [
+                {
+                    "ConditionId": 96365,
+                    "FieldName": "192",
+                    "Filter": "is",
+                    "Value": "Doc Upload Form Inactive",
+                    "ReportId": 641,
+                    "RuleId": 62524
+                }
+            ]
+        }
+    ]
+};

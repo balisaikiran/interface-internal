@@ -1,0 +1,247 @@
+{% extends 'dashboard/base.html' %}
+
+{% load static %}
+
+{% block styles %}
+<style>
+.checkspan {
+    color: green;
+    margin-left: 5px;
+}
+.errspan {
+    color: red;
+    margin-left: 5px;
+}
+</style>
+{% endblock %}
+{% block content %}
+
+<body>
+<div class="content">
+    <!-- Animated -->
+    <div class="animated fadeIn">
+
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="box-title">Secrets</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST">
+                            {% csrf_token%}
+                            {% if planFubTwillio %}
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Twillio</h3>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label class=" form-control-label"
+                                                                         for="text-input">Twillio
+                                            Username</label></div>
+                                        <div class="col-12 col-md-9">
+                                            <input class="form-control" name="Tw_username" required
+                                                   type="text" value="{{twillio_email}}">
+                                            <small class="form-text text-muted">This is the email registered with
+                                                Twillio</small>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label class=" form-control-label"
+                                                                         for="text-input">Twillio
+                                            Password</label></div>
+                                        <div class="col-12 col-md-9">
+                                            <input class="form-control" name="Tw_password" required
+                                                   type="password" value="{{twillio_password}}">
+                                            <small class="form-text text-muted">This is the password used to login
+                                                to Twillio</small>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                            {% endif %}
+
+
+                            {% if planFubTwillio or showSisuSectionCreds or showOtcCredsSection or planFubWufoo or chatgpt_integration %}
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Follow Up Boss</h3>
+                                </div>
+                                <div class="alert alert-danger">
+                                    <strong>
+                                        Please provide the correct primary user credentials, for automation setup. If the credentials are inaccurate, it may result in a setup delay!                                </strong> 
+                                  </div>
+                                <div class="card-body">
+
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label"
+                                                                         for="text-input">Follow Up Boss
+                                            Username</label></div>
+                                        <div class="col-12 col-md-9">
+                                            <input class="form-control" name="FUB_username" required
+                                                   type="text" value="{{fub_email}}">
+                                            <small class="form-text text-muted">This is the email registered with
+                                                Follow Up Boss</small>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label class=" form-control-label"
+                                                                         for="text-input">Follow Up Boss
+                                            Password</label></div>
+                                        <div class="col-12 col-md-9">
+                                            <input class="form-control" name="FUB_password" required
+                                                   type="password" value="{{fub_password}}">
+                                            <small class="form-text text-muted">This is the password used to login
+                                                to Follow Up Boss</small>
+                                        </div>
+
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3">
+                                            <label class=" form-control-label" for="text-input">Follow Up Boss Api Key</label>
+                                            {% if fub_key_authorised == "1" %}<span class="fa fa-check-circle checkspan" title="Fub Api Key Authenticated!"></span>{% endif %}  
+                                            {% if fub_key_unauthorised == "0" %}<span class="fa fa-exclamation-circle errspan" title="Fub Api Key Authentication Failed!"></span> {% endif %} 
+                                        </div>
+                                        <div class="col-12 col-md-9">
+                                            <input class="form-control" name="fub_key"
+                                                   type="text" placeholder="{% if fub_key %}FUB Api Key already present, enter to update existing key{% else%}Enter FUB Api Key{% endif %}">
+                                                   <small class="form-text text-muted">This key is used to run the FUB Embedded App</small>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            {% endif %}
+
+
+
+                            {% if showSisuSectionCreds %}
+                            <div class="card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Sisu</h3>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label class=" form-control-label"
+                                                                         for="text-input">Sisu
+                                            Username</label></div>
+                                        <div class="col-12 col-md-9">
+                                            <input class="form-control" name="SISU_username" required
+                                                   type="text" value="{{SISU_username}}">
+                                            <small class="form-text text-muted">This is the email registered with
+                                                Sisu</small>
+                                        </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label class=" form-control-label"
+                                                                         for="text-input">Sisu
+                                            Password</label></div>
+                                        <div class="col-12 col-md-9">
+                                            <input class="form-control" name="SISU_password" required
+                                                   type="password" value="{{SISU_password}}">
+                                            <small class="form-text text-muted">This is the password used to login
+                                                to Sisu</small>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            {% endif %}
+
+                            {% if showOtcCredsSection %}
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3 class="card-title">OTC</h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                            <label class="form-control-label" for="text-input">OTC Username</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                            <input
+                                                class="form-control"
+                                                name="OTC_username"
+                                                required
+                                                type="text"
+                                                value="{{OTC_username}}"
+                                            />
+                                            <small class="form-text text-muted"
+                                                >This is the email registered with OTC</small
+                                            >
+                                            </div>
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col col-md-3">
+                                            <label class="form-control-label" for="text-input">OTC Password</label>
+                                            </div>
+                                            <div class="col-12 col-md-9">
+                                            <input
+                                                class="form-control"
+                                                name="OTC_password"
+                                                required
+                                                type="password"
+                                                value="{{OTC_password}}"
+                                            />
+                                            <small class="form-text text-muted"
+                                                >This is the password used to login to OTC</small
+                                            >
+                                            </div>
+                                        </div>
+                                    </div>
+                                 </div>
+                            {% endif %}
+                              
+                            <div class="form-actions form-group">
+                                <button class="btn btn-primary btn-lg float-right" type="submit"
+                                        value="submit">Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div><!-- /# column -->
+        </div>
+        <!--  /Traffic -->
+        <div class="clearfix"></div>
+
+
+        <!-- /#add-category -->
+    </div>
+    <!-- .animated -->
+</div>
+
+
+{% endblock %}
+
+{% block script %}
+<script>
+    var is_success = "{{ is_success }}"
+    var fub_key_authorised = "{{ fub_key_authorised }}"
+    var fub_key_unauthorised = "{{ fub_key_unauthorised }}"
+    if (is_success === "1"){
+        createSwal('Update Successful!', 'Credentials Updated successfully.', 'success')
+    }
+    if (fub_key_authorised === "1"){
+        createSwal('Update Successful!', 'Fub Api Key Authenticated.', 'success')
+    }
+    if (fub_key_unauthorised === "0"){
+        createSwal('Update Failed!', 'Fub Api Key authentication failed. Please re-enter FUB Api Key.', 'error')
+    }
+    function createSwal(title, text, icon){
+        swal({
+                title: title,
+                text: text,
+                icon: icon,
+                confirmButtonText: 'Ok'
+        });
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,8 @@
+Django==3.0.4
+boto3
+requests
+stripe
+sentry_sdk
+chargebee>=2,<3
+django-cors-headers
+graphqlclient==0.2.4

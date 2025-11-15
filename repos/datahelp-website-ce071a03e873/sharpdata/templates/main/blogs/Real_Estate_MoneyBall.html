@@ -1,0 +1,99 @@
+{% extends 'main/main-base.html'%}
+{% load static %}
+
+
+{% block content %}
+<section class="page-header padding">
+    <div class="anim-elements">
+        <div class="anim-element"></div>
+        <div class="anim-element"></div>
+        <div class="anim-element"></div>
+        <div class="anim-element"></div>
+        <div class="anim-element"></div>
+    </div>
+    <div class="container">
+        <div class="page-content text-center">
+            <h2>Real Estate MoneyBall</h2>
+            <!-- <p>Multipurpose Saas Startup HTML Template.</p> -->
+        </div>
+    </div>
+</section><!--/. page-header -->
+
+<section class="blog-section padding">
+    <div class="container">
+        <div class="blog-wrap row">
+            <div class="col-lg-8 padding-15">
+                <div class="blog-single-wrap">
+                    <div class="blog-thumb">
+                        <img alt="img" src="{% static 'img/blog/post-1.png'%}">
+                    </div>
+                    <div class="blog-single-content">
+                        <h2>Real Estate MoneyBall</h2>
+                        <ul class="single-post-meta">
+                            <li><i class="fa fa-user"></i> <a href="#">Daniel Poston</a></li>
+                            <li><i class="fa fa-calendar"></i> <a href="#">04 May, 2017</a></li>
+                        </ul>
+                        <p>Back in 2017 when I was transitioning to a career in Data Science & Analytics I wrote these
+                            blog posts for <a href="https://www.datacamp.com/" target="blank">DataCamp</a> about using
+                            data to analyze aspects of Major League Baseball. Now I use data to give real estate teams
+                            superpowers for their sales and marketing. </p>
+                        <h3><a href="https://www.datacamp.com/community/tutorials/scikit-learn-tutorial-baseball-1"
+                               target="blank">Scikit-Learn
+                            Tutorial: Baseball Analytics Pt 1</a></h3>
+                        <p>A Scikit-Learn tutorial to using logistic regression and random forest models to predict
+                            which baseball players will be voted into the Hall of Fame.</p>
+
+                        <h3><a href="https://www.datacamp.com/community/tutorials/scikit-learn-tutorial-baseball-2"
+                               target="blank">Scikit-Learn
+                            Tutorial: Baseball Analytics Pt 2</a></h3>
+                        <p>A Scikit-Learn tutorial to using logistic regression and random forest models to predict
+                            which baseball players will be voted into the Hall of Fame.</p>
+
+                        <div class="author-box bg-grey">
+                            <img alt="img" height="130px" src="{% static 'img/blog/Daniel.jpg'%}">
+                            <div class="author-info">
+                                <h3>Daniel Poston</h3>
+                                <p>Daniel Poston helps real estate teams sell more homes and grow faster. He is an
+                                    expert at helping teams increase sales conversion rates using effective, proven real
+                                    estate data platforms.</p>
+                                <p>If you're interested in selling more homes with predictability then definitely reach
+                                    out and request a free strategy session today.</p>
+                                <ul class="social-icon">
+                                    <li><a href="https://www.facebook.com/sharpdata/"><i class="ti-facebook"></i></a>
+                                    </li>
+                                    <li><a href="http://www.linkedin.com/in/daniel-r-poston-sharp-data"><i
+                                            class="ti-linkedin"></i></a></li>
+
+                                </ul>
+                            </div>
+                        </div><!--/.author-box-->
+
+                        <!-- /.comments-area -->
+                    </div>
+                </div><!--/.blog-single-->
+            </div><!--/.col-lg-8-->
+            <div class="col-lg-4 padding-15">
+                <div class="sidebar-wrap">
+
+                    <!--categories-->
+                    <div class="widget-content blog-widget">
+                        <h4>Recent Posts</h4>
+                        <ul class="thumb-post">
+                            <li><img alt="post" src="{% static 'img/blog/post-1.png'%}"><a href="Real_Estate_MoneyBall">Real
+                                Estate MoneyBall</a></li>
+                            <li><img alt="post" src="{% static 'img/blog/post-2.jpg' %}"><a href="Tech_is_an_Arms_Race">Tech
+                                is an Arms Race. Are You Outgunned?</a></li>
+                            <li><img alt="post" src="{%static 'img/blog/post-3.jpg'%}"><a
+                                    href="The_Holy_Grail_of_Real_Estate">The Holy Grail of Real Estate: The All in One
+                                Data Platform</a></li>
+                            <li><img alt="post" src="{%static 'img/blog/post-4.jpg'%}"><a href="scalability">Scalability...
+                                Step 1: Automate, Step 2: Outsource</a></li>
+                        </ul>
+                    </div>
+                </div><!--/.sidebar-wrap-->
+            </div><!--/.col-lg-4-->
+        </div><!--/.blog-wrap-->
+    </div>
+</section><!--/.blog-section-->
+
+{% endblock %}

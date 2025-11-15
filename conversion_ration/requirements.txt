@@ -1,0 +1,11 @@
+dash
+dash-table
+dash-html-components
+dash-core-components
+pandas
+plotly-express
+django-plotly-dash
+
+# Add other required libraries here, e.g.,
+numpy
+datetime
